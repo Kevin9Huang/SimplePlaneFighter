@@ -10,7 +10,7 @@ package Simple.Plane.Fighter;
  *
  * @author Kevin Huang
  */
-public class TugasBesarSwing {
+public class SimplePlaneFighter {
 
     /**
      * @param args the command line arguments
