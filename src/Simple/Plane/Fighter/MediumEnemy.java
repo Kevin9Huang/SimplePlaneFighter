@@ -9,18 +9,6 @@ package Simple.Plane.Fighter;
  *
  * @author Rosi
  */
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.Point;
-import java.awt.event.KeyEvent;
-
-import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
-
-public class Enemy extends Plane {
+public class MediumEnemy {
     
-    public void Run() {
-        
-    }
 }

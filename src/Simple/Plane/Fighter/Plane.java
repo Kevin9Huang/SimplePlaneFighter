@@ -20,35 +20,50 @@ import javax.swing.ImageIcon;
 
 public class Plane {
 
-    private Bullet CurrentBullet;
-    private int SpeedX;
-    private int SpeedY;
-    boolean Visible;
-    private Point CurrentPosition;
-    private ArrayList bullet;
-    private int HitPoints;
-    private Image PlaneImage;
+    protected Bullet CurrentBullet;
+    protected int width;
+    protected int height;
+    protected int SpeedX;
+    protected int SpeedY;
+    protected boolean Visible;
+    protected Point CurrentPosition;
+    protected ArrayList bullet;
+    protected int HitPoints;
+    protected Image PlaneImage;
 
     public Plane() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource("plane.png"));
         PlaneImage = ii.getImage();
+        width = PlaneImage.getWidth(null);
+        height = PlaneImage.getHeight(null);
         bullet = new ArrayList();
         Visible = true;
         SpeedX = 40;
-        SpeedY = 60;
+        SpeedY = 60;               
     }
 
     Rectangle getCollisionArea() {
         Rectangle r = null;
+        r.width = width;
+        r.height = height;
         return r;
     }
     
     public void Move() {
-        
+        CurrentPosition.x += SpeedX;
+        CurrentPosition.y += SpeedY;
+
+        if (CurrentPosition.x < 1) {
+            CurrentPosition.x = 1;
+        }
+
+        if (CurrentPosition.y < 1) {
+            CurrentPosition.y = 1;
+        }
     }
 
     public void Shot() {
-        
+        bullet.add(new Bullet());
     }
 
     public void ChangeBullet(Bullet x) {
