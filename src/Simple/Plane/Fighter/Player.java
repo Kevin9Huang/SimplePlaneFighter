@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 public class Player extends Plane {
+    
+    int ultimateCounter = 3; 
 
     public Player() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource("player.png"));
@@ -33,19 +35,20 @@ public class Player extends Plane {
     }
     
     public void UseUltimate() {
-        
+        ultimateCounter -= 1;
     }
     
     public void AddUltimate() {
-        
+        ultimateCounter += 1;
     }
     
-    public void ChangeSpeed(int speed) {
-        
+    public void IncreaseSpeed(int speed) {
+        SpeedX += speed;
+        SpeedY += speed;
     }
     
     public void ChangeBullet(Bullet x) {
-        
+        CurrentBullet = x;
     }
     
     public void PrintDescription() {

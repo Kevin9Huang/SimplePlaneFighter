@@ -39,6 +39,12 @@ public class Bullet {
         ImageIcon imgbullet = new ImageIcon(this.getClass().getResource(spritebullet));
         BulletImage = imgbullet.getImage();
     }
+    
+    // tes konstruktor bullet
+    public Bullet(int x, int y) {
+        
+    }
+    
     private int getX(){
         return x;
     }

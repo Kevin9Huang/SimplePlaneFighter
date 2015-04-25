@@ -100,11 +100,11 @@ public class Plane {
     }
 
     public void Shot() {
-        bullet.add(new Bullet());
+        bullet.add(new Bullet(CurrentPosition.x + width, CurrentPosition.y + height/2));
     }
 
     public void ChangeBullet(Bullet x) {
-        
+        CurrentBullet = x;
     }
     
     public void PrintDescription() {
