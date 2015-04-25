@@ -41,12 +41,49 @@ public class Plane {
         SpeedX = 40;
         SpeedY = 60;               
     }
+    
+    public int getPlaneWidth() {
+        return width;
+    }
+    
+    public int getPlaneHeight() {
+        return height;
+    }
+    
+    public int getPlaneSpeedX() {
+        return SpeedX;
+    }
+    
+    public int getPlaneSpeedY() {
+        return SpeedY;
+    }
+    
+    public boolean getPlaneVisible() {
+        return Visible;
+    }
+    
+    public void setPlaneWidth(int _width) {
+        width = _width;
+    }
+    
+    public void setPlaneHeight(int _height) {
+        height = _height;
+    }
+    
+    public void setPlaneSpeedX(int _speedx) {
+        SpeedX = _speedx;
+    }
+    
+    public void setPlaneSpeedY(int _speedy) {
+        SpeedY = _speedy;
+    }
+    
+    public void setPlaneVisible(boolean _visible) {
+        Visible = _visible;
+    }
 
-    Rectangle getCollisionArea() {
-        Rectangle r = null;
-        r.width = width;
-        r.height = height;
-        return r;
+    public Rectangle getCollisionArea() {
+        return new Rectangle(CurrentPosition.x,CurrentPosition.y,width,height);
     }
     
     public void Move() {
