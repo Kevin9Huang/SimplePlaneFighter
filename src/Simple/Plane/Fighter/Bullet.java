@@ -93,14 +93,19 @@ public class Bullet {
     public void setDamagePoint(int _dmgpoint){
         DamagePoint = _dmgpoint;
     }
-    public void Move(){
-        this.x += BulletSpeed;
-        this.y += BulletSpeed;
+    public void Move(){ //Bullet hanya bergerak horizontal ke kanan
+        x += BulletSpeed;
+        if (x > BoardWidth)
+            visible = false;
     }
     public Rectangle getCollisionArea(){
         return new Rectangle(BulletWidth,BulletHeight);
     }
     public Image getBulletImage(){
         return BulletImage;
+    }
+
+    void move() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

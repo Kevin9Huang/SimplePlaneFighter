@@ -23,7 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
-public class Board3 extends JPanel implements ActionListener {
+public class Board3 extends JPanel implements ActionListener,GameSetting {
 
     private Timer timer;
     private PlayerKevin player;
@@ -45,7 +45,6 @@ public class Board3 extends JPanel implements ActionListener {
      };
 
     public Board3() {
-
         addKeyListener(new TAdapter());
         setFocusable(true);
         setBackground(Color.BLACK);
@@ -63,16 +62,16 @@ public class Board3 extends JPanel implements ActionListener {
     }
 
     public void addNotify() {
-        super.addNotify();
-        B_WIDTH = getWidth();
-        B_HEIGHT = getHeight();   
+        super.addNotify(); 
     }
 
     public void initAliens() {
-        aliens = new ArrayList();
-
+        weakenemies = new ArrayList();
+        mediumenemies = new ArrayList();
+        strongenemies = new ArrayList();
+        
         for (int i=0; i<pos.length; i++ ) {
-            aliens.add(new Alien(pos[i][0], pos[i][1]));
+            weakenemies.add(new WeakEnemy(pos[i][0], pos[i][1]));
         }
     }
 
@@ -84,25 +83,22 @@ public class Board3 extends JPanel implements ActionListener {
 
             Graphics2D g2d = (Graphics2D)g;
 
-            if (craft.isVisible())
-                g2d.drawImage(craft.getImage(), craft.getX(), craft.getY(),
+            if (player.isPlaneVisible())
+                g2d.drawImage(player.getPlaneImage(), player.getCurrentPosition().x, player.getCurrentPosition().y,
                               this);
 
-            ArrayList ms = craft.getMissiles();
-
-            for (int i = 0; i < ms.size(); i++) {
-                Missile m = (Missile)ms.get(i);
-                g2d.drawImage(m.getImage(), m.getX(), m.getY(), this);
+            for (int i = 0; i < player.getBullet().size(); i++) {
+                Bullet m = (Bullet)player.getBullet().get(i);
+                g2d.drawImage(m.getBulletImage(), m.getX(), m.getY(), this);
             }
 
-            for (int i = 0; i < aliens.size(); i++) {
-                Alien a = (Alien)aliens.get(i);
-                if (a.isVisible())
-                    g2d.drawImage(a.getImage(), a.getX(), a.getY(), this);
+            for (int i = 0; i < weakenemies.size(); i++) {
+                WeakEnemy weakenemy = (WeakEnemy)weakenemies.get(i);
+                if (weakenemy.isPlaneVisible())
+                    g2d.drawImage(weakenemy.getPlaneImage(), weakenemy.getCurrentPosition().x, weakenemy.getCurrentPosition().y, this);
             }
-
             g2d.setColor(Color.WHITE);
-            g2d.drawString("Aliens left: " + aliens.size(), 5, 15);
+            g2d.drawString("Aliens left: " + weakenemies.size(), 5, 15);
 
 
         } else {
@@ -112,8 +108,8 @@ public class Board3 extends JPanel implements ActionListener {
 
             g.setColor(Color.white);
             g.setFont(small);
-            g.drawString(msg, (B_WIDTH - metr.stringWidth(msg)) / 2,
-                         B_HEIGHT / 2);
+            g.drawString(msg, (Board_Width - metr.stringWidth(msg)) / 2,
+                         Board_Height / 2);
         }
 
         Toolkit.getDefaultToolkit().sync();
@@ -123,34 +119,31 @@ public class Board3 extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
 
-        if (aliens.size()==0) {
+        if (weakenemies.size()==0 && mediumenemies.size() == 0 && strongenemies.size() == 0) {
             ingame = false;
         }
-
-        ArrayList ms = craft.getMissiles();
-
-        for (int i = 0; i < ms.size(); i++) {
-            Missile m = (Missile) ms.get(i);
-            if (m.isVisible()) 
-                m.move();
-            else ms.remove(i);
+        for (int i = 0; i < player.getBullet().size(); i++) {
+            Bullet playerbullet = (Bullet) player.getBullet().get(i);
+            if (playerbullet.isVisible()) 
+                playerbullet.move();
+            else player.getBullet().remove(i);
         }
 
-        for (int i = 0; i < aliens.size(); i++) {
-            Alien a = (Alien) aliens.get(i);
-            if (a.isVisible()) 
-                a.move();
-            else aliens.remove(i);
+        for (int i = 0; i < weakenemies.size(); i++) {
+            WeakEnemy weakenemy = (WeakEnemy) weakenemies.get(i);
+            if (weakenemy.isPlaneVisible()) 
+                weakenemy.run();
+            else weakenemies.remove(i);
         }
 
-        craft.move();
+        player.run();
         checkCollisions();
         repaint();  
     }
 
-    public void checkCollisions() {
+    /*public void checkCollisions() {
 
-        Rectangle r3 = craft.getBounds();
+        Rectangle r3 = Player.g();
 
         for (int j = 0; j<aliens.size(); j++) {
             Alien a = (Alien) aliens.get(j);
@@ -192,6 +185,6 @@ public class Board3 extends JPanel implements ActionListener {
         public void keyPressed(KeyEvent e) {
             craft.keyPressed(e);
         }
-    }
+    }*/
 }
 

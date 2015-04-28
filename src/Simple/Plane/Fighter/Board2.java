@@ -141,6 +141,11 @@ public class Board2 extends JPanel implements Runnable,GameSetting,GameResources
         player.run();
         
     }
+
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     /*public void run() {
 
@@ -205,5 +210,4 @@ public class Board2 extends JPanel implements Runnable,GameSetting,GameResources
           }
         }*/
     }
-    
 }
