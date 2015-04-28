@@ -40,23 +40,22 @@ public class GUI extends javax.swing.JFrame {
 
         jProgressBar1 = new javax.swing.JProgressBar();
         jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jProgressBar2 = new javax.swing.JProgressBar();
-        jButton8 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton9 = new javax.swing.JButton();
+        LabelPlayer = new javax.swing.JLabel();
+        ButtonUp = new javax.swing.JButton();
+        ButtonLeft = new javax.swing.JButton();
+        ButtonRight = new javax.swing.JButton();
+        ButtonDown = new javax.swing.JButton();
+        ButtonShoot = new javax.swing.JButton();
+        ButtonBerserk = new javax.swing.JButton();
+        ButtonUltimate = new javax.swing.JButton();
+        ButtonExit = new javax.swing.JButton();
+        LabelHeart1 = new javax.swing.JLabel();
+        LabelHeart2 = new javax.swing.JLabel();
+        LabelHeart3 = new javax.swing.JLabel();
+        LabelScore = new javax.swing.JLabel();
+        BarHealthBar = new javax.swing.JProgressBar();
+        LabelBackGround = new javax.swing.JLabel();
+        LabelDescription = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -64,129 +63,125 @@ public class GUI extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1000, 700));
         getContentPane().setLayout(null);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/bomb.png"))); // NOI18N
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(320, 450, 130, 110);
+        LabelPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/player_1.png"))); // NOI18N
+        LabelPlayer.setText("jLabel8");
+        getContentPane().add(LabelPlayer);
+        LabelPlayer.setBounds(50, 100, 60, 70);
 
-        jButton1.setText("Up");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ButtonUp.setText("Up");
+        ButtonUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ButtonUpActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(120, 430, 70, 30);
+        getContentPane().add(ButtonUp);
+        ButtonUp.setBounds(120, 430, 70, 30);
 
-        jButton2.setText("Left");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(40, 460, 80, 30);
+        ButtonLeft.setText("Left");
+        getContentPane().add(ButtonLeft);
+        ButtonLeft.setBounds(40, 460, 80, 30);
 
-        jButton3.setText("Right");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        ButtonRight.setText("Right");
+        ButtonRight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                ButtonRightActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(190, 460, 90, 30);
+        getContentPane().add(ButtonRight);
+        ButtonRight.setBounds(190, 460, 90, 30);
 
-        jButton4.setText("Down");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(120, 490, 70, 30);
+        ButtonDown.setText("Down");
+        getContentPane().add(ButtonDown);
+        ButtonDown.setBounds(120, 490, 70, 30);
 
-        jButton5.setText("Shot");
-        getContentPane().add(jButton5);
-        jButton5.setBounds(110, 460, 90, 30);
+        ButtonShoot.setText("Shoot");
+        getContentPane().add(ButtonShoot);
+        ButtonShoot.setBounds(110, 460, 90, 30);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/heart4.png"))); // NOI18N
-        jLabel4.setToolTipText("");
-        jLabel4.setMaximumSize(new java.awt.Dimension(2555, 2391));
-        jLabel4.setMinimumSize(new java.awt.Dimension(2555, 2391));
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(860, 380, 20, 20);
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/heart4.png"))); // NOI18N
-        jLabel7.setToolTipText("");
-        jLabel7.setMaximumSize(new java.awt.Dimension(2555, 2391));
-        jLabel7.setMinimumSize(new java.awt.Dimension(2555, 2391));
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(880, 380, 20, 20);
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/heart4.png"))); // NOI18N
-        jLabel5.setToolTipText("");
-        jLabel5.setMaximumSize(new java.awt.Dimension(2555, 2391));
-        jLabel5.setMinimumSize(new java.awt.Dimension(2555, 2391));
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(900, 380, 20, 20);
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Score : 100");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(30, 20, 110, 30);
-
-        jButton6.setText("BerserkOn()");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        ButtonBerserk.setText("BerserkOn()");
+        ButtonBerserk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                ButtonBerserkActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6);
-        jButton6.setBounds(30, 520, 120, 30);
+        getContentPane().add(ButtonBerserk);
+        ButtonBerserk.setBounds(30, 520, 120, 30);
 
-        jButton7.setText("Use Ultimate");
-        getContentPane().add(jButton7);
-        jButton7.setBounds(160, 520, 130, 30);
-        getContentPane().add(jProgressBar2);
-        jProgressBar2.setBounds(30, 370, 220, 30);
+        ButtonUltimate.setText("Use Ultimate");
+        getContentPane().add(ButtonUltimate);
+        ButtonUltimate.setBounds(160, 520, 130, 30);
 
-        jButton8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton8.setText("Pause");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        ButtonExit.setText("Exit");
+        ButtonExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                ButtonExitActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8);
-        jButton8.setBounds(450, 370, 110, 30);
+        getContentPane().add(ButtonExit);
+        ButtonExit.setBounds(680, 440, 51, 23);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/space.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jLabel1.setPreferredSize(new java.awt.Dimension(1600, 851));
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 10, 930, 400);
+        LabelHeart1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/heart4.png"))); // NOI18N
+        LabelHeart1.setToolTipText("");
+        LabelHeart1.setMaximumSize(new java.awt.Dimension(2555, 2391));
+        LabelHeart1.setMinimumSize(new java.awt.Dimension(2555, 2391));
+        getContentPane().add(LabelHeart1);
+        LabelHeart1.setBounds(860, 380, 20, 20);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Description: ");
-        jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(380, 420, 350, 160);
+        LabelHeart2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/heart4.png"))); // NOI18N
+        LabelHeart2.setToolTipText("");
+        LabelHeart2.setMaximumSize(new java.awt.Dimension(2555, 2391));
+        LabelHeart2.setMinimumSize(new java.awt.Dimension(2555, 2391));
+        getContentPane().add(LabelHeart2);
+        LabelHeart2.setBounds(880, 380, 20, 20);
 
-        jButton9.setText("Exit");
-        getContentPane().add(jButton9);
-        jButton9.setBounds(540, 440, 51, 23);
+        LabelHeart3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/heart4.png"))); // NOI18N
+        LabelHeart3.setToolTipText("");
+        LabelHeart3.setMaximumSize(new java.awt.Dimension(2555, 2391));
+        LabelHeart3.setMinimumSize(new java.awt.Dimension(2555, 2391));
+        getContentPane().add(LabelHeart3);
+        LabelHeart3.setBounds(900, 380, 20, 20);
+
+        LabelScore.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        LabelScore.setForeground(new java.awt.Color(255, 255, 255));
+        LabelScore.setText("Score : 100");
+        getContentPane().add(LabelScore);
+        LabelScore.setBounds(30, 20, 110, 30);
+        getContentPane().add(BarHealthBar);
+        BarHealthBar.setBounds(30, 370, 220, 30);
+
+        LabelBackGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/space.png"))); // NOI18N
+        LabelBackGround.setText("jLabel1");
+        LabelBackGround.setPreferredSize(new java.awt.Dimension(1600, 851));
+        getContentPane().add(LabelBackGround);
+        LabelBackGround.setBounds(20, 10, 930, 400);
+
+        LabelDescription.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        LabelDescription.setText("Description: ");
+        LabelDescription.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        getContentPane().add(LabelDescription);
+        LabelDescription.setBounds(290, 430, 350, 160);
 
         getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ButtonUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ButtonUpActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void ButtonRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonRightActionPerformed
         
         
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_ButtonRightActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void ButtonBerserkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBerserkActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_ButtonBerserkActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    private void ButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_ButtonExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,24 +219,23 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JProgressBar BarHealthBar;
+    private javax.swing.JButton ButtonBerserk;
+    private javax.swing.JButton ButtonDown;
+    private javax.swing.JButton ButtonExit;
+    private javax.swing.JButton ButtonLeft;
+    private javax.swing.JButton ButtonRight;
+    private javax.swing.JButton ButtonShoot;
+    private javax.swing.JButton ButtonUltimate;
+    private javax.swing.JButton ButtonUp;
+    private javax.swing.JLabel LabelBackGround;
+    private javax.swing.JLabel LabelDescription;
+    private javax.swing.JLabel LabelHeart1;
+    private javax.swing.JLabel LabelHeart2;
+    private javax.swing.JLabel LabelHeart3;
+    private javax.swing.JLabel LabelPlayer;
+    private javax.swing.JLabel LabelScore;
     private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JProgressBar jProgressBar2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 

@@ -6,51 +6,32 @@
 package Simple.Plane.Fighter;
 
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author Kevin Huang
  */
 public class PlayerKevin extends Plane implements GameSetting {
-    
-    
-    public void keyPressed(KeyEvent e) {
 
-        int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_LEFT) {
-            dx = -SpeedX;
-        }
-
-        if (key == KeyEvent.VK_RIGHT) {
-            dx = SpeedX;
-        }
-
-        if (key == KeyEvent.VK_UP) {
-            dy = -SpeedY;
-        }
-
-        if (key == KeyEvent.VK_DOWN) {
-            dy = SpeedY;
-        }
+    public PlayerKevin(){
+        ImageIcon playericon = new ImageIcon(this.getClass().getResource(GameResources.srcplayer));
+        width = 100;
     }
-    public void keyReleased(KeyEvent e) {
-        int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_LEFT) {
-            dx = 0;
-        }
-
-        if (key == KeyEvent.VK_RIGHT) {
-            dx = 0;
-        }
-
-        if (key == KeyEvent.VK_UP) {
-            dy = 0;
-        }
-
-        if (key == KeyEvent.VK_DOWN) {
-            dy = 0;
-        }
+    public void MoveUp(){
+        dy = -SpeedY;
+    }
+    public void MoveDown(){
+        dy = SpeedY;
+    }
+    public void MoveRight(){
+        dx = SpeedX;
+    }
+    public void MoveLeft(){
+        dx = -SpeedX;
+    }
+    public void ResetDeltaMove(){
+        dx = 0;
+        dy = 0;
     }
 }

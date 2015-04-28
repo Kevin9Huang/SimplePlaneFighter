@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  *
  * @author Kevin Huang
  */
-public class Board2 extends JPanel implements Runnable,GameSetting{
+public class Board2 extends JPanel implements Runnable,GameSetting,GameResources{
     private PlayerKevin player;
     private boolean ingame;
     public Board2(){
@@ -28,7 +28,23 @@ public class Board2 extends JPanel implements Runnable,GameSetting{
     private class TAdapter extends KeyAdapter {
 
         public void keyReleased(KeyEvent e) {
-            player.keyReleased(e);
+            int key = e.getKeyCode();
+            if (key == KeyEvent.VK_LEFT) {
+                player.MoveLeft();
+            }
+
+            if (key == KeyEvent.VK_RIGHT) {
+                player.MoveRight();
+            }
+
+            if (key == KeyEvent.VK_UP) {
+                player.MoveUp();
+            }
+
+            if (key == KeyEvent.VK_DOWN) {
+                player.MoveDown();
+            }
+            
         }
 
         /*public void keyPressed(KeyEvent e) {
