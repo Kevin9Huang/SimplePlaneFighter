@@ -11,7 +11,7 @@ package Simple.Plane.Fighter;
  * @author Kevin Huang
  */
 interface GameResources {
-    public final String srcplayer = "/srcimage/plane.png";
+    public final String srcplayer = "/srcimage/player.png";
     //public final String srccraft = "/srcimage/plane.png";
     
 }

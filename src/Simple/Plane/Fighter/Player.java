@@ -24,7 +24,7 @@ public class Player extends Plane implements GameSetting {
     int ultimateCounter = 3; 
 
     public Player() {
-        ImageIcon ii = new ImageIcon(this.getClass().getResource("player.png"));
+        ImageIcon ii = new ImageIcon(this.getClass().getResource("/srcimage/player.png"));
         PlaneImage = ii.getImage();
         width = PlaneImage.getWidth(null);
         height = PlaneImage.getHeight(null);
@@ -97,5 +97,12 @@ public class Player extends Plane implements GameSetting {
     
     public void BerserkOn() {
         
+    }
+    public void run() {
+        CurrentPosition.x += dx;
+        if (CurrentPosition.x <= 2) 
+            CurrentPosition.x = 2;
+        if (CurrentPosition.x >= Board_Width - 2*width) 
+            CurrentPosition.x = Board_Width - 2*width;
     }
 }

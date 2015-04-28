@@ -15,16 +15,16 @@ import javax.swing.JLabel;
  *
  * @author Kevin Huang
  */
-public class GUI extends javax.swing.JFrame {
+public class GUI extends javax.swing.JFrame implements GameSetting{
     private Object icon;
-    private Board board;
+    private Board3 board;
 
     /**
      * Creates new form GUI
      */
     public GUI() {
-        board = new Board();
-        board.setBounds(500, 300, 358, 350);
+        board = new Board3();
+        board.setBounds(0, 0, Board_Width, Board_Height);
         getContentPane().add(board);
         initComponents();
     }

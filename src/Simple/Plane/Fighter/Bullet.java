@@ -25,7 +25,7 @@ public class Bullet {
     public int BulletSpeed;
     public int DamagePoint;
     public Image BulletImage;
-    public final String spritebullet = "../bullet.png";
+    public final String spritebullet = "/srcimage/bomb.png";
     public Bullet(){
         x = 0; //inital bullet position x
         y = 0; //inital bullet position y

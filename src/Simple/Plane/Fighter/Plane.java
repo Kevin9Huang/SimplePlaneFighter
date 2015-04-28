@@ -34,7 +34,7 @@ public class Plane implements GameSetting {
     protected Image PlaneImage;
 
     public Plane() {
-        ImageIcon ii = new ImageIcon(this.getClass().getResource("plane.png"));
+        ImageIcon ii = new ImageIcon(this.getClass().getResource("/srcimage/player.png"));
         PlaneImage = ii.getImage();
         width = PlaneImage.getWidth(null);
         height = PlaneImage.getHeight(null);
@@ -85,7 +85,7 @@ public class Plane implements GameSetting {
     }
 
     public Rectangle getCollisionArea() {
-        return new Rectangle(CurrentPosition.x,CurrentPosition.y,width,height);
+        return new Rectangle(CurrentPosition.x,CurrentPosition.y,PlaneImage.getWidth(null),PlaneImage.getHeight(null));
     }
     
     public void MoveUp(){

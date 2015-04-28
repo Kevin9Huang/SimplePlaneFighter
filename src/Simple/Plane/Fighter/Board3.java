@@ -137,44 +137,42 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
         }
 
         player.run();
-        //checkCollisions();
+        checkCollisions();
         repaint();  
     }
 
-    /*public void checkCollisions() {
+    public void checkCollisions() {
 
-        Rectangle r3 = Player.g();
+        Rectangle playerarea = player.getCollisionArea();
 
-        for (int j = 0; j<aliens.size(); j++) {
-            Alien a = (Alien) aliens.get(j);
-            Rectangle r2 = a.getBounds();
+        for (int j = 0; j<weakenemies.size(); j++) {
+            WeakEnemy weakenemy = (WeakEnemy) weakenemies.get(j);
+            Rectangle weakenemyarea = weakenemy.getCollisionArea();
 
-            if (r3.intersects(r2)) {
-                craft.setVisible(false);
-                a.setVisible(false);
+            if (playerarea.intersects(weakenemyarea)) {
+                player.setPlaneVisible(false);
+                weakenemy.setPlaneVisible(false);
                 ingame = false;
             }
         }
 
-        ArrayList ms = craft.getMissiles();
+        for (int i = 0; i < player.getBullet().size(); i++) {
+            Bullet playerbullet = (Bullet) player.getBullet().get(i);
 
-        for (int i = 0; i < ms.size(); i++) {
-            Missile m = (Missile) ms.get(i);
+            Rectangle playerbulletarea = playerbullet.getCollisionArea();
 
-            Rectangle r1 = m.getBounds();
+            for (int j = 0; j<weakenemies.size(); j++) {
+                WeakEnemy weakenemy = (WeakEnemy) weakenemies.get(j);
+                Rectangle weakenemyarea = weakenemy.getCollisionArea();
 
-            for (int j = 0; j<aliens.size(); j++) {
-                Alien a = (Alien) aliens.get(j);
-                Rectangle r2 = a.getBounds();
-
-                if (r1.intersects(r2)) {
-                    m.setVisible(false);
-                    a.setVisible(false);
+                if (playerbulletarea.intersects(weakenemyarea)) {
+                    player.setPlaneVisible(false);
+                    weakenemy.setPlaneVisible(false);
                 }
             }
         }
     }
-    */
+    
 
 
     private class TAdapter extends KeyAdapter {

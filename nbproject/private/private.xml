@@ -3,16 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/srcimage/space.png</file>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/Board.java</file>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/SimplePlaneFighter.java</file>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/GameResources.java</file>
+            <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/MediumEnemy.java</file>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/Plane.java</file>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/Player_1.java</file>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/SimpleEx.java</file>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/Commons.java</file>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/PlayerKevin.java</file>
+            <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/StrongEnemy.java</file>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/Bullet.java</file>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/Ultimate.java</file>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/Sprite.java</file>
@@ -23,20 +24,6 @@
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/Alien.java</file>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/Shot.java</file>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/Board2.java</file>
-=======
-            <file>file:/F:/Documents/NetBeansProjects/SimplePlaneFighter/src/Simple/Plane/Fighter/Player.java</file>
-            <file>file:/F:/Documents/NetBeansProjects/SimplePlaneFighter/src/Simple/Plane/Fighter/WeakEnemy.java</file>
-            <file>file:/F:/Documents/NetBeansProjects/SimplePlaneFighter/src/Simple/Plane/Fighter/MediumEnemy.java</file>
-            <file>file:/F:/Documents/NetBeansProjects/SimplePlaneFighter/src/Simple/Plane/Fighter/Shot.java</file>
-            <file>file:/F:/Documents/NetBeansProjects/SimplePlaneFighter/src/Simple/Plane/Fighter/Bullet.java</file>
-            <file>file:/F:/Documents/NetBeansProjects/SimplePlaneFighter/src/Simple/Plane/Fighter/SimplePlaneFighter.java</file>
-            <file>file:/F:/Documents/NetBeansProjects/SimplePlaneFighter/src/Simple/Plane/Fighter/Ultimate.java</file>
-            <file>file:/F:/Documents/NetBeansProjects/SimplePlaneFighter/src/Simple/Plane/Fighter/Player_1.java</file>
-            <file>file:/F:/Documents/NetBeansProjects/SimplePlaneFighter/src/Simple/Plane/Fighter/Plane.java</file>
-            <file>file:/F:/Documents/NetBeansProjects/SimplePlaneFighter/src/Simple/Plane/Fighter/SimpleEx.java</file>
-            <file>file:/F:/Documents/NetBeansProjects/SimplePlaneFighter/src/Simple/Plane/Fighter/StrongEnemy.java</file>
-            <file>file:/F:/Documents/NetBeansProjects/SimplePlaneFighter/src/Simple/Plane/Fighter/PlayerKevin.java</file>
->>>>>>> c11f7acab14e9b9af2eaa1ef7a53b22021b789ab
         </group>
     </open-files>
 </project-private>
