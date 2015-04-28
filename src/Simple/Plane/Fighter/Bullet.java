@@ -24,7 +24,7 @@ public class Bullet implements GameSetting,GameResources{
     
     public Bullet() {
         CurrentPosition = new Point(-99,-99);
-        ImageIcon bulleticon = new ImageIcon(this.getClass().getResource(spritebullet));
+        ImageIcon bulleticon = new ImageIcon(this.getClass().getResource(bulletimg));
         BulletImage = bulleticon.getImage();
         visible = true;
         width = BulletImage.getWidth(null);
@@ -34,7 +34,7 @@ public class Bullet implements GameSetting,GameResources{
 
     public Bullet(int x, int y) {
         CurrentPosition = new Point(x,y);
-        ImageIcon bulleticon = new ImageIcon(this.getClass().getResource(spritebullet));
+        ImageIcon bulleticon = new ImageIcon(this.getClass().getResource(bulletimg));
         BulletImage = bulleticon.getImage();
         visible = true;
         width = BulletImage.getWidth(null);

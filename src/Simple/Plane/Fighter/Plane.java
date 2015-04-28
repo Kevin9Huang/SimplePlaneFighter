@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
-public class Plane implements GameSetting {
+public class Plane implements GameSetting,GameResources {
     
     protected Bullet CurrentBullet;
     protected int width;
@@ -110,7 +110,27 @@ public class Plane implements GameSetting {
     }
 
     public void Shot() {
-        bullet.add(new Bullet(CurrentPosition.x + width, CurrentPosition.y + height/2));
+        boolean bulletclassnotfound = true;
+        int i = 0;
+        while(bulletclassnotfound && i<ArrayClassBulletName.size()){
+                if(CurrentBullet.getClass().getSimpleName().equals(ArrayClassBulletName.get(i))){
+                    //TODO Recheck bug report about casting parent class to child class and insert it into parent class
+                    // Class c = CurrentBullet.getClass(); c Should be class according to (ArrayClassBulletName.get(i)
+                    //Bullet m = (c)c.getConstruktor()c.class.getConstructor(int.class, int.class).newInstance(CurrentPosition.x + width, CurrentPosition.y + height/2);
+                    if(ArrayClassBulletName.get(i).equals("ZigZagBullet")){
+                        bullet.add(new ZigZagBullet(CurrentPosition.x + width, CurrentPosition.y + height/2));
+                        bulletclassnotfound = false;
+                    }
+                    else if(ArrayClassBulletName.get(i).equals("SpiralBullet")){
+                        //bullet.add(new ZigZagBullet(CurrentPosition.x + width, CurrentPosition.y + height/2));
+                        bulletclassnotfound = false;
+                    }
+                }
+            i++;
+        }
+        if(bulletclassnotfound){ //Bullet name not found! = Default Bullet
+            bullet.add(new Bullet(CurrentPosition.x + width, CurrentPosition.y + height/2));
+        }
     }
 
     public void ChangeBullet(Bullet x) {

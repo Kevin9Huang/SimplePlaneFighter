@@ -5,6 +5,8 @@
  */
 package Simple.Plane.Fighter;
 
+import static Simple.Plane.Fighter.GameResources.weakenemyimage;
+import static Simple.Plane.Fighter.GameSetting.InitialPlayerPosition;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Point;
@@ -18,23 +20,58 @@ import javax.swing.ImageIcon;
  *
  * @author Rosi
  */
+
 public class StrongEnemy extends Plane implements GameSetting {
     
     public StrongEnemy() {
-        ImageIcon ii = new ImageIcon(this.getClass().getResource("strongenemy.png"));
-        PlaneImage = ii.getImage();
+        ImageIcon weakenemyicon = new ImageIcon(this.getClass().getResource(strongenemyimage));
+        PlaneImage = weakenemyicon.getImage();
         width = PlaneImage.getWidth(null);
         height = PlaneImage.getHeight(null);
         bullet = new ArrayList();
         Visible = true;
-        SpeedX = 30;
-        SpeedY = 45;
-        HitPoints = 30;
+        SpeedX = 4;
+        SpeedY = 4;
+        HitPoints = 10;
+        CurrentBullet = new ZigZagBullet();
+        CurrentPosition = new Point(InitialEnemySpawnPosition);
+        HitPoints = 100;
+    }
+    
+    public StrongEnemy(int x,int y) {
+        ImageIcon weakenemyicon = new ImageIcon(this.getClass().getResource(strongenemyimage));
+        PlaneImage = weakenemyicon.getImage();
+        width = PlaneImage.getWidth(null);
+        height = PlaneImage.getHeight(null);
+        bullet = new ArrayList();
+        Visible = true;
+        SpeedX = 4;
+        SpeedY = 4;
+        HitPoints = 10;
+        CurrentBullet = new Bullet();
+        CurrentPosition = new Point(x,y);
+        HitPoints = 100;
     }
     
     public void run() {
-        CurrentPosition.x -= dx;
-        if (CurrentPosition.x <= 2) 
-            CurrentPosition.x = 2;
+        if (CurrentPosition.x < 0) 
+        {
+            CurrentPosition.x = Board_Width-PlaneImage.getWidth(null);
+        }
+        CurrentPosition.x -= SpeedX;
+        if (CurrentPosition.y < 0) 
+        {
+            CurrentPosition.y = PlaneImage.getHeight(null);
+            SpeedY = -SpeedY;
+        }
+        if(CurrentPosition.y > Board_Height)
+        {
+            CurrentPosition.y = Board_Height-PlaneImage.getHeight(null);
+            SpeedY = -SpeedY;
+        }
+        CurrentPosition.x -= SpeedX;
+        CurrentPosition.y -= SpeedY;
+
+        
     }
 }

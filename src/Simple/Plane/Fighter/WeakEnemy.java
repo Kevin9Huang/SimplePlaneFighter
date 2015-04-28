@@ -23,7 +23,7 @@ import javax.swing.ImageIcon;
 public class WeakEnemy extends Plane implements GameSetting {
     
     public WeakEnemy() {
-        ImageIcon weakenemyicon = new ImageIcon(this.getClass().getResource("weakenemy.png"));
+        ImageIcon weakenemyicon = new ImageIcon(this.getClass().getResource(weakenemyimage));
         PlaneImage = weakenemyicon.getImage();
         width = PlaneImage.getWidth(null);
         height = PlaneImage.getHeight(null);
@@ -32,13 +32,13 @@ public class WeakEnemy extends Plane implements GameSetting {
         SpeedX = 10;
         SpeedY = 15;
         HitPoints = 10;
-        CurrentBullet = new Bullet2();
+        CurrentBullet = new ZigZagBullet();
         CurrentPosition = new Point(InitialEnemySpawnPosition);
         HitPoints = 100;
     }
     
     public WeakEnemy(int x,int y) {
-        ImageIcon weakenemyicon = new ImageIcon(this.getClass().getResource("/srcimage/alien.png"));
+        ImageIcon weakenemyicon = new ImageIcon(this.getClass().getResource(weakenemyimage));
         PlaneImage = weakenemyicon.getImage();
         width = PlaneImage.getWidth(null);
         height = PlaneImage.getHeight(null);
@@ -47,7 +47,7 @@ public class WeakEnemy extends Plane implements GameSetting {
         SpeedX = 10;
         SpeedY = 15;
         HitPoints = 10;
-        CurrentBullet = new Bullet2();
+        CurrentBullet = new Bullet();
         CurrentPosition = new Point(x,y);
         HitPoints = 100;
     }
