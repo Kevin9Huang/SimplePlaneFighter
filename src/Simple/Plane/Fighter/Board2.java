@@ -80,7 +80,7 @@ public class Board2 extends JPanel implements Runnable,GameSetting,GameResources
         for(int i = 0;i<player.getBullet().size();i++){
             Bullet bullet = player.getBullet().get(i);
             if(bullet.isVisible()){
-                g.drawImage(bullet.getBulletImage(),bullet.getX(),bullet.getY(), this);
+                g.drawImage(bullet.getBulletImage(),bullet.getCurrentPosition().x,bullet.getCurrentPosition().y, this);
             }
         }
         for(int i = 0;i<weakenemies.size();i++){
@@ -88,7 +88,7 @@ public class Board2 extends JPanel implements Runnable,GameSetting,GameResources
             for(int j = 0;j<weakenemy.getBullet().size();j++){
                 Bullet bullet = player.getBullet().get(j);
                 if(bullet.isVisible()){
-                    g.drawImage(bullet.getBulletImage(),bullet.getX(),bullet.getY(), this);
+                    g.drawImage(bullet.getBulletImage(),bullet.getCurrentPosition().x,bullet.getCurrentPosition().y, this);
                 }
             }
         }
@@ -97,7 +97,7 @@ public class Board2 extends JPanel implements Runnable,GameSetting,GameResources
             for(int j = 0;j<mediumenemy.getBullet().size();j++){
                 Bullet bullet = player.getBullet().get(j);
                 if(bullet.isVisible()){
-                    g.drawImage(bullet.getBulletImage(),bullet.getX(),bullet.getY(), this);
+                    g.drawImage(bullet.getBulletImage(),bullet.getCurrentPosition().x,bullet.getCurrentPosition().y, this);
                 }
             }
         }
@@ -106,7 +106,7 @@ public class Board2 extends JPanel implements Runnable,GameSetting,GameResources
             for(int j = 0;j<strongenemy.getBullet().size();j++){
                 Bullet bullet = player.getBullet().get(j);
                 if(bullet.isVisible()){
-                    g.drawImage(bullet.getBulletImage(),bullet.getX(),bullet.getY(), this);
+                    g.drawImage(bullet.getBulletImage(),bullet.getCurrentPosition().x,bullet.getCurrentPosition().y, this);
                 }
             }
         }

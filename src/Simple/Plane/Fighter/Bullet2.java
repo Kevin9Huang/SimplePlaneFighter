@@ -6,6 +6,8 @@
 
 package Simple.Plane.Fighter;
 
+import static Simple.Plane.Fighter.GameResources.spritebullet;
+import static Simple.Plane.Fighter.GameSetting.Board_Width;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -15,24 +17,23 @@ import javax.swing.ImageIcon;
  *
  * @author Kevin Huang
  */
-public class Bullet implements GameSetting,GameResources{
+public class Bullet2 extends Bullet implements GameSetting,GameResources{
     private Point CurrentPosition;
     private Image BulletImage;
     boolean visible;
     private int width, height;
     private final int BulletSpeed = 2;
     
-    public Bullet() {
+    public Bullet2() {
         CurrentPosition = new Point(-99,-99);
-        ImageIcon bulleticon = new ImageIcon(this.getClass().getResource(spritebullet));
+        ImageIcon bulleticon = new ImageIcon(this.getClass().getResource(spritebullet2));
         BulletImage = bulleticon.getImage();
         visible = true;
         width = BulletImage.getWidth(null);
         height = BulletImage.getHeight(null);
-
     }
 
-    public Bullet(int x, int y) {
+    public Bullet2(int x, int y) {
         CurrentPosition = new Point(x,y);
         ImageIcon bulleticon = new ImageIcon(this.getClass().getResource(spritebullet));
         BulletImage = bulleticon.getImage();

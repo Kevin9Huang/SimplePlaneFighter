@@ -89,13 +89,17 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
 
             for (int i = 0; i < player.getBullet().size(); i++) {
                 Bullet m = (Bullet)player.getBullet().get(i);
-                g2d.drawImage(m.getBulletImage(), m.getX(), m.getY(), this);
+                g2d.drawImage(m.getBulletImage(), m.getCurrentPosition().x, m.getCurrentPosition().y, this);
             }
 
             for (int i = 0; i < weakenemies.size(); i++) {
                 WeakEnemy weakenemy = (WeakEnemy)weakenemies.get(i);
                 if (weakenemy.isPlaneVisible())
                     g2d.drawImage(weakenemy.getPlaneImage(), weakenemy.getCurrentPosition().x, weakenemy.getCurrentPosition().y, this);
+                for (int j = 0; j < weakenemy.getBullet().size(); j++) {
+                    Bullet m = (Bullet) weakenemy.getBullet().get(j);
+                    g2d.drawImage(m.getBulletImage(), m.getCurrentPosition().x, m.getCurrentPosition().y, this);
+                }
             }
             g2d.setColor(Color.WHITE);
             g2d.drawString("Score " + player.getScore(), 5, 15);
@@ -125,14 +129,22 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
         for (int i = 0; i < player.getBullet().size(); i++) {
             Bullet playerbullet = (Bullet) player.getBullet().get(i);
             if (playerbullet.isVisible()) 
-                playerbullet.move();
+                playerbullet.move(true);
             else player.getBullet().remove(i);
         }
 
         for (int i = 0; i < weakenemies.size(); i++) {
             WeakEnemy weakenemy = (WeakEnemy) weakenemies.get(i);
-            if (weakenemy.isPlaneVisible()) 
+            if (weakenemy.isPlaneVisible()){
                 weakenemy.run();
+                for (int j = 0; j < weakenemy.getBullet().size(); j++) {
+                    Bullet enemybullet = (Bullet) weakenemy.getBullet().get(j);
+                    if (enemybullet.isVisible()){
+                        enemybullet.move(false);
+                    }
+                    else weakenemy.getBullet().remove(j);
+                }
+            } 
             else{
                 weakenemies.remove(i);
                 player.setScore(player.getScore() + WeakScore);
@@ -169,9 +181,22 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
                 Rectangle weakenemyarea = weakenemy.getCollisionArea();
 
                 if (playerbulletarea.intersects(weakenemyarea)) {
-                    player.setPlaneVisible(false);
+                    playerbullet.setVisible(false);
                     weakenemy.setPlaneVisible(false);
                 }
+            }
+        }
+        for (int i = 0; i<weakenemies.size(); i++) {
+            for (int j = 0; j < weakenemies.get(i).getBullet().size(); j++) {
+                Bullet enemybullet = (Bullet) weakenemies.get(i).getBullet().get(j);
+
+                Rectangle enemybulletarea = enemybullet.getCollisionArea();
+
+                    if (enemybulletarea.intersects(playerarea)) {
+                        weakenemies.get(i).getBullet().get(j).setVisible(false);
+                        player.setPlaneVisible(false);
+                        ingame = false;
+                    }
             }
         }
     }
@@ -197,11 +222,17 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
             if (key == KeyEvent.VK_DOWN) {
                 player.MoveDown();
             }
+            if (key == KeyEvent.VK_SPACE) {
+                player.Shot();
+                for(int i=0;i<weakenemies.size();i++){
+                    weakenemies.get(i).Shot();
+                }
+            }
+            
             
         }
         public void keyReleased(KeyEvent e){
             player.ResetDeltaMove();
-            System.out.println("TES");
         }
     }
 }

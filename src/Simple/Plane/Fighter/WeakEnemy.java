@@ -32,7 +32,7 @@ public class WeakEnemy extends Plane implements GameSetting {
         SpeedX = 10;
         SpeedY = 15;
         HitPoints = 10;
-        CurrentBullet = new Bullet();
+        CurrentBullet = new Bullet2();
         CurrentPosition = new Point(InitialEnemySpawnPosition);
         HitPoints = 100;
     }
@@ -47,7 +47,7 @@ public class WeakEnemy extends Plane implements GameSetting {
         SpeedX = 10;
         SpeedY = 15;
         HitPoints = 10;
-        CurrentBullet = new Bullet();
+        CurrentBullet = new Bullet2();
         CurrentPosition = new Point(x,y);
         HitPoints = 100;
     }
@@ -56,7 +56,6 @@ public class WeakEnemy extends Plane implements GameSetting {
         if (CurrentPosition.x < 0) 
         {
             CurrentPosition.x = Board_Width-PlaneImage.getWidth(null);
-            Visible = false;
         }
         CurrentPosition.x -= 1;
     }

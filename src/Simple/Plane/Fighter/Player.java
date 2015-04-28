@@ -24,7 +24,7 @@ public class Player extends Plane implements GameSetting {
     private int ultimateCounter = 3; 
     private int score;
     public Player() {
-        ImageIcon ii = new ImageIcon(this.getClass().getResource("/srcimage/player.png"));
+        ImageIcon ii = new ImageIcon(this.getClass().getResource("/srcimage/spaceship3.gif"));
         PlaneImage = ii.getImage();
         width = PlaneImage.getWidth(null);
         height = PlaneImage.getHeight(null);
@@ -33,6 +33,10 @@ public class Player extends Plane implements GameSetting {
         SpeedX = 40;
         SpeedY = 60; 
         score = 0;
+    }
+    
+    public void Shoot(){
+        bullet.add(new Bullet(CurrentPosition.x + width, CurrentPosition.y + height/2));
     }
     
     public int getPlayerWidth() {

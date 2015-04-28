@@ -26,13 +26,10 @@ public class PlayerKevin extends Plane implements GameSetting {
         SpeedX = 2;
         SpeedY = 2;
         Visible = true;
-        CurrentBullet = new Bullet();
         CurrentPosition = new Point(InitialPlayerPosition);
+        CurrentBullet = new Bullet();
         HitPoints = 100;
         score = 0;
-    }
-    public void fire(){
-        bullet.add(new Bullet(CurrentPosition.x + width, CurrentPosition.y + height/2));
     }
     
     public void MoveUp(){

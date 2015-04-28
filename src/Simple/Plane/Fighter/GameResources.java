@@ -12,6 +12,8 @@ package Simple.Plane.Fighter;
  */
 interface GameResources {
     public final String srcplayer = "/srcimage/player.png";
+    public final String spritebullet = "/srcimage/explosion.png";
+    public final String spritebullet2 = "/srcimage/headufo.gif";
     //public final String srccraft = "/srcimage/plane.png";
     
 }

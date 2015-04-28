@@ -117,21 +117,21 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
         LabelHeart1.setMaximumSize(new java.awt.Dimension(2555, 2391));
         LabelHeart1.setMinimumSize(new java.awt.Dimension(2555, 2391));
         getContentPane().add(LabelHeart1);
-        LabelHeart1.setBounds(860, 380, 20, 20);
+        LabelHeart1.setBounds(810, 380, 20, 20);
 
         LabelHeart2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/heart.png"))); // NOI18N
         LabelHeart2.setToolTipText("");
         LabelHeart2.setMaximumSize(new java.awt.Dimension(2555, 2391));
         LabelHeart2.setMinimumSize(new java.awt.Dimension(2555, 2391));
         getContentPane().add(LabelHeart2);
-        LabelHeart2.setBounds(880, 380, 20, 20);
+        LabelHeart2.setBounds(790, 380, 20, 20);
 
         LabelHeart3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/heart.png"))); // NOI18N
         LabelHeart3.setToolTipText("");
         LabelHeart3.setMaximumSize(new java.awt.Dimension(2555, 2391));
         LabelHeart3.setMinimumSize(new java.awt.Dimension(2555, 2391));
         getContentPane().add(LabelHeart3);
-        LabelHeart3.setBounds(900, 380, 20, 20);
+        LabelHeart3.setBounds(830, 380, 20, 20);
 
         BarHealthBar.setValue(100);
         getContentPane().add(BarHealthBar);
