@@ -56,5 +56,10 @@ public class PlayerKevin extends Plane implements GameSetting {
             CurrentPosition.x = 2;
         if (CurrentPosition.x >= Board_Width - 2*width) 
             CurrentPosition.x = Board_Width - 2*width;
+        CurrentPosition.y += dy;
+        if (CurrentPosition.y <= 2) 
+            CurrentPosition.y = 2;
+        if (CurrentPosition.y >= Board_Height - 2*height) 
+            CurrentPosition.y = Board_Height - 2*height;
     }
 }

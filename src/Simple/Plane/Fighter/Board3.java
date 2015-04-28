@@ -196,8 +196,9 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
             }
             
         }
-        public void keyRelease(KeyEvent e){
+        public void keyReleased(KeyEvent e){
             player.ResetDeltaMove();
+            System.out.println("TES");
         }
     }
 }

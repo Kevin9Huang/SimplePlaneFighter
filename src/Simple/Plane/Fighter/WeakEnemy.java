@@ -53,6 +53,10 @@ public class WeakEnemy extends Plane implements GameSetting {
     }
     
     public void run() {
-        MoveLeft(); 
+        if (CurrentPosition.x < 0) 
+        {
+            CurrentPosition.x = Board_Width-PlaneImage.getWidth(null);
+        }
+        CurrentPosition.x -= 1;
     }
 }
