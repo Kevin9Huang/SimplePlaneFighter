@@ -40,7 +40,6 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
 
         jProgressBar1 = new javax.swing.JProgressBar();
         jTextField1 = new javax.swing.JTextField();
-        LabelPlayer = new javax.swing.JLabel();
         ButtonUp = new javax.swing.JButton();
         ButtonLeft = new javax.swing.JButton();
         ButtonRight = new javax.swing.JButton();
@@ -52,7 +51,6 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
         LabelHeart1 = new javax.swing.JLabel();
         LabelHeart2 = new javax.swing.JLabel();
         LabelHeart3 = new javax.swing.JLabel();
-        LabelScore = new javax.swing.JLabel();
         BarHealthBar = new javax.swing.JProgressBar();
         LabelDescription = new javax.swing.JLabel();
 
@@ -61,11 +59,6 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 700));
         getContentPane().setLayout(null);
-
-        LabelPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/player_1.png"))); // NOI18N
-        LabelPlayer.setText("jLabel8");
-        getContentPane().add(LabelPlayer);
-        LabelPlayer.setBounds(40, 160, 50, 40);
 
         ButtonUp.setText("Up");
         ButtonUp.addActionListener(new java.awt.event.ActionListener() {
@@ -139,12 +132,6 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
         LabelHeart3.setMinimumSize(new java.awt.Dimension(2555, 2391));
         getContentPane().add(LabelHeart3);
         LabelHeart3.setBounds(900, 380, 20, 20);
-
-        LabelScore.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        LabelScore.setForeground(new java.awt.Color(255, 255, 255));
-        LabelScore.setText("Score : 100");
-        getContentPane().add(LabelScore);
-        LabelScore.setBounds(30, 20, 110, 30);
 
         BarHealthBar.setValue(100);
         getContentPane().add(BarHealthBar);
@@ -227,8 +214,6 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
     private javax.swing.JLabel LabelHeart1;
     private javax.swing.JLabel LabelHeart2;
     private javax.swing.JLabel LabelHeart3;
-    private javax.swing.JLabel LabelPlayer;
-    private javax.swing.JLabel LabelScore;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables

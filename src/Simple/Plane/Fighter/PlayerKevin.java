@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
  * @author Kevin Huang
  */
 public class PlayerKevin extends Plane implements GameSetting {
-
+    private int score;
     public PlayerKevin(){
         ImageIcon playericon = new ImageIcon(this.getClass().getResource(GameResources.srcplayer));
         PlaneImage = playericon.getImage();
@@ -29,6 +29,7 @@ public class PlayerKevin extends Plane implements GameSetting {
         CurrentBullet = new Bullet();
         CurrentPosition = new Point(InitialPlayerPosition);
         HitPoints = 100;
+        score = 0;
     }
     public void fire(){
         bullet.add(new Bullet(CurrentPosition.x + width, CurrentPosition.y + height/2));
@@ -62,4 +63,11 @@ public class PlayerKevin extends Plane implements GameSetting {
         if (CurrentPosition.y >= Board_Height - 2*height) 
             CurrentPosition.y = Board_Height - 2*height;
     }
+    public int getScore(){
+        return score;
+    }
+    public void setScore(int _score){
+        score = _score;
+    }
+    
 }

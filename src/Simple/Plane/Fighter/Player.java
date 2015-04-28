@@ -21,8 +21,8 @@ import javax.swing.ImageIcon;
 
 public class Player extends Plane implements GameSetting {
     
-    int ultimateCounter = 3; 
-
+    private int ultimateCounter = 3; 
+    private int score;
     public Player() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource("/srcimage/player.png"));
         PlaneImage = ii.getImage();
@@ -32,6 +32,7 @@ public class Player extends Plane implements GameSetting {
         Visible = true;
         SpeedX = 40;
         SpeedY = 60; 
+        score = 0;
     }
     
     public int getPlayerWidth() {
@@ -104,5 +105,11 @@ public class Player extends Plane implements GameSetting {
             CurrentPosition.x = 2;
         if (CurrentPosition.x >= Board_Width - 2*width) 
             CurrentPosition.x = Board_Width - 2*width;
+    }
+    public int getScore(){
+        return score;
+    }
+    public void setScore(int _score){
+        score = _score;
     }
 }

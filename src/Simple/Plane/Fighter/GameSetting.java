@@ -17,5 +17,8 @@ interface GameSetting {
     public final int Board_Height = 400;
     public final Point InitialPlayerPosition = new Point(40,160);
     public final Point InitialEnemySpawnPosition = new Point(40,160);
-    public static final int GROUND = 290;
+    public final int GROUND = 290;
+    public final int WeakScore = 10;
+    public final int MediumScore = 30;
+    public final int HighScore = 50;
 }

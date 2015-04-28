@@ -98,7 +98,7 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
                     g2d.drawImage(weakenemy.getPlaneImage(), weakenemy.getCurrentPosition().x, weakenemy.getCurrentPosition().y, this);
             }
             g2d.setColor(Color.WHITE);
-            g2d.drawString("Aliens left: " + weakenemies.size(), 5, 15);
+            g2d.drawString("Score " + player.getScore(), 5, 15);
 
 
         } else {
@@ -133,7 +133,10 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
             WeakEnemy weakenemy = (WeakEnemy) weakenemies.get(i);
             if (weakenemy.isPlaneVisible()) 
                 weakenemy.run();
-            else weakenemies.remove(i);
+            else{
+                weakenemies.remove(i);
+                player.setScore(player.getScore() + WeakScore);
+            }
         }
 
         player.run();
