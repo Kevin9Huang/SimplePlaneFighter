@@ -20,8 +20,8 @@ import javax.swing.JPanel;
 public class Board extends JPanel implements Runnable, Commons { 
 
     private Dimension d;
-    private ArrayList aliens;
-    private Player_1 player;
+    private static ArrayList aliens;
+    private static Player_1 player;
     private Shot shot;
 
     private int alienX = 150;

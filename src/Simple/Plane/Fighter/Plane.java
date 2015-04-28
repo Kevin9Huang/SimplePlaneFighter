@@ -30,6 +30,8 @@ public class Plane {
     protected ArrayList bullet;
     protected int HitPoints;
     protected Image PlaneImage;
+    protected int dx;
+    protected int dy;
 
     public Plane() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource("plane.png"));

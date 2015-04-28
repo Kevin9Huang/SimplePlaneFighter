@@ -17,14 +17,15 @@ import javax.swing.JLabel;
  */
 public class GUI extends javax.swing.JFrame {
     private Object icon;
+    private Board board;
 
     /**
      * Creates new form GUI
      */
     public GUI() {
-        Board tes = new Board();
-        tes.setBounds(500, 300, 358, 350);
-        getContentPane().add(tes);
+        board = new Board();
+        board.setBounds(500, 300, 358, 350);
+        getContentPane().add(board);
         initComponents();
     }
 
@@ -175,7 +176,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

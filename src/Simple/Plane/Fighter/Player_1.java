@@ -14,16 +14,17 @@ public class Player_1 extends Sprite implements Commons{
     private int width;
 
     public Player_1() {
-
         ImageIcon ii = new ImageIcon(this.getClass().getResource(player));
-
         width = ii.getImage().getWidth(null); 
-
         setImage(ii.getImage());
         setX(START_X);
         setY(START_Y);
     }
 
+    public void MoveRight(){
+        dx = -2; 
+    }
+    
     public void act() {
         x += dx;
         if (x <= 2) 

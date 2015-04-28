@@ -1,7 +1,6 @@
 package Simple.Plane.Fighter;
 
 public interface Commons {
-
     public static final int BOARD_WIDTH = 358;
     public static final int BOARD_HEIGTH = 350;
     public static final int GROUND = 290;
