@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
  *
  * @author Rosi
  */
-public class MediumEnemy extends Plane {
+public class MediumEnemy extends Plane implements GameSetting {
     
     public MediumEnemy() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource("mediumenemy.png"));
@@ -33,6 +33,10 @@ public class MediumEnemy extends Plane {
     }
     
     public void run() {
-        
+        x += dx;
+        if (x <= 2) 
+            x = 2;
+        if (x >= BOARD_WIDTH - 2*width) 
+            x = BOARD_WIDTH - 2*width;  
     }
 }

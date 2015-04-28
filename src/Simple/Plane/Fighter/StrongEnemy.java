@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
  *
  * @author Rosi
  */
-public class StrongEnemy extends Plane {
+public class StrongEnemy extends Plane implements GameSetting {
     
     public StrongEnemy() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource("strongenemy.png"));
@@ -33,6 +33,10 @@ public class StrongEnemy extends Plane {
     }
     
     public void run() {
-        
+        x += dx;
+        if (x <= 2) 
+            x = 2;
+        if (x >= BOARD_WIDTH - 2*width) 
+            x = BOARD_WIDTH - 2*width;  
     }
 }

@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
-public class Player extends Plane {
+public class Player extends Plane implements GameSetting {
     
     int ultimateCounter = 3; 
 
@@ -32,6 +32,46 @@ public class Player extends Plane {
         Visible = true;
         SpeedX = 40;
         SpeedY = 60; 
+    }
+    
+    public int getPlayerWidth() {
+        return width;
+    }
+    
+    public int getPlayerHeight() {
+        return height;
+    }
+    
+    public int getPlayerSpeedX() {
+        return SpeedX;
+    }
+    
+    public int getPlayerSpeedY() {
+        return SpeedY;
+    }
+    
+    public boolean getPlayerVisible() {
+        return Visible;
+    }
+    
+    public void setPlayerWidth(int _width) {
+        width = _width;
+    }
+    
+    public void setPlayerHeight(int _height) {
+        height = _height;
+    }
+    
+    public void setPlayerSpeedX(int _speedx) {
+        SpeedX = _speedx;
+    }
+    
+    public void setPlayerSpeedY(int _speedy) {
+        SpeedY = _speedy;
+    }
+    
+    public void setPlayerVisible(boolean _visible) {
+        Visible = _visible;
     }
     
     public void UseUltimate() {

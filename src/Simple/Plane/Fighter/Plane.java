@@ -18,11 +18,13 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
-public class Plane {
-
+public class Plane implements GameSetting {
+    
     protected Bullet CurrentBullet;
     protected int width;
     protected int height;
+    protected int dx;
+    protected int dy;
     protected int SpeedX;
     protected int SpeedY;
     protected boolean Visible;
@@ -30,8 +32,6 @@ public class Plane {
     protected ArrayList bullet;
     protected int HitPoints;
     protected Image PlaneImage;
-    protected int dx;
-    protected int dy;
 
     public Plane() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource("plane.png"));
@@ -88,17 +88,25 @@ public class Plane {
         return new Rectangle(CurrentPosition.x,CurrentPosition.y,width,height);
     }
     
-    public void Move() {
-        CurrentPosition.x += SpeedX;
-        CurrentPosition.y += SpeedY;
-
-        if (CurrentPosition.x < 1) {
-            CurrentPosition.x = 1;
-        }
-
-        if (CurrentPosition.y < 1) {
-            CurrentPosition.y = 1;
-        }
+    public void MoveUp(){
+        dy = -SpeedY;
+    }
+    
+    public void MoveDown(){
+        dy = SpeedY;
+    }
+    
+    public void MoveRight(){
+        dx = SpeedX;
+    }
+    
+    public void MoveLeft(){
+        dx = -SpeedX;
+    }
+    
+    public void ResetDeltaMove(){
+        dx = 0;
+        dy = 0;
     }
 
     public void Shot() {

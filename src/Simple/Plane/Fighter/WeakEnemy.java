@@ -19,7 +19,7 @@ import javax.swing.ImageIcon;
  * @author Rosi
  */
 
-public class WeakEnemy extends Plane {
+public class WeakEnemy extends Plane implements GameSetting {
     
     public WeakEnemy() {
         ImageIcon ii = new ImageIcon(this.getClass().getResource("weakenemy.png"));
@@ -34,6 +34,10 @@ public class WeakEnemy extends Plane {
     }
     
     public void run() {
-        
+        x += dx;
+        if (x <= 2) 
+            x = 2;
+        if (x >= BOARD_WIDTH - 2*width) 
+            x = BOARD_WIDTH - 2*width;  
     }
 }
