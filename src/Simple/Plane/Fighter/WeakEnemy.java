@@ -5,6 +5,7 @@
  */
 package Simple.Plane.Fighter;
 
+import static Simple.Plane.Fighter.GameSetting.InitialPlayerPosition;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Point;
@@ -19,11 +20,11 @@ import javax.swing.ImageIcon;
  * @author Rosi
  */
 
-public class WeakEnemy extends Plane {
+public class WeakEnemy extends Plane implements GameSetting {
     
     public WeakEnemy() {
-        ImageIcon ii = new ImageIcon(this.getClass().getResource("weakenemy.png"));
-        PlaneImage = ii.getImage();
+        ImageIcon weakenemyicon = new ImageIcon(this.getClass().getResource("weakenemy.png"));
+        PlaneImage = weakenemyicon.getImage();
         width = PlaneImage.getWidth(null);
         height = PlaneImage.getHeight(null);
         bullet = new ArrayList();
@@ -31,6 +32,24 @@ public class WeakEnemy extends Plane {
         SpeedX = 10;
         SpeedY = 15;
         HitPoints = 10;
+        CurrentBullet = new Bullet();
+        CurrentPosition = new Point(InitialEnemySpawnPosition);
+        HitPoints = 100;
+    }
+    
+    public WeakEnemy(int x,int y) {
+        ImageIcon weakenemyicon = new ImageIcon(this.getClass().getResource("weakenemy.png"));
+        PlaneImage = weakenemyicon.getImage();
+        width = PlaneImage.getWidth(null);
+        height = PlaneImage.getHeight(null);
+        bullet = new ArrayList();
+        Visible = true;
+        SpeedX = 10;
+        SpeedY = 15;
+        HitPoints = 10;
+        CurrentBullet = new Bullet();
+        CurrentPosition = new Point(x,y);
+        HitPoints = 100;
     }
     
     public void run() {

@@ -5,7 +5,10 @@
  */
 package Simple.Plane.Fighter;
 
+import java.awt.Image;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
@@ -16,8 +19,21 @@ public class PlayerKevin extends Plane implements GameSetting {
 
     public PlayerKevin(){
         ImageIcon playericon = new ImageIcon(this.getClass().getResource(GameResources.srcplayer));
-        width = 100;
+        PlaneImage = playericon.getImage();
+        width = PlaneImage.getWidth(null);
+        height = PlaneImage.getHeight(null);
+        bullet = new ArrayList<Bullet>();
+        SpeedX = 2;
+        SpeedY = 2;
+        Visible = true;
+        CurrentBullet = new Bullet();
+        CurrentPosition = new Point(InitialPlayerPosition);
+        HitPoints = 100;
     }
+    public void fire(){
+        bullet.add(new Bullet(CurrentPosition.x + width, CurrentPosition.y + height/2));
+    }
+    
     public void MoveUp(){
         dy = -SpeedY;
     }
@@ -33,5 +49,12 @@ public class PlayerKevin extends Plane implements GameSetting {
     public void ResetDeltaMove(){
         dx = 0;
         dy = 0;
+    }
+    public void run() {
+        CurrentPosition.x += dx;
+        if (CurrentPosition.x <= 2) 
+            CurrentPosition.x = 2;
+        if (CurrentPosition.x >= Board_Width - 2*width) 
+            CurrentPosition.x = Board_Width - 2*width;
     }
 }

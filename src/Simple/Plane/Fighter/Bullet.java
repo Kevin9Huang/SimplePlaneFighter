@@ -15,17 +15,17 @@ import javax.swing.ImageIcon;
  * @author Kevin Huang
  */
 public class Bullet {
-    private int x;
-    private int y;
-    private boolean visible;
-    private int BulletWidth;
-    private int BulletHeight;
-    private int BoardWidth;
-    private int BoardHeight;
-    private int BulletSpeed;
-    private int DamagePoint;
-    private Image BulletImage;
-    private final String spritebullet = "../bullet.png";
+    public int x;
+    public int y;
+    public boolean visible;
+    public int BulletWidth;
+    public int BulletHeight;
+    public int BoardWidth;
+    public int BoardHeight;
+    public int BulletSpeed;
+    public int DamagePoint;
+    public Image BulletImage;
+    public final String spritebullet = "../bullet.png";
     public Bullet(){
         x = 0; //inital bullet position x
         y = 0; //inital bullet position y
@@ -45,59 +45,62 @@ public class Bullet {
         
     }
     
-    private int getX(){
+    public int getX(){
         return x;
     }
-    private void setX(int _x){
+    public void setX(int _x){
         x = _x;
     }
-    private int getY(){
+    public int getY(){
         return y;
     }
-    private void setY(int _y){
+    public void setY(int _y){
         y = _y;
     }
-    private boolean isVisible(){
+    public boolean isVisible(){
         return visible;
     }
-    private void setVisible(boolean _visible){
+    public void setVisible(boolean _visible){
         visible = _visible;
     }
-    private int getBulletWidth(){
+    public int getBulletWidth(){
         return BulletWidth;
     }
-    private void setBulletWidth(int _imgwidth){
+    public void setBulletWidth(int _imgwidth){
         BulletWidth = _imgwidth;
     }
-    private int getBulletHeight(){
+    public int getBulletHeight(){
         return BulletHeight;
     }
-    private void setBulletHeight(int _imgheight){
+    public void setBulletHeight(int _imgheight){
         BulletHeight = _imgheight;
     }
-    private int getBoardHeight(){
+    public int getBoardHeight(){
         return BoardHeight;
     }
-    private void setBoardHeight(int _brdheight){
+    public void setBoardHeight(int _brdheight){
         BoardHeight = _brdheight;
     }
-    private int getBoardWidth(){
+    public int getBoardWidth(){
         return BoardWidth;
     }
-    private void setBoardWidth(int _brdwidth){
+    public void setBoardWidth(int _brdwidth){
         BoardWidth = _brdwidth;
     }
-    private int getDamagePoint(){
+    public int getDamagePoint(){
         return DamagePoint;
     }
-    private void setDamagePoint(int _dmgpoint){
+    public void setDamagePoint(int _dmgpoint){
         DamagePoint = _dmgpoint;
     }
-    private void Move(){
+    public void Move(){
         this.x += BulletSpeed;
         this.y += BulletSpeed;
     }
-    private Rectangle getCollisionArea(){
+    public Rectangle getCollisionArea(){
         return new Rectangle(BulletWidth,BulletHeight);
+    }
+    public Image getBulletImage(){
+        return BulletImage;
     }
 }

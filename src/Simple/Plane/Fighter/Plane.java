@@ -27,7 +27,7 @@ public class Plane {
     protected int SpeedY;
     protected boolean Visible;
     protected Point CurrentPosition;
-    protected ArrayList bullet;
+    protected ArrayList<Bullet> bullet;
     protected int HitPoints;
     protected Image PlaneImage;
     protected int dx;
@@ -60,7 +60,7 @@ public class Plane {
         return SpeedY;
     }
     
-    public boolean getPlaneVisible() {
+    public boolean isPlaneVisible() {
         return Visible;
     }
     
@@ -88,6 +88,10 @@ public class Plane {
         return new Rectangle(CurrentPosition.x,CurrentPosition.y,width,height);
     }
     
+    public Image getPlaneImage(){
+        return PlaneImage;
+    }
+    
     public void Move() {
         CurrentPosition.x += SpeedX;
         CurrentPosition.y += SpeedY;
@@ -111,5 +115,12 @@ public class Plane {
     
     public void PrintDescription() {
         
+    }
+    public Point getCurrentPosition(){
+        return CurrentPosition;
+    }
+    
+    public ArrayList<Bullet> getBullet(){
+        return bullet;
     }
 }

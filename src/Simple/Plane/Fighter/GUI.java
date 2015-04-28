@@ -54,7 +54,6 @@ public class GUI extends javax.swing.JFrame {
         LabelHeart3 = new javax.swing.JLabel();
         LabelScore = new javax.swing.JLabel();
         BarHealthBar = new javax.swing.JProgressBar();
-        LabelBackGround = new javax.swing.JLabel();
         LabelDescription = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
@@ -66,7 +65,7 @@ public class GUI extends javax.swing.JFrame {
         LabelPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/player_1.png"))); // NOI18N
         LabelPlayer.setText("jLabel8");
         getContentPane().add(LabelPlayer);
-        LabelPlayer.setBounds(50, 100, 60, 70);
+        LabelPlayer.setBounds(40, 160, 50, 40);
 
         ButtonUp.setText("Up");
         ButtonUp.addActionListener(new java.awt.event.ActionListener() {
@@ -118,23 +117,23 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ButtonExit);
-        ButtonExit.setBounds(680, 440, 51, 23);
+        ButtonExit.setBounds(410, 410, 51, 23);
 
-        LabelHeart1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/heart4.png"))); // NOI18N
+        LabelHeart1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/heart.png"))); // NOI18N
         LabelHeart1.setToolTipText("");
         LabelHeart1.setMaximumSize(new java.awt.Dimension(2555, 2391));
         LabelHeart1.setMinimumSize(new java.awt.Dimension(2555, 2391));
         getContentPane().add(LabelHeart1);
         LabelHeart1.setBounds(860, 380, 20, 20);
 
-        LabelHeart2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/heart4.png"))); // NOI18N
+        LabelHeart2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/heart.png"))); // NOI18N
         LabelHeart2.setToolTipText("");
         LabelHeart2.setMaximumSize(new java.awt.Dimension(2555, 2391));
         LabelHeart2.setMinimumSize(new java.awt.Dimension(2555, 2391));
         getContentPane().add(LabelHeart2);
         LabelHeart2.setBounds(880, 380, 20, 20);
 
-        LabelHeart3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/heart4.png"))); // NOI18N
+        LabelHeart3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/heart.png"))); // NOI18N
         LabelHeart3.setToolTipText("");
         LabelHeart3.setMaximumSize(new java.awt.Dimension(2555, 2391));
         LabelHeart3.setMinimumSize(new java.awt.Dimension(2555, 2391));
@@ -146,14 +145,10 @@ public class GUI extends javax.swing.JFrame {
         LabelScore.setText("Score : 100");
         getContentPane().add(LabelScore);
         LabelScore.setBounds(30, 20, 110, 30);
+
+        BarHealthBar.setValue(100);
         getContentPane().add(BarHealthBar);
         BarHealthBar.setBounds(30, 370, 220, 30);
-
-        LabelBackGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/space.png"))); // NOI18N
-        LabelBackGround.setText("jLabel1");
-        LabelBackGround.setPreferredSize(new java.awt.Dimension(1600, 851));
-        getContentPane().add(LabelBackGround);
-        LabelBackGround.setBounds(20, 10, 930, 400);
 
         LabelDescription.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         LabelDescription.setText("Description: ");
@@ -228,7 +223,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton ButtonShoot;
     private javax.swing.JButton ButtonUltimate;
     private javax.swing.JButton ButtonUp;
-    private javax.swing.JLabel LabelBackGround;
     private javax.swing.JLabel LabelDescription;
     private javax.swing.JLabel LabelHeart1;
     private javax.swing.JLabel LabelHeart2;
