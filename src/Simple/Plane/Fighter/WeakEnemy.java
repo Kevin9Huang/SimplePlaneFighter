@@ -34,10 +34,10 @@ public class WeakEnemy extends Plane implements GameSetting {
     }
     
     public void run() {
-        x += dx;
-        if (x <= 2) 
-            x = 2;
-        if (x >= BOARD_WIDTH - 2*width) 
-            x = BOARD_WIDTH - 2*width;  
+        CurrentPosition.x += dx;
+        if (CurrentPosition.x <= 2) 
+            CurrentPosition.x = 2;
+        if (CurrentPosition.x >= Board_Width - 2*width) 
+            CurrentPosition.x = Board_Width - 2*width;  
     }
 }
