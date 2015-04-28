@@ -5,12 +5,13 @@
         <group>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/srcimage/space.png</file>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/Board.java</file>
-            <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/test/Simple/Plane/Fighter/BoardTest.java</file>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/GUI.java</file>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/GUI2.java</file>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/SimplePlaneFighter.java</file>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/srcimage/player.png.png</file>
             <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/SimpleEx.java</file>
+            <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/Plane.java</file>
+            <file>file:/D:/NetBeansProjects/Simple%20Plane%20Fighter/SimplePlaneFighter/src/Simple/Plane/Fighter/Bullet.java</file>
         </group>
     </open-files>
 </project-private>

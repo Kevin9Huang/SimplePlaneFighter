@@ -2,6 +2,7 @@ package Simple.Plane.Fighter;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /*
@@ -21,6 +22,9 @@ public class GUI extends javax.swing.JFrame {
      * Creates new form GUI
      */
     public GUI() {
+        Board tes = new Board();
+        tes.setBounds(500, 300, 358, 350);
+        getContentPane().add(tes);
         initComponents();
     }
 
@@ -35,13 +39,13 @@ public class GUI extends javax.swing.JFrame {
 
         jProgressBar1 = new javax.swing.JProgressBar();
         jTextField1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -51,12 +55,17 @@ public class GUI extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 700));
         getContentPane().setLayout(null);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/bomb.png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(320, 450, 130, 110);
 
         jButton1.setText("Up");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -94,12 +103,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel4.setMinimumSize(new java.awt.Dimension(2555, 2391));
         getContentPane().add(jLabel4);
         jLabel4.setBounds(860, 380, 20, 20);
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Description:");
-        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(420, 300, 263, 70);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/heart4.png"))); // NOI18N
         jLabel7.setToolTipText("");
@@ -157,6 +160,10 @@ public class GUI extends javax.swing.JFrame {
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         getContentPane().add(jLabel3);
         jLabel3.setBounds(380, 420, 350, 160);
+
+        jButton9.setText("Exit");
+        getContentPane().add(jButton9);
+        jButton9.setBounds(540, 440, 51, 23);
 
         getAccessibleContext().setAccessibleDescription("");
 
@@ -223,6 +230,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -234,4 +242,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JProgressBar jProgressBar2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
 }
+
