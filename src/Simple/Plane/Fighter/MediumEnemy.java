@@ -33,12 +33,8 @@ public class MediumEnemy extends Plane implements GameSetting {
     }
     
     public void run() {
-        CurrentPosition.x += dx;
+        CurrentPosition.x -= dx;
         if (CurrentPosition.x <= 2) 
             CurrentPosition.x = 2;
-        if (CurrentPosition.x >= Board_Width - 2*width){
-            CurrentPosition.x = Board_Width - 2*width;  
-        } 
-            
     }
 }

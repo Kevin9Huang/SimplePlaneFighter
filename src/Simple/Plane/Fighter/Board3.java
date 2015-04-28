@@ -137,7 +137,7 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
         }
 
         player.run();
-        checkCollisions();
+        //checkCollisions();
         repaint();  
     }
 
@@ -174,17 +174,33 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
             }
         }
     }
+    */
 
 
     private class TAdapter extends KeyAdapter {
 
-        public void keyReleased(KeyEvent e) {
-            craft.keyReleased(e);
-        }
-
         public void keyPressed(KeyEvent e) {
-            craft.keyPressed(e);
+            int key = e.getKeyCode();
+            if (key == KeyEvent.VK_LEFT) {
+                player.MoveLeft();
+            }
+
+            if (key == KeyEvent.VK_RIGHT) {
+                player.MoveRight();
+            }
+
+            if (key == KeyEvent.VK_UP) {
+                player.MoveUp();
+            }
+
+            if (key == KeyEvent.VK_DOWN) {
+                player.MoveDown();
+            }
+            
         }
-    }*/
+        public void keyRelease(KeyEvent e){
+            player.ResetDeltaMove();
+        }
+    }
 }
 
