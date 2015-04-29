@@ -68,7 +68,5 @@ public class StrongEnemy extends Plane implements GameSetting {
         }
         CurrentPosition.x -= SpeedX;
         CurrentPosition.y -= SpeedY;
-
-        
     }
 }

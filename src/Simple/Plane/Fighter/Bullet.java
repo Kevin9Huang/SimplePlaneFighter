@@ -20,7 +20,7 @@ public class Bullet implements GameSetting,GameResources{
     protected Image BulletImage;
     protected boolean visible;
     protected int width, height;
-    protected int BulletSpeed = 2;
+    protected int BulletSpeed = NormalSpeedBullet;
     protected int BulletDamage;
     public Bullet() {
         CurrentPosition = new Point(-99,-99);

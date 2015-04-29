@@ -54,6 +54,7 @@ public class MediumEnemy extends Plane implements GameSetting {
     }
     
     public void run() {
+        
         if (CurrentPosition.x < 0) 
         {
             CurrentPosition.x = Board_Width-PlaneImage.getWidth(null);

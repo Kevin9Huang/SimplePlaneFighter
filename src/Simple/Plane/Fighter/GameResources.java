@@ -20,6 +20,7 @@ interface GameResources {
     public final String strongenemyimage = "/srcimage/MediumEnemy.jpg";
     public final String bulletimg = "/srcimage/explosion.png";
     public final String heartimg = "/srcimage/heart.png";
+    public final String ultimateimg = "/srcimage/nuke.png";
     public final String ZigZagBulletimg = "/srcimage/ZigZagBullet.gif";
     public final String [] ClassBulletName = new String[]{"Bullet","ZigZagBullet"};
     public final ArrayList<String> ArrayClassBulletName = new ArrayList<String>(Arrays.asList(ClassBulletName));

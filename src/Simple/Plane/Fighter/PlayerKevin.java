@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
 public class PlayerKevin extends Plane implements GameSetting {
     private int score;
     private int Lives;
+    private int CounterUltimate;
     public PlayerKevin(){
         ImageIcon playericon = new ImageIcon(this.getClass().getResource(GameResources.srcplayer));
         PlaneImage = playericon.getImage();
@@ -32,37 +33,15 @@ public class PlayerKevin extends Plane implements GameSetting {
         HitPoints = 100;
         score = 0;
         Lives = initialLives;
-        HitPoints = PlayerInitialHealth;
+        HitPoints = initialPlayerHealth;
+        CounterUltimate = initialPlayerUltimate;
     }
     
-    public void MoveUp(){
-        dy = -SpeedY;
-    }
-    public void MoveDown(){
-        dy = SpeedY;
-    }
-    public void MoveRight(){
-        dx = SpeedX;
-    }
-    public void MoveLeft(){
-        dx = -SpeedX;
-    }
     public void ResetDeltaMove(){
         dx = 0;
         dy = 0;
     }
-    public void run() {
-        CurrentPosition.x += dx;
-        if (CurrentPosition.x <= 2) 
-            CurrentPosition.x = 2;
-        if (CurrentPosition.x >= Board_Width - 2*width) 
-            CurrentPosition.x = Board_Width - 2*width;
-        CurrentPosition.y += dy;
-        if (CurrentPosition.y <= 2) 
-            CurrentPosition.y = 2;
-        if (CurrentPosition.y >= Board_Height - 2*height) 
-            CurrentPosition.y = Board_Height - 2*height;
-    }
+    
     public int getScore(){
         return score;
     }
@@ -74,6 +53,17 @@ public class PlayerKevin extends Plane implements GameSetting {
     }
     public void setLives(int lives){
         Lives = lives;
+    }
+    public int getCounterUltimate(){
+        return CounterUltimate;
+    }
+    public void setCounterUltimate(int counter){
+        CounterUltimate = counter;
+    }
+    public void UseUltimate(){
+        if(CounterUltimate > 0){
+            CounterUltimate--;
+        }
     }
     
 }

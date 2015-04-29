@@ -195,4 +195,16 @@ public class Plane implements GameSetting,GameResources {
     public void setHitPoints(int _health){
         HitPoints = _health;
     }
+    public void run() {
+        CurrentPosition.x += dx;
+        if (CurrentPosition.x <= 2) 
+            CurrentPosition.x = 2;
+        if (CurrentPosition.x >= Board_Width - 2*width) 
+            CurrentPosition.x = Board_Width - 2*width;
+        CurrentPosition.y += dy;
+        if (CurrentPosition.y <= 2) 
+            CurrentPosition.y = 2;
+        if (CurrentPosition.y >= Board_Height - 2*height) 
+            CurrentPosition.y = Board_Height - 2*height;
+    }
 }

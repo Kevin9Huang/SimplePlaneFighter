@@ -28,14 +28,14 @@ import javax.swing.Timer;
 public class Board3 extends JPanel implements ActionListener,GameSetting,GameResources {
 
     private Timer timer;
-    private PlayerKevin player;
-    private ArrayList<WeakEnemy> weakenemies;
-    private ArrayList<MediumEnemy> mediumenemies;
-    private ArrayList<StrongEnemy> strongenemies;
-    private boolean ingame;
-    private boolean EnableWeakEnemy = false;
-    private boolean EnableMediumEnemy = true;
-    private boolean EnableStrongEnemy = false;
+    public PlayerKevin player;
+    public ArrayList<WeakEnemy> weakenemies;
+    public ArrayList<MediumEnemy> mediumenemies;
+    public ArrayList<StrongEnemy> strongenemies;
+    public boolean ingame;
+    public boolean EnableWeakEnemy = true;
+    public boolean EnableMediumEnemy = true;
+    public boolean EnableStrongEnemy = true;
 
     private final int[][] weakenemypos = { 
         {2380, 29}, {2500, 59}, {1380, 89},
@@ -172,16 +172,39 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
             if(player.getScore() > 60){
                 player.ChangeBullet(new ZigZagBullet());
             }
-            g2d.drawString("Score : " + player.getScore(), 5, 15);
+            g2d.drawString("Score : " + player.getScore(), 5, 25);
             Rectangle HealthBar = new Rectangle(5, Board_Height-30,200,20);
             g.fillRect(5, Board_Height-30,player.getHitPoints(),20);
-            ImageIcon Liveicon = new ImageIcon(this.getClass().getResource(heartimg));
-            Image LiveImage = Liveicon.getImage();
-            g.drawImage(LiveImage, Board_Width-30, 20, 20, 20, this);
-            //g2d.draw(HealthBar);
+            if(player.getLives()>0)
+            {
+                ImageIcon Liveicon = new ImageIcon(this.getClass().getResource(heartimg));
+                Image LiveImage = Liveicon.getImage();
+                int livepositionx = Board_Width-30;
+                for(int i =0;i<player.getLives();i++){
+                    g.drawImage(LiveImage, livepositionx, 20, 20, 20, this);
+                    livepositionx-=20;
+                }
+            }
+            if(player.getCounterUltimate()>0)
+            {
+                ImageIcon Ultimateicon = new ImageIcon(this.getClass().getResource(ultimateimg));
+                Image UltimateImage = Ultimateicon.getImage();
+                int livepositionx = Board_Width-30;
+                for(int i =0;i<player.getCounterUltimate();i++){
+                    g.drawImage(UltimateImage, livepositionx, 50, 20, 20, this);
+                    livepositionx-=20;
+                }
+            }
+            
 
         }else {
-            String msg = "Game Over....Press Enter to try again";
+            String msg;
+            if(player.getLives() < 1){
+                msg = "Game Over....Your score is "+ player.getScore();
+            }
+            else{
+                msg = "You win! Your score is "+ player.getScore();
+            }
             Font small = new Font("Helvetica", Font.BOLD, 14);
             FontMetrics metr = this.getFontMetrics(small);
 
@@ -226,7 +249,9 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
                 } 
                 else{
                     weakenemies.remove(i);
-                    player.setScore(player.getScore() + WeakScore);
+                    if(ingame){
+                        player.setScore(player.getScore() + WeakScore);
+                    }
                 }
             }
         }
@@ -245,7 +270,9 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
                 } 
                 else{
                     mediumenemies.remove(i);
-                    player.setScore(player.getScore() + MediumScore);
+                    if(ingame){
+                        player.setScore(player.getScore() + MediumScore);
+                    }
                 }
             }
         }
@@ -264,7 +291,9 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
                 } 
                 else{
                     strongenemies.remove(i);
-                    player.setScore(player.getScore() + StrongScore);
+                    if(ingame){
+                        player.setScore(player.getScore() + StrongScore);
+                    }
                 }
             }
         }
@@ -284,9 +313,12 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
                 Rectangle weakenemyarea = weakenemy.getCollisionArea();
 
                 if (playerarea.intersects(weakenemyarea)) {
-                    player.setPlaneVisible(false);
+                    player.setLives(player.getLives()-1);
+                    player.setHitPoints(initialPlayerHealth);
                     weakenemy.setPlaneVisible(false);
-                    ingame = false;
+                    if(player.getLives() < 1){
+                        ingame = false;
+                    }
                 }
                 for (int j = 0; j < weakenemies.get(i).getBullet().size(); j++) {
                     Bullet enemybullet = (Bullet) weakenemies.get(i).getBullet().get(j);
@@ -298,7 +330,8 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
                             player.setHitPoints(player.getHitPoints()-enemybullet.getBulletDamage());
                             if(player.getHitPoints() < 0){
                                player.setLives(player.getLives()-1);
-                               if(player.getLives() < 0){
+                               player.setHitPoints(initialPlayerHealth);
+                               if(player.getLives() < 1){
                                    ingame = false;
                                }
                             }
@@ -312,9 +345,12 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
                 Rectangle mediumenemyarea = mediumenemy.getCollisionArea();
 
                 if (playerarea.intersects(mediumenemyarea)) {
-                    player.setPlaneVisible(false);
+                    player.setLives(player.getLives()-1);
+                    player.setHitPoints(initialPlayerHealth);
                     mediumenemy.setPlaneVisible(false);
-                    ingame = false;
+                    if(player.getLives() < 1){
+                                   ingame = false;
+                    }
                 }
                 for (int j = 0; j < mediumenemy.getBullet().size(); j++) {
                     Bullet enemybullet = (Bullet) mediumenemy.getBullet().get(j);
@@ -326,7 +362,8 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
                             player.setHitPoints(player.getHitPoints()-enemybullet.getBulletDamage());
                             if(player.getHitPoints() < 0){
                                player.setLives(player.getLives()-1);
-                               if(player.getLives() < 0){
+                               player.setHitPoints(initialPlayerHealth);
+                               if(player.getLives() < 1){
                                    ingame = false;
                                }
                             }
@@ -340,9 +377,12 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
                 Rectangle strongenemyarea = strongenemy.getCollisionArea();
 
                 if (playerarea.intersects(strongenemyarea)) {
-                    player.setPlaneVisible(false);
+                    player.setLives(player.getLives()-1);
+                    player.setHitPoints(initialPlayerHealth);
                     strongenemy.setPlaneVisible(false);
-                    ingame = false;
+                    if(player.getLives() < 1){
+                           ingame = false;
+                    }
                 }
                 for (int j = 0; j < strongenemy.getBullet().size(); j++) {
                     Bullet enemybullet = (Bullet) strongenemy.getBullet().get(j);
@@ -354,7 +394,8 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
                             player.setHitPoints(player.getHitPoints()-enemybullet.getBulletDamage());
                             if(player.getHitPoints() < 0){
                                player.setLives(player.getLives()-1);
-                               if(player.getLives() < 0){
+                               player.setHitPoints(initialPlayerHealth);
+                               if(player.getLives() < 1){
                                    ingame = false;
                                }
                             }
@@ -418,16 +459,22 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
             }
             if (key == KeyEvent.VK_SPACE) {
                 player.Shot();
-                /*for(int i=0;i<weakenemies.size();i++){
-                    weakenemies.get(i).Shot();
-                }*/
-                for(int i=0;i<mediumenemies.size();i++){
-                    mediumenemies.get(i).Shot();
+                if(EnableWeakEnemy){
+                    for(int i=0;i<weakenemies.size();i++){
+                        weakenemies.get(i).Shot();
+                    }
                 }
-                /*
-                for(int i=0;i<strongenemies.size();i++){
-                    strongenemies.get(i).Shot();
-                }*/
+                if(EnableMediumEnemy){
+                    for(int i=0;i<mediumenemies.size();i++){
+                        mediumenemies.get(i).Shot();
+                    }
+                }
+                if(EnableStrongEnemy){
+                    for(int i=0;i<strongenemies.size();i++){
+                        strongenemies.get(i).Shot();
+                    }
+                }               
+                
             }
             if(key == KeyEvent.VK_0){
                 player.ChangeBullet(new Bullet());
@@ -446,7 +493,7 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
             player.ResetDeltaMove();
         }
     }
-    private void ResetGame(){
+    public void ResetGame(){
         player = new PlayerKevin();
         initEnemies();
     }

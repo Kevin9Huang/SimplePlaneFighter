@@ -1,6 +1,9 @@
 package Simple.Plane.Fighter;
 
+import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -26,6 +29,7 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
         board = new Board3();
         board.setBounds(0, 0, Board_Width, Board_Height);
         getContentPane().add(board);
+        System.out.println(board.getFocusTraversalKeysEnabled());
         initComponents();
     }
 
@@ -45,7 +49,6 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
         ButtonRight = new javax.swing.JButton();
         ButtonDown = new javax.swing.JButton();
         ButtonShoot = new javax.swing.JButton();
-        ButtonBerserk = new javax.swing.JButton();
         ButtonUltimate = new javax.swing.JButton();
         ButtonExit = new javax.swing.JButton();
         LabelHeart1 = new javax.swing.JLabel();
@@ -61,47 +64,70 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
         getContentPane().setLayout(null);
 
         ButtonUp.setText("Up");
-        ButtonUp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonUpActionPerformed(evt);
+        ButtonUp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ButtonUpMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                ButtonUpMouseReleased(evt);
             }
         });
         getContentPane().add(ButtonUp);
         ButtonUp.setBounds(120, 430, 70, 30);
 
         ButtonLeft.setText("Left");
+        ButtonLeft.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ButtonLeftMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                ButtonLeftMouseReleased(evt);
+            }
+        });
         getContentPane().add(ButtonLeft);
         ButtonLeft.setBounds(40, 460, 80, 30);
 
         ButtonRight.setText("Right");
-        ButtonRight.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonRightActionPerformed(evt);
+        ButtonRight.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ButtonRightMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                ButtonRightMouseReleased(evt);
             }
         });
         getContentPane().add(ButtonRight);
         ButtonRight.setBounds(190, 460, 90, 30);
 
         ButtonDown.setText("Down");
+        ButtonDown.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ButtonDownMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                ButtonDownMouseReleased(evt);
+            }
+        });
         getContentPane().add(ButtonDown);
         ButtonDown.setBounds(120, 490, 70, 30);
 
         ButtonShoot.setText("Shoot");
+        ButtonShoot.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ButtonShootMousePressed(evt);
+            }
+        });
         getContentPane().add(ButtonShoot);
         ButtonShoot.setBounds(110, 460, 90, 30);
 
-        ButtonBerserk.setText("BerserkOn()");
-        ButtonBerserk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonBerserkActionPerformed(evt);
+        ButtonUltimate.setText("Use Ultimate");
+        ButtonUltimate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                ButtonUltimateMouseReleased(evt);
             }
         });
-        getContentPane().add(ButtonBerserk);
-        ButtonBerserk.setBounds(30, 520, 120, 30);
-
-        ButtonUltimate.setText("Use Ultimate");
         getContentPane().add(ButtonUltimate);
-        ButtonUltimate.setBounds(160, 520, 130, 30);
+        ButtonUltimate.setBounds(90, 530, 130, 30);
 
         ButtonExit.setText("Exit");
         ButtonExit.addActionListener(new java.awt.event.ActionListener() {
@@ -148,22 +174,59 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ButtonUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonUpActionPerformed
-
-    private void ButtonRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonRightActionPerformed
-        
-        
-    }//GEN-LAST:event_ButtonRightActionPerformed
-
-    private void ButtonBerserkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBerserkActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonBerserkActionPerformed
-
     private void ButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_ButtonExitActionPerformed
+
+    private void ButtonUpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonUpMousePressed
+        board.player.MoveUp();
+        board.requestFocus(true);
+    }//GEN-LAST:event_ButtonUpMousePressed
+
+    private void ButtonLeftMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonLeftMousePressed
+        board.player.MoveLeft();
+        board.requestFocus(true);
+    }//GEN-LAST:event_ButtonLeftMousePressed
+
+    private void ButtonRightMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonRightMousePressed
+        board.player.MoveRight();
+        board.requestFocus(true);
+    }//GEN-LAST:event_ButtonRightMousePressed
+
+    private void ButtonDownMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonDownMousePressed
+        board.player.MoveDown();
+        board.requestFocus(true);
+    }//GEN-LAST:event_ButtonDownMousePressed
+
+    private void ButtonUpMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonUpMouseReleased
+        board.player.ResetDeltaMove();
+        board.requestFocus(true);
+    }//GEN-LAST:event_ButtonUpMouseReleased
+
+    private void ButtonLeftMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonLeftMouseReleased
+        board.player.ResetDeltaMove();
+        board.requestFocus(true);
+    }//GEN-LAST:event_ButtonLeftMouseReleased
+
+    private void ButtonRightMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonRightMouseReleased
+        board.player.ResetDeltaMove();
+        board.requestFocus(true);
+    }//GEN-LAST:event_ButtonRightMouseReleased
+
+    private void ButtonDownMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonDownMouseReleased
+        board.player.ResetDeltaMove();
+        board.requestFocus(true);
+    }//GEN-LAST:event_ButtonDownMouseReleased
+
+    private void ButtonShootMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonShootMousePressed
+        board.player.Shot();
+        board.requestFocus(true);
+    }//GEN-LAST:event_ButtonShootMousePressed
+
+    private void ButtonUltimateMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonUltimateMouseReleased
+        board.player.UseUltimate();
+        board.requestFocus(true);
+    }//GEN-LAST:event_ButtonUltimateMouseReleased
 
     /**
      * @param args the command line arguments
@@ -202,7 +265,6 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar BarHealthBar;
-    private javax.swing.JButton ButtonBerserk;
     private javax.swing.JButton ButtonDown;
     private javax.swing.JButton ButtonExit;
     private javax.swing.JButton ButtonLeft;
@@ -218,5 +280,51 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
+    private class TAdapter extends KeyAdapter {
+
+        public void keyPressed(KeyEvent e) {
+            int key = e.getKeyCode();
+            if (key == KeyEvent.VK_LEFT) {
+                board.player.MoveLeft();
+            }
+
+            if (key == KeyEvent.VK_RIGHT) {
+                board.player.MoveRight();
+            }
+
+            if (key == KeyEvent.VK_UP) {
+                board.player.MoveUp();
+            }
+
+            if (key == KeyEvent.VK_DOWN) {
+                board.player.MoveDown();
+            }
+            if (key == KeyEvent.VK_SPACE) {
+                board.player.Shot();
+                /*for(int i=0;i<weakenemies.size();i++){
+                    weakenemies.get(i).Shot();
+                }*/
+                for(int i=0;i<board.mediumenemies.size();i++){
+                    board.mediumenemies.get(i).Shot();
+                }
+                /*
+                for(int i=0;i<strongenemies.size();i++){
+                    strongenemies.get(i).Shot();
+                }*/
+            }
+            if(key == KeyEvent.VK_0){
+                board.player.ChangeBullet(new Bullet());
+            }
+            if(key == KeyEvent.VK_1){
+                board.player.ChangeBullet(new ZigZagBullet());
+            }
+            if(key == KeyEvent.VK_ENTER){
+                board.ingame = true;
+                board.ResetGame();
+            }
+            
+            
+        }
+    }
 }
 

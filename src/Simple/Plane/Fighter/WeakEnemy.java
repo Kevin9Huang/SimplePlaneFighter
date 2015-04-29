@@ -33,7 +33,7 @@ public class WeakEnemy extends Plane implements GameSetting {
         SpeedX = 10;
         SpeedY = 15;
         HitPoints = 10;
-        CurrentBullet = new ZigZagBullet();
+        CurrentBullet = new Bullet();
         CurrentPosition = new Point(InitialEnemySpawnPosition);
         HitPoints = 100;
     }
@@ -49,7 +49,7 @@ public class WeakEnemy extends Plane implements GameSetting {
         SpeedX = 2;
         SpeedY = 2;
         HitPoints = 10;
-        CurrentBullet = new ZigZagBullet();
+        CurrentBullet = new Bullet();
         CurrentPosition = new Point(x,y);
         HitPoints = 100;
     }
