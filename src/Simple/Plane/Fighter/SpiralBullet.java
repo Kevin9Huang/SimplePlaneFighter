@@ -30,8 +30,8 @@ public class SpiralBullet extends Bullet implements GameSetting, GameResources{
     public SpiralBullet() {
         ImageIcon bulleticon = new ImageIcon(this.getClass().getResource(SpiralBulletimg));
         BulletImage = bulleticon.getImage();
-        BulletSpeedX = 3;
-        BulletSpeedY = 3;
+        BulletSpeedX = SpiralBulletDefaultSpeedX;
+        BulletSpeedY = SpiralBulletDefaultSpeedY;
         CurrentPosition = new Point(-99,-99);
         visible = true;
         width = BulletImage.getWidth(null);
@@ -43,8 +43,8 @@ public class SpiralBullet extends Bullet implements GameSetting, GameResources{
     public SpiralBullet(int x, int y) {
         ImageIcon bulleticon = new ImageIcon(this.getClass().getResource(SpiralBulletimg));
         BulletImage = bulleticon.getImage();
-        BulletSpeedX = 3;
-        BulletSpeedY = 3;
+        BulletSpeedX = SpiralBulletDefaultSpeedX;
+        BulletSpeedY = SpiralBulletDefaultSpeedY;
         CurrentPosition = new Point(x,y);
         visible = true;
         width = BulletImage.getWidth(null);
@@ -58,8 +58,8 @@ public class SpiralBullet extends Bullet implements GameSetting, GameResources{
         visible = x.visible;
         width = BulletImage.getWidth(null);
         height = BulletImage.getHeight(null);
-        BulletSpeedX = 5;
-        BulletSpeedY = 3;
+        BulletSpeedX = SpiralBulletDefaultSpeedX;
+        BulletSpeedY = SpiralBulletDefaultSpeedY;
 
     }
     public int getSpeedX(){
@@ -83,9 +83,9 @@ public class SpiralBullet extends Bullet implements GameSetting, GameResources{
     public void move(boolean toEnemy) {
         super.move(toEnemy);
         if(!toEnemy){ //move to player
-            BulletSpeedX = -BulletSpeedX;
+            BulletSpeedX = -SpiralBulletDefaultSpeedX;
         }
-        /*
+        
         //Arah dilihat dari sudut player
         if(initialmove){
             moveUp = true; 
@@ -103,48 +103,61 @@ public class SpiralBullet extends Bullet implements GameSetting, GameResources{
         }
         if (moveUp) 
         {
-            BulletSpeedY = abs(BulletSpeedY);
+            BulletSpeedY = SpiralBulletDefaultSpeedY;
             BulletSpeedX = 0;
+            CurrentPosition.y -= BulletSpeedY;
+            CurrentPosition.x = turnPointx;
             if(turnPointy-CurrentPosition.y > RangeUpSpiralBullet){
                 moveUp = false;
                 moveRight = true;
                 turnPointx = CurrentPosition.x;
+                turnPointy = CurrentPosition.y;
             }
-            CurrentPosition.y -= BulletSpeedY;
+            
         }
         else if(moveRight){
-            BulletSpeedX = abs(BulletSpeedX);
+            BulletSpeedX = SpiralBulletDefaultSpeedX;
             BulletSpeedY = 0;
+            CurrentPosition.x += BulletSpeedX;
+            CurrentPosition.y = turnPointy;
             if(CurrentPosition.x-turnPointx > RangeLeftSpiralBullet){
                 moveRight = false;
                 moveDown = true;
                 turnPointy = CurrentPosition.y;
-            }
-            CurrentPosition.x += BulletSpeedX;
+                turnPointx = CurrentPosition.x;
+                BulletSpeedY = -SpiralBulletDefaultSpeedY;
+            }    
+            //CurrentPosition.x += BulletSpeedX;
             
         }
+        
         else if(moveDown){
-            BulletSpeedY = -BulletSpeedY;
+            
             BulletSpeedX = 0;
+            CurrentPosition.y -= BulletSpeedY;
+            CurrentPosition.x = turnPointx;
             if(CurrentPosition.y-turnPointy > RangeUpSpiralBullet){
                 moveDown = false;
                 moveLeft = true;
                 turnPointx = CurrentPosition.x;
+                turnPointy = CurrentPosition.y;
+                BulletSpeedX = -SpiralBulletDefaultSpeedX;
             }
-            CurrentPosition.y -= BulletSpeedY;
+            
         }
         else if(moveLeft){
-            BulletSpeedX = -BulletSpeedX;
+            
             BulletSpeedY = 0;
+            CurrentPosition.x += BulletSpeedX;
+            CurrentPosition.y = turnPointy;
             if(turnPointx-CurrentPosition.x > 0.5*RangeLeftSpiralBullet){
                 moveLeft = false;
                 moveUp = true;
                 turnPointy = CurrentPosition.y;
+                initialmove = true;
             }
             CurrentPosition.x += BulletSpeedX;
-        }*/
-        CurrentPosition.x += BulletSpeedX;
-        CurrentPosition.y += BulletSpeedY;
+        }
         
         
     }
