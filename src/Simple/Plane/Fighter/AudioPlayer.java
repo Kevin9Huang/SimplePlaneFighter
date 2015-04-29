@@ -22,7 +22,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * @author www.codejava.net
  *
  */
-public class AudioPlayer implements LineListener, Runnable {
+public class AudioPlayer implements LineListener {
 	private static final int SECONDS_IN_HOUR = 60 * 60;
 	private static final int SECONDS_IN_MINUTE = 60;
 	
@@ -84,12 +84,36 @@ public class AudioPlayer implements LineListener, Runnable {
 	 * @throws UnsupportedAudioFileException
 	 * @throws LineUnavailableException
 	 */
-	void play() throws IOException, InterruptedException {
-
+	void play() throws IOException {
+                
                 URL url = AudioPlayer.class.getResource("/srcmusic/backgroundmusic.wav");
-		AudioClip clip = Applet.newAudioClip(url);
+                AudioClip clip = Applet.newAudioClip(url);
 		clip.play();
-		clip.loop();
+
+		playCompleted = false;
+		isStopped = false;
+
+		while (!playCompleted) {
+			// wait for the playback completes
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException ex) {
+				ex.printStackTrace();
+				if (isStopped) {
+					clip.stop();
+					break;
+				}
+				if (isPaused) {
+					clip.stop();
+				} else {
+					System.out.println("!!!!");
+					clip.play();
+				}
+			}
+		}
+
+		audioClip.close();
+
 	}
 
 	/**
@@ -123,10 +147,5 @@ public class AudioPlayer implements LineListener, Runnable {
 	
 	public Clip getAudioClip() {
 		return audioClip;
-	}	
-
-    @Override
-    public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	}
 }

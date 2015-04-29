@@ -10,6 +10,9 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import java.net.URL;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,10 +24,13 @@ import javax.swing.JLabel;
  *
  * @author Kevin Huang
  */
-public class GUI extends javax.swing.JFrame implements GameSetting{
+public class GUI extends javax.swing.JFrame implements GameSetting {
     private Object icon;
     private Board board;
-    private AudioPlayer audio;
+    private AudioPlayer player = new AudioPlayer();
+    private Thread playbackThread;
+    private boolean isPlaying = false;
+    private boolean isPause = false;
 
     /**
      * Creates new form GUI
@@ -216,18 +222,52 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
     }//GEN-LAST:event_ButtonUltimateMouseReleased
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        audio = new AudioPlayer();
-        try {
-            try {
-                audio.play();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        if (jToggleButton2.isSelected()) {
+            playBack();
         }
+        else {
+            stopPlaying();
+        }
+        board.requestFocus(true);
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
+    private void playBack() {
+        isPlaying = true;
+	playbackThread = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+                            try {
+                                player.play();
+                            } catch (IOException ex) {
+                                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+            });
+            playbackThread.start();
+    }
+    private void stopPlaying() {
+		isPause = false;
+		player.stop();
+		playbackThread.interrupt();
+	}
+	
+	private void pausePlaying() {
+		isPause = true;
+		player.pause();
+		playbackThread.interrupt();
+	}
+	
+	private void resumePlaying() {
+		isPause = false;
+		player.resume();
+		playbackThread.interrupt();		
+	}
+	
+	private void resetControls() {
+		
+		isPlaying = false;		
+	}
     /**
      * @param args the command line arguments
      */
