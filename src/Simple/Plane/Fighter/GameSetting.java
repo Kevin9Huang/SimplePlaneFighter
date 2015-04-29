@@ -53,9 +53,10 @@ interface GameSetting {
     public final int DefaultUltimateSpeed = 7;
     
     //Description
-    public final String PlaneDescription = "<html><br>This is default plane</html>";
-    public final String PlayerDescription = "<html><br>This is your player</html>";
-    public final String WeakEnemyDescription = "<html><br>This is weak enemy unit</html>";
-    public final String MediumEnemyDescription = "<html><br>This is medium enemy unit</html>";
-    public final String StrongEnemyDescription = "<html><br>This is strong enemy unit</html>";
+    public final String DescriptionTxt = "Description: ";
+    public final String PlaneDescription = "This is default plane";
+    public final String PlayerDescription = "This is your player";
+    public final String WeakEnemyDescription = "This is weak enemy unit";
+    public final String MediumEnemyDescription = "This is medium enemy unit";
+    public final String StrongEnemyDescription = "This is strong enemy unit";
 }

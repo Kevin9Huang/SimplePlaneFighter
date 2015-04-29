@@ -64,4 +64,7 @@ public class MediumEnemy extends Plane implements GameSetting,Enemy {
         }
         CurrentPosition.x -= SpeedX;
     }
+    public String PrintDescription() {
+        return MediumEnemyDescription;
+    }
 }

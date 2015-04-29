@@ -2,9 +2,14 @@ package Simple.Plane.Fighter;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.PointerInfo;
+import java.awt.Rectangle;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import static java.lang.Math.abs;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -24,13 +29,14 @@ import javax.swing.JOptionPane;
  *
  * @author Kevin Huang
  */
-public class GUI extends javax.swing.JFrame implements GameSetting {
+public class GUI extends javax.swing.JFrame implements GameSetting,GameResources {
     private Object icon;
     private Board board;
-    private AudioPlayer player = new AudioPlayer();
+    private AudioPlayer musicplayer = new AudioPlayer();
     private Thread playbackThread;
     private boolean isPlaying = false;
     private boolean isPause = false;
+    private PointerInfo mouseinfo;
 
     /**
      * Creates new form GUI
@@ -68,6 +74,11 @@ public class GUI extends javax.swing.JFrame implements GameSetting {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 700));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                formMouseReleased(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         ButtonUp.setText("Up");
@@ -149,7 +160,7 @@ public class GUI extends javax.swing.JFrame implements GameSetting {
         LabelDescription.setText("Description: ");
         LabelDescription.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         getContentPane().add(LabelDescription);
-        LabelDescription.setBounds(490, 500, 350, 160);
+        LabelDescription.setBounds(310, 430, 350, 160);
 
         jToggleButton2.setText("Background Music");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -231,6 +242,41 @@ public class GUI extends javax.swing.JFrame implements GameSetting {
         board.requestFocus(true);
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
+    private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
+        mouseinfo = MouseInfo.getPointerInfo();
+        Point mousepos = mouseinfo.getLocation();
+        
+        int mousex = (int) mousepos.getX() - 20;
+        int mousey = (int) mousepos.getY() -20;
+        Rectangle areaclicked = new Rectangle(mousex, mousey,30,30);
+        Rectangle playerarea = board.player.getCollisionArea();
+        
+        if(abs(playerarea.getX() - areaclicked.getX()) < 30 && abs(playerarea.getY() - areaclicked.getY()) < 30){
+            LabelDescription.setText(DescriptionTxt+board.player.PrintDescription());
+        }
+        for(int i = 0;i<board.weakenemies.size();i++){
+            int weakenemyposx = (int) board.weakenemies.get(i).getCurrentPosition().getX();
+            int weakenemyposy = (int) board.weakenemies.get(i).getCurrentPosition().getY();
+            if(abs(weakenemyposx - areaclicked.getX()) < 40 && abs(weakenemyposy - areaclicked.getY()) < 40){
+                LabelDescription.setText(DescriptionTxt+board.weakenemies.get(i).PrintDescription());
+            }
+        }
+        for(int i = 0;i<board.mediumenemies.size();i++){
+            int mediumenemyposx = (int) board.mediumenemies.get(i).getCurrentPosition().getX();
+            int mediumenemyposy = (int) board.mediumenemies.get(i).getCurrentPosition().getY();
+            if(abs(mediumenemyposx - areaclicked.getX()) < 40 && abs(mediumenemyposy - areaclicked.getY()) < 40){
+                LabelDescription.setText(DescriptionTxt+board.mediumenemies.get(i).PrintDescription());
+            }
+        }
+        for(int i = 0;i<board.strongenemies.size();i++){
+            int strongenemyposx = (int) board.strongenemies.get(i).getCurrentPosition().getX();
+            int strongenemyposy = (int) board.strongenemies.get(i).getCurrentPosition().getY();
+            if(abs(strongenemyposx - areaclicked.getX()) < 40 && abs(strongenemyposy - areaclicked.getY()) < 40){
+                LabelDescription.setText(DescriptionTxt+board.strongenemies.get(i).PrintDescription());
+            }
+        }
+    }//GEN-LAST:event_formMouseReleased
+
     private void playBack() {
         isPlaying = true;
 	playbackThread = new Thread(new Runnable() {
@@ -238,7 +284,7 @@ public class GUI extends javax.swing.JFrame implements GameSetting {
 			@Override
 			public void run() {
                             try {
-                                player.play();
+                                musicplayer.play();
                             } catch (IOException ex) {
                                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -248,19 +294,19 @@ public class GUI extends javax.swing.JFrame implements GameSetting {
     }
     private void stopPlaying() {
 		isPause = false;
-		player.stop();
+		musicplayer.stop();
 		playbackThread.interrupt();
 	}
 	
 	private void pausePlaying() {
 		isPause = true;
-		player.pause();
+		musicplayer.pause();
 		playbackThread.interrupt();
 	}
 	
 	private void resumePlaying() {
 		isPause = false;
-		player.resume();
+		musicplayer.resume();
 		playbackThread.interrupt();		
 	}
 	

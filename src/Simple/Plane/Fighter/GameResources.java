@@ -27,5 +27,5 @@ interface GameResources {
     public final String [] ClassBulletName = new String[]{"Bullet","ZigZagBullet","SpiralBullet"};
     public final String backgroundmusic = "/srcmusic/backgroundmusic.mp3";
     public final ArrayList<String> ArrayClassBulletName = new ArrayList<String>(Arrays.asList(ClassBulletName));
-    
+   
 }

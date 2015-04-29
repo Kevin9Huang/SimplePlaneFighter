@@ -31,10 +31,11 @@ public class StrongEnemy extends Plane implements GameSetting,Enemy {
         SpeedX = 2;
         SpeedY = 3;
         HitPoints = 10;
-        CurrentBullet = new SpiralBullet();
+        SpiralBullet m = new SpiralBullet();
+        m.setinitialmove(true);
+        CurrentBullet = m;
         CurrentPosition = new Point(InitialEnemySpawnPosition);
         HitPoints = StrongEnemyHealth;
-        Description = StrongEnemyDescription;
     }
     
     public StrongEnemy(int x,int y) {
@@ -47,10 +48,11 @@ public class StrongEnemy extends Plane implements GameSetting,Enemy {
         SpeedX = 2;
         SpeedY = 3;
         HitPoints = 10;
-        CurrentBullet = new SpiralBullet();
+        SpiralBullet m = new SpiralBullet();
+        m.setinitialmove(true);
+        CurrentBullet = m;
         CurrentPosition = new Point(x,y);
         HitPoints = StrongEnemyHealth;
-        Description = StrongEnemyDescription;
     }    
     public void run() {
         if (CurrentPosition.x < 0) 
@@ -73,5 +75,8 @@ public class StrongEnemy extends Plane implements GameSetting,Enemy {
         }
         CurrentPosition.x -= SpeedX;
         CurrentPosition.y -= SpeedY;
+    }
+   public String PrintDescription() {
+        return StrongEnemyDescription;
     }
 }

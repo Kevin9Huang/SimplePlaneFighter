@@ -78,4 +78,8 @@ public class Player extends Plane implements GameSetting {
         UltimateAtck = _ultimate;
     }
     
+    public String PrintDescription() {
+        return PlayerDescription;
+    }
+    
 }
