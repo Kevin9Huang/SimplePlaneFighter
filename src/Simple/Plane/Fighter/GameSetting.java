@@ -29,7 +29,7 @@ interface GameSetting {
     //Player
     public final int initialLives = 3;
     public final int initialPlayerHealth = 300;
-    public final int initialPlayerUltimate = 3;
+    public final int initialPlayerUltimate = 10;
     
     //Enemy
     public final int WeakEnemyHealth = 40;
@@ -44,5 +44,6 @@ interface GameSetting {
     public final int NormalSpeedZigZagBullet = 5;
     public final int NormalSpeedSpiralBullet = 6;
     
-    
+    //Ultimate
+    public final int DefaultUltimateSpeed = 7;
 }

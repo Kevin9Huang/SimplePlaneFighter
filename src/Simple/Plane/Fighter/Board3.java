@@ -5,6 +5,7 @@ package Simple.Plane.Fighter;
  */
 
 import static Simple.Plane.Fighter.GameResources.bulletimg;
+import com.sun.jmx.snmp.SnmpDataTypeEnums;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -106,6 +107,11 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
             {
                 g2d.drawImage(player.getPlaneImage(), player.getCurrentPosition().x, player.getCurrentPosition().y,
                               this);
+                if(player.getUltimate().isVisible()){
+                    g2d.drawImage(player.getUltimate().getUltimateImage(), player.getUltimate().getCurrentPosition().x, player.getUltimate().getCurrentPosition().y,
+                              this);
+                    System.out.println(""+player.getUltimate().CurrentPosition.x+","+player.getUltimate().getCurrentPosition().y);
+                }
             }
             for (int i = 0; i < player.getBullet().size(); i++) {
                 Bullet m;
@@ -187,7 +193,7 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
             }
             if(player.getCounterUltimate()>0)
             {
-                ImageIcon Ultimateicon = new ImageIcon(this.getClass().getResource(ultimateimg));
+                ImageIcon Ultimateicon = new ImageIcon(this.getClass().getResource(ultimateicon));
                 Image UltimateImage = Ultimateicon.getImage();
                 int livepositionx = Board_Width-30;
                 for(int i =0;i<player.getCounterUltimate();i++){
@@ -221,6 +227,10 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
 
         if (weakenemies.size()==0 && mediumenemies.size() == 0 && strongenemies.size() == 0) {
             ingame = false;
+        }
+        if(player.getUltimate().isVisible()){
+            Ultimate ultimateplayer = player.getUltimate();
+            ultimateplayer.move(true);
         }
         for (int i = 0; i < player.getBullet().size(); i++) {
             Bullet playerbullet;
@@ -405,9 +415,9 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
         }
         for (int i = 0; i < player.getBullet().size(); i++) {
             Bullet playerbullet = (Bullet) player.getBullet().get(i);
-
             Rectangle playerbulletarea = playerbullet.getCollisionArea();
-
+            Ultimate playerultimate = (Ultimate) player.getUltimate();
+            Rectangle playerultimatearea = playerultimate.getCollisionArea();
             for (int j = 0; j<weakenemies.size(); j++) {
                 WeakEnemy weakenemy = (WeakEnemy) weakenemies.get(j);
                 Rectangle weakenemyarea = weakenemy.getCollisionArea();
@@ -416,6 +426,7 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
                     playerbullet.setVisible(false);
                     weakenemy.setPlaneVisible(false);
                 }
+                
             }
             for (int j = 0; j<mediumenemies.size(); j++) {
                 MediumEnemy mediumenemy = (MediumEnemy) mediumenemies.get(j);
@@ -428,16 +439,46 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
             }
             for (int j = 0; j<strongenemies.size(); j++) {
                 StrongEnemy strongenemy = (StrongEnemy) strongenemies.get(j);
-                Rectangle weakenemyarea = strongenemy.getCollisionArea();
+                Rectangle strongenemyarea = strongenemy.getCollisionArea();
 
-                if (playerbulletarea.intersects(weakenemyarea)) {
+                if (playerbulletarea.intersects(strongenemyarea)) {
                     playerbullet.setVisible(false);
                     strongenemy.setPlaneVisible(false);
                 }
             }
         }
+        //Ultimate    
+        Ultimate playerultimate = (Ultimate) player.getUltimate();
+        Rectangle playerultimatearea = playerultimate.getCollisionArea();
+        for (int j = 0; j<weakenemies.size(); j++) {
+            WeakEnemy weakenemy = (WeakEnemy) weakenemies.get(j);
+            Rectangle weakenemyarea = weakenemy.getCollisionArea();
+
+            if (playerultimatearea.intersects(weakenemyarea)) {
+                weakenemy.setPlaneVisible(false);
+            }
+
+        }
+        for (int j = 0; j<mediumenemies.size(); j++) {
+            MediumEnemy mediumenemy = (MediumEnemy) mediumenemies.get(j);
+            Rectangle mediumenemyarea = mediumenemy.getCollisionArea();
+
+            if (playerultimatearea.intersects(mediumenemyarea)) {
+                mediumenemy.setPlaneVisible(false);
+            }
+        }
+        for (int j = 0; j<strongenemies.size(); j++) {
+            StrongEnemy strongenemy = (StrongEnemy) strongenemies.get(j);
+            Rectangle strongenemyarea = strongenemy.getCollisionArea();
+
+            if (playerultimatearea.intersects(strongenemyarea)) {
+                strongenemy.setPlaneVisible(false);
+            }
+
+
+        }
+     }
         
-    }
     private class TAdapter extends KeyAdapter {
 
         public void keyPressed(KeyEvent e) {
@@ -483,8 +524,16 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
                 player.ChangeBullet(new ZigZagBullet());
             }
             if(key == KeyEvent.VK_ENTER){
-                ingame = true;
-                ResetGame();
+                if(!ingame){
+                    ingame = true;
+                    ResetGame();
+                }
+                else{//Still in game
+                    if(player.getCounterUltimate() > 0 && !player.getUltimate().isVisible()){
+                        player.UseUltimate();
+                    }
+                    
+                }
             }
             
             
@@ -498,4 +547,3 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
         initEnemies();
     }
 }
-

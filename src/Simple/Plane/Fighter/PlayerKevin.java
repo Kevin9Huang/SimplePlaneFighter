@@ -19,6 +19,7 @@ public class PlayerKevin extends Plane implements GameSetting {
     private int score;
     private int Lives;
     private int CounterUltimate;
+    private Ultimate UltimateAtck;
     public PlayerKevin(){
         ImageIcon playericon = new ImageIcon(this.getClass().getResource(GameResources.srcplayer));
         PlaneImage = playericon.getImage();
@@ -35,6 +36,8 @@ public class PlayerKevin extends Plane implements GameSetting {
         Lives = initialLives;
         HitPoints = initialPlayerHealth;
         CounterUltimate = initialPlayerUltimate;
+        UltimateAtck = new Ultimate();
+        UltimateAtck.setVisible(false);
     }
     
     public void ResetDeltaMove(){
@@ -63,7 +66,15 @@ public class PlayerKevin extends Plane implements GameSetting {
     public void UseUltimate(){
         if(CounterUltimate > 0){
             CounterUltimate--;
+            UltimateAtck = new Ultimate(CurrentPosition.x, CurrentPosition.y);
+            UltimateAtck.setVisible(true);
         }
+    }
+    public Ultimate getUltimate(){
+        return UltimateAtck;
+    }
+    public void setUltimate(Ultimate _ultimate){
+        UltimateAtck = _ultimate;
     }
     
 }
