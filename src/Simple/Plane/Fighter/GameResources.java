@@ -24,7 +24,8 @@ interface GameResources {
     public final String ultimateimg = "/srcimage/pjpa4449.gif";
     public final String ZigZagBulletimg = "/srcimage/ZigZagBullet.gif";
     public final String SpiralBulletimg = "/srcimage/bomb.png";
-        public final String [] ClassBulletName = new String[]{"Bullet","ZigZagBullet","SpiralBullet"};
+    public final String [] ClassBulletName = new String[]{"Bullet","ZigZagBullet","SpiralBullet"};
+    public final String backgroundmusic = "/srcmusic/backgroundmusic.mp3";
     public final ArrayList<String> ArrayClassBulletName = new ArrayList<String>(Arrays.asList(ClassBulletName));
     
 }
