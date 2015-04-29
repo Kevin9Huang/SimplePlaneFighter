@@ -121,6 +121,7 @@ public class SpiralBullet extends Bullet implements GameSetting,GameResources{
                 turnPointy = CurrentPosition.y;
             }
             CurrentPosition.x += BulletSpeedX;
+            
         }
         else if(moveDown){
             BulletSpeedY = -BulletSpeedY;

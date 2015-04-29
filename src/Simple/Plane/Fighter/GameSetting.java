@@ -45,7 +45,7 @@ interface GameSetting {
     public final int NormalSpeedZigZagBullet = 5;
     public final int NormalSpeedSpiralBullet = 6;
     public final int RangeUpSpiralBullet = 50;
-    public final int RangeLeftSpiralBullet = 30;
+    public final int RangeLeftSpiralBullet = 50;
     
     //Ultimate
     public final int DefaultUltimateSpeed = 7;
