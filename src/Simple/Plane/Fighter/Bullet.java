@@ -16,11 +16,11 @@ import javax.swing.ImageIcon;
  * @author Kevin Huang
  */
 public class Bullet implements GameSetting,GameResources{
-    private Point CurrentPosition;
-    private Image BulletImage;
-    boolean visible;
-    private int width, height;
-    private final int BulletSpeed = 2;
+    protected Point CurrentPosition;
+    protected Image BulletImage;
+    protected boolean visible;
+    protected int width, height;
+    protected int BulletSpeed = 2;
     
     public Bullet() {
         CurrentPosition = new Point(-99,-99);
@@ -42,6 +42,14 @@ public class Bullet implements GameSetting,GameResources{
 
     }
 
+    public Bullet(Bullet x) {
+        CurrentPosition = new Point(x.CurrentPosition.x,CurrentPosition.y);
+        BulletImage = x.getBulletImage();
+        visible = x.visible;
+        width = BulletImage.getWidth(null);
+        height = BulletImage.getHeight(null);
+
+    }
 
     public Image getBulletImage() {
         return BulletImage;
@@ -63,6 +71,14 @@ public class Bullet implements GameSetting,GameResources{
         return new Rectangle(CurrentPosition.x, CurrentPosition.y,BulletImage.getWidth(null),BulletImage.getHeight(null));
     }
 
+    public int getBulletSpeed(){
+        return BulletSpeed;
+    }
+    
+    public void setBulletSpeed(int _bulletspeed){
+        BulletSpeed = _bulletspeed;
+    }
+    
     public void move(boolean toEnemy) {
         if(toEnemy){
             CurrentPosition.x += BulletSpeed;

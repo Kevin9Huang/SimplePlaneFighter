@@ -28,6 +28,7 @@ public class Plane implements GameSetting,GameResources {
     protected int SpeedX;
     protected int SpeedY;
     protected boolean Visible;
+    
     protected Point CurrentPosition;
     protected ArrayList<Bullet> bullet;
     protected int HitPoints;
@@ -41,7 +42,20 @@ public class Plane implements GameSetting,GameResources {
         bullet = new ArrayList();
         Visible = true;
         SpeedX = 40;
-        SpeedY = 60;               
+        SpeedY = 60;
+        CurrentPosition = new Point(-99,-99);
+    }
+    
+    public Plane(int x,int y) {
+        ImageIcon ii = new ImageIcon(this.getClass().getResource("/srcimage/player.png"));
+        PlaneImage = ii.getImage();
+        width = PlaneImage.getWidth(null);
+        height = PlaneImage.getHeight(null);
+        bullet = new ArrayList();
+        Visible = true;
+        SpeedX = 40;
+        SpeedY = 60;
+        CurrentPosition = new Point(x,y);
     }
     
     public int getPlaneWidth() {
@@ -134,7 +148,27 @@ public class Plane implements GameSetting,GameResources {
     }
 
     public void ChangeBullet(Bullet x) {
-        CurrentBullet = x;
+        int i = 0;
+        boolean bulletclassnotfound = true;
+        while(bulletclassnotfound && i<ArrayClassBulletName.size()){
+                if(x.getClass().getSimpleName().equals(ArrayClassBulletName.get(i))){
+                    //TODO Recheck bug report about casting parent class to child class and insert it into parent class
+                    // Class c = CurrentBullet.getClass(); c Should be class according to (ArrayClassBulletName.get(i)
+                    //Bullet m = (c)c.getConstruktor()c.class.getConstructor(int.class, int.class).newInstance(CurrentPosition.x + width, CurrentPosition.y + height/2);
+                    if(ArrayClassBulletName.get(i).equals("ZigZagBullet")){
+                        CurrentBullet = new ZigZagBullet();
+                        bulletclassnotfound = false;
+                    }
+                    else if(ArrayClassBulletName.get(i).equals("SpiralBullet")){
+                        //CurrentBullet = new SpiralBullet();
+                        bulletclassnotfound = false;
+                    }
+                }
+            i++;
+        }
+        if(bulletclassnotfound){ //Bullet name not found! = Default Bullet
+            bullet.add(new Bullet(CurrentPosition.x + width, CurrentPosition.y + height/2));
+        }
     }
     
     public void PrintDescription() {

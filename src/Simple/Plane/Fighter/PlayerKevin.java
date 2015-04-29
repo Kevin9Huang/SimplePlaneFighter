@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
  */
 public class PlayerKevin extends Plane implements GameSetting {
     private int score;
+    private int Lives;
     public PlayerKevin(){
         ImageIcon playericon = new ImageIcon(this.getClass().getResource(GameResources.srcplayer));
         PlaneImage = playericon.getImage();
@@ -30,6 +31,7 @@ public class PlayerKevin extends Plane implements GameSetting {
         CurrentBullet = new Bullet();
         HitPoints = 100;
         score = 0;
+        Lives = initialLives;
     }
     
     public void MoveUp(){

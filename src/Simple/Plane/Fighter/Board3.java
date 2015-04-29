@@ -18,7 +18,6 @@ import java.awt.event.KeyEvent;
 
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -35,16 +34,16 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
     private boolean EnableMediumEnemy = true;
     private boolean EnableStrongEnemy = false;
 
-    private int[][] weakenemypos = { 
+    private final int[][] weakenemypos = { 
         {2380, 29}, {2500, 59}, {1380, 89},
         {780, 109}, {580, 139}, {680, 239}
      };
     
-    private int[][] mediumenemypos = { 
+    private final int[][] mediumenemypos = { 
         {2180, 59}, {2300, 89}, {1380, 119},
         {780, 139}, {580, 169}, {680, 269}
      };
-    private int[][] strongenemypos = { 
+    private final int[][] strongenemypos = { 
         {2380, 89}, {2500, 119}, {1380, 149},
         {780, 169}, {580, 199}, {680, 299}
      };
@@ -60,7 +59,7 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
 
         player = new PlayerKevin();
 
-        initAliens();
+        initEnemies();
 
         timer = new Timer(5, this);
         timer.start();
@@ -70,7 +69,7 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
         super.addNotify(); 
     }
 
-    public void initAliens() {
+    public void initEnemies() {
         weakenemies = new ArrayList();
         mediumenemies = new ArrayList();
         strongenemies = new ArrayList();
@@ -100,14 +99,21 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
         if (ingame) {
 
             Graphics2D g2d = (Graphics2D)g;
-
+            g2d.drawString("Score " + player.getScore(), 5, 15);
             if (player.isPlaneVisible())
+            {
                 g2d.drawImage(player.getPlaneImage(), player.getCurrentPosition().x, player.getCurrentPosition().y,
                               this);
-
+            }
             for (int i = 0; i < player.getBullet().size(); i++) {
-                Bullet m = (Bullet)player.getBullet().get(i);
-                g2d.drawImage(m.getBulletImage(), m.getCurrentPosition().x, m.getCurrentPosition().y, this);
+                Bullet m;
+                if(player.getBullet().get(i).getClass().getSimpleName().equals("ZigZagBullet")){
+                    m = (ZigZagBullet) player.getBullet().get(i);
+                }
+                else{
+                    m = (Bullet) player.getBullet().get(i);
+                }
+                 g2d.drawImage(m.getBulletImage(), m.getCurrentPosition().x, m.getCurrentPosition().y, this);
             }
             if(EnableWeakEnemy){
                 for (int i = 0; i < weakenemies.size(); i++) {
@@ -116,7 +122,7 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
                         g2d.drawImage(weakenemy.getPlaneImage(), weakenemy.getCurrentPosition().x, weakenemy.getCurrentPosition().y, this);
                     for (int j = 0; j < weakenemy.getBullet().size(); j++) {
                         Bullet m;
-                        if(weakenemy.getBullet().get(j).getClass().getName().equals("Simple.Plane.Fighter.Bullet2")){
+                        if(weakenemy.getBullet().get(j).getClass().getSimpleName().equals("ZigZagBullet")){
                             m = (ZigZagBullet) weakenemy.getBullet().get(j);
                         }
                         else{
@@ -159,14 +165,16 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
                         g2d.drawImage(m.getBulletImage(), m.getCurrentPosition().x, m.getCurrentPosition().y, this);
                     }
                 }
-            }
-            g2d.setColor(Color.WHITE);
+             }
+             g2d.setColor(Color.WHITE);
             if(player.getScore() > 60){
                 player.ChangeBullet(new ZigZagBullet());
             }
             g2d.drawString("Score " + player.getScore(), 5, 15);
-        } else {
-            String msg = "Game Over";
+
+
+        }else {
+            String msg = "Game Over....Press Enter to try again";
             Font small = new Font("Helvetica", Font.BOLD, 14);
             FontMetrics metr = this.getFontMetrics(small);
 
@@ -185,7 +193,13 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
             ingame = false;
         }
         for (int i = 0; i < player.getBullet().size(); i++) {
-            Bullet playerbullet = (Bullet) player.getBullet().get(i);
+            Bullet playerbullet;
+            if(player.getBullet().get(i).getClass().getSimpleName().equals("ZigZagBullet")){
+                playerbullet= (ZigZagBullet) player.getBullet().get(i);
+            }
+            else{
+                playerbullet = (Bullet) player.getBullet().get(i);
+            }
             if (playerbullet.isVisible()) 
                 playerbullet.move(true);
             else player.getBullet().remove(i);
@@ -382,15 +396,16 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
             }
             if (key == KeyEvent.VK_SPACE) {
                 player.Shot();
-                for(int i=0;i<weakenemies.size();i++){
+                /*for(int i=0;i<weakenemies.size();i++){
                     weakenemies.get(i).Shot();
-                }
+                }*/
                 for(int i=0;i<mediumenemies.size();i++){
                     mediumenemies.get(i).Shot();
                 }
+                /*
                 for(int i=0;i<strongenemies.size();i++){
                     strongenemies.get(i).Shot();
-                }
+                }*/
             }
             if(key == KeyEvent.VK_0){
                 player.ChangeBullet(new Bullet());
@@ -398,15 +413,20 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
             if(key == KeyEvent.VK_1){
                 player.ChangeBullet(new ZigZagBullet());
             }
-            //if(key == KeyEvent.VK_2){
-            //    player.ChangeBullet(new Bullet());
-            //}
+            if(key == KeyEvent.VK_ENTER){
+                ingame = true;
+                ResetGame();
+            }
             
             
         }
         public void keyReleased(KeyEvent e){
             player.ResetDeltaMove();
         }
+    }
+    private void ResetGame(){
+        player = new PlayerKevin();
+        initEnemies();
     }
 }
 

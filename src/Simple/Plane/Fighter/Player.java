@@ -35,10 +35,6 @@ public class Player extends Plane implements GameSetting {
         score = 0;
     }
     
-    public void Shoot(){
-        bullet.add(new Bullet(CurrentPosition.x + width, CurrentPosition.y + height/2));
-    }
-    
     public int getPlayerWidth() {
         return width;
     }

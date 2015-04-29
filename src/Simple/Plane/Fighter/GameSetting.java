@@ -21,4 +21,5 @@ interface GameSetting {
     public final int WeakScore = 10;
     public final int MediumScore = 30;
     public final int StrongScore = 50;
+    public final int initialLives = 3;
 }

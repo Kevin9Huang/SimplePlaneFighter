@@ -16,60 +16,72 @@ import javax.swing.ImageIcon;
  * @author Kevin Huang
  */
 public class ZigZagBullet extends Bullet implements GameSetting,GameResources{
-    private Point CurrentPosition;
-    private Image BulletImage;
-    boolean visible;
-    private int width, height;
-    private final int BulletSpeed = 5;
-    
+    private int BulletSpeedX;
+    private int BulletSpeedY;
     public ZigZagBullet() {
-        CurrentPosition = new Point(-99,-99);
+        super();
         ImageIcon bulleticon = new ImageIcon(this.getClass().getResource(ZigZagBulletimg));
         BulletImage = bulleticon.getImage();
+        BulletSpeedX = 3;
+        BulletSpeedY = 3;
+        CurrentPosition = new Point(-99,-99);
         visible = true;
         width = BulletImage.getWidth(null);
         height = BulletImage.getHeight(null);
+        
     }
 
     public ZigZagBullet(int x, int y) {
-        CurrentPosition = new Point(x,y);
+        super(x,y);
         ImageIcon bulleticon = new ImageIcon(this.getClass().getResource(ZigZagBulletimg));
         BulletImage = bulleticon.getImage();
+        BulletSpeedX = 3;
+        BulletSpeedY = 3;
+        CurrentPosition = new Point(x,y);
         visible = true;
         width = BulletImage.getWidth(null);
         height = BulletImage.getHeight(null);
+    }
+    
+    public ZigZagBullet(Bullet x) {
+        super(x);
+        CurrentPosition = new Point(x.CurrentPosition.x,CurrentPosition.y);
+        BulletImage = x.getBulletImage();
+        visible = x.visible;
+        width = BulletImage.getWidth(null);
+        height = BulletImage.getHeight(null);
+        BulletSpeedX = 5;
+        BulletSpeedY = 3;
 
     }
-
-
-    public Image getBulletImage() {
-        return BulletImage;
+    public int getSpeedX(){
+        return BulletSpeedX;
     }
-
-    public Point getCurrentPosition(){
-        return CurrentPosition;
+    public int getSpeedY(){
+        return BulletSpeedY;
     }
-
-    public boolean isVisible() {
-        return visible;
+    public void setSpeedX(int _bulletspeedx){
+        BulletSpeedX = _bulletspeedx;
     }
-
-    public void setVisible(Boolean visible) {
-        this.visible = visible;
+    public void setSpeedY(int _bulletspeedy){
+        BulletSpeedX = _bulletspeedy;
     }
-
-    public Rectangle getCollisionArea() {
-        return new Rectangle(CurrentPosition.x, CurrentPosition.y,BulletImage.getWidth(null),BulletImage.getHeight(null));
-    }
-
     public void move(boolean toEnemy) {
-        if(toEnemy){
-            CurrentPosition.x += BulletSpeed;
+        super.move(toEnemy);
+        if(!toEnemy){ //move to player
+            BulletSpeedX = -BulletSpeedX;
         }
-        else{ //shot to player
-            CurrentPosition.x -= BulletSpeed;
+        if (CurrentPosition.y < 0) 
+        {
+            CurrentPosition.y = BulletImage.getHeight(null);
+            BulletSpeedY = -BulletSpeedY;
         }
-        if (CurrentPosition.x > Board_Width)
-            visible = false;
+        if(CurrentPosition.y > Board_Height)
+        {
+            CurrentPosition.y = Board_Height-BulletImage.getHeight(null);
+            BulletSpeedY = -BulletSpeedY;
+        }
+        CurrentPosition.x += BulletSpeedX;
+        CurrentPosition.y -= BulletSpeedY;
     }
 }

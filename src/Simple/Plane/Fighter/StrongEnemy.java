@@ -5,8 +5,6 @@
  */
 package Simple.Plane.Fighter;
 
-import static Simple.Plane.Fighter.GameResources.weakenemyimage;
-import static Simple.Plane.Fighter.GameSetting.InitialPlayerPosition;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Point;
@@ -30,8 +28,8 @@ public class StrongEnemy extends Plane implements GameSetting {
         height = PlaneImage.getHeight(null);
         bullet = new ArrayList();
         Visible = true;
-        SpeedX = 4;
-        SpeedY = 4;
+        SpeedX = 2;
+        SpeedY = 3;
         HitPoints = 10;
         CurrentBullet = new ZigZagBullet();
         CurrentPosition = new Point(InitialEnemySpawnPosition);
@@ -45,14 +43,13 @@ public class StrongEnemy extends Plane implements GameSetting {
         height = PlaneImage.getHeight(null);
         bullet = new ArrayList();
         Visible = true;
-        SpeedX = 4;
-        SpeedY = 4;
+        SpeedX = 2;
+        SpeedY = 3;
         HitPoints = 10;
-        CurrentBullet = new Bullet();
+        CurrentBullet = new ZigZagBullet();
         CurrentPosition = new Point(x,y);
         HitPoints = 100;
-    }
-    
+    }    
     public void run() {
         if (CurrentPosition.x < 0) 
         {
