@@ -31,7 +31,7 @@ public class Player extends Plane implements GameSetting {
         SpeedY = 2;
         Visible = true;
         CurrentPosition = new Point(InitialPlayerPosition);
-        CurrentBullet = new SpiralBullet();
+        CurrentBullet = new Bullet();
         HitPoints = 100;
         score = 0;
         Lives = initialLives;

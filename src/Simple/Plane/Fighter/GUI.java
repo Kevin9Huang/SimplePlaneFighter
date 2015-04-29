@@ -20,13 +20,13 @@ import javax.swing.JLabel;
  */
 public class GUI extends javax.swing.JFrame implements GameSetting{
     private Object icon;
-    private Board3 board;
+    private Board board;
 
     /**
      * Creates new form GUI
      */
     public GUI() {
-        board = new Board3();
+        board = new Board();
         board.setBounds(0, 0, Board_Width, Board_Height);
         getContentPane().add(board);
         System.out.println(board.getFocusTraversalKeysEnabled());
@@ -258,12 +258,6 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
                 for(int i=0;i<strongenemies.size();i++){
                     strongenemies.get(i).Shot();
                 }*/
-            }
-            if(key == KeyEvent.VK_0){
-                board.player.ChangeBullet(new Bullet());
-            }
-            if(key == KeyEvent.VK_1){
-                board.player.ChangeBullet(new ZigZagBullet());
             }
             if(key == KeyEvent.VK_ENTER){
                 board.ingame = true;

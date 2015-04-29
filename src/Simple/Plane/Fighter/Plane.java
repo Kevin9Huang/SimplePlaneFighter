@@ -138,7 +138,9 @@ public class Plane implements GameSetting,GameResources {
                         bulletclassnotfound = false;
                     }
                     else if(ArrayClassBulletName.get(i).equals("SpiralBullet")){
-                        bullet.add(new SpiralBullet(CurrentPosition.x + width, CurrentPosition.y + height/2));
+                        SpiralBullet spiral = new SpiralBullet(CurrentPosition.x + width, CurrentPosition.y + height/2);
+                        spiral.setinitialmove(true);
+                        bullet.add(spiral);
                         bulletclassnotfound = false;
                     }
                 }

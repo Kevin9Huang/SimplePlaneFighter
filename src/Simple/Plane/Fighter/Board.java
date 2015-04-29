@@ -24,9 +24,10 @@ import javax.swing.ImageIcon;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 
-public class Board3 extends JPanel implements ActionListener,GameSetting,GameResources {
+public class Board extends JPanel implements ActionListener,GameSetting,GameResources {
 
     private Timer timer;
     public Player player;
@@ -52,7 +53,7 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
         {780, 169}, {580, 199}, {680, 299}
      };
 
-    public Board3() {
+    public Board() {
         addKeyListener(new TAdapter());
         setFocusable(true);
         setBackground(Color.BLACK);
@@ -110,7 +111,6 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
                 if(player.getUltimate().isVisible()){
                     g2d.drawImage(player.getUltimate().getUltimateImage(), player.getUltimate().getCurrentPosition().x, player.getUltimate().getCurrentPosition().y,
                               this);
-                    System.out.println(""+player.getUltimate().CurrentPosition.x+","+player.getUltimate().getCurrentPosition().y);
                 }
             }
             for (int i = 0; i < player.getBullet().size(); i++) {
@@ -168,9 +168,9 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
                     }
                 }
              }
-             g2d.setColor(Color.WHITE);
+            g2d.setColor(Color.WHITE);
             if(player.getScore() > 60){
-                player.ChangeBullet(new ZigZagBullet());
+                player.ChangeBullet(new SpiralBullet());
             }
             g2d.drawString("Score : " + player.getScore(), 5, 25);
             Rectangle HealthBar = new Rectangle(5, Board_Height-30,200,20);
@@ -229,6 +229,7 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
         for (int i = 0; i < player.getBullet().size(); i++) {
             Bullet playerbullet;
             if(player.getBullet().get(i).getClass().getSimpleName().equals("ZigZagBullet")){
+                System.out.println("tes");
                 playerbullet= (ZigZagBullet) player.getBullet().get(i);
             }
             else{

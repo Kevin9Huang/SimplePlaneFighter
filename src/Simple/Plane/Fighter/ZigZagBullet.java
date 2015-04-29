@@ -80,6 +80,10 @@ public class ZigZagBullet extends Bullet implements GameSetting,GameResources{
             CurrentPosition.y = Board_Height;
             BulletSpeedY = -BulletSpeedY;
         }
+        if(CurrentPosition.x > Board_Width || CurrentPosition.x < 0 )
+        {
+            visible = false;
+        }
         CurrentPosition.x += BulletSpeedX;
         CurrentPosition.y -= BulletSpeedY;
     }
