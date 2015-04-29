@@ -1,7 +1,11 @@
 package Simple.Plane.Fighter;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.io.File;
 import java.io.IOException;
+
+import java.net.URL;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -18,7 +22,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * @author www.codejava.net
  *
  */
-public class AudioPlayer implements LineListener {
+public class AudioPlayer implements LineListener, Runnable {
 	private static final int SECONDS_IN_HOUR = 60 * 60;
 	private static final int SECONDS_IN_MINUTE = 60;
 	
@@ -36,33 +40,6 @@ public class AudioPlayer implements LineListener {
 
 	private Clip audioClip;
 
-	/**
-	 * Load audio file before playing back
-	 * 
-	 * @param audioFilePath
-	 *            Path of the audio file.
-	 * @throws IOException
-	 * @throws UnsupportedAudioFileException
-	 * @throws LineUnavailableException
-	 */
-	public void load(String audioFilePath)
-			throws UnsupportedAudioFileException, IOException,
-			LineUnavailableException {
-		File audioFile = new File(audioFilePath);
-
-		AudioInputStream audioStream = AudioSystem
-				.getAudioInputStream(audioFile);
-
-		AudioFormat format = audioStream.getFormat();
-
-		DataLine.Info info = new DataLine.Info(Clip.class, format);
-
-		audioClip = (Clip) AudioSystem.getLine(info);
-
-		audioClip.addLineListener(this);
-
-		audioClip.open(audioStream);
-	}
 	
 	public long getClipSecondLength() {
 		return audioClip.getMicrosecondLength() / 1_000_000;
@@ -107,34 +84,12 @@ public class AudioPlayer implements LineListener {
 	 * @throws UnsupportedAudioFileException
 	 * @throws LineUnavailableException
 	 */
-	void play() throws IOException {
+	void play() throws IOException, InterruptedException {
 
-		audioClip.start();
-
-		playCompleted = false;
-		isStopped = false;
-
-		while (!playCompleted) {
-			// wait for the playback completes
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException ex) {
-				ex.printStackTrace();
-				if (isStopped) {
-					audioClip.stop();
-					break;
-				}
-				if (isPaused) {
-					audioClip.stop();
-				} else {
-					System.out.println("!!!!");
-					audioClip.start();
-				}
-			}
-		}
-
-		audioClip.close();
-
+                URL url = AudioPlayer.class.getResource("/srcmusic/backgroundmusic.wav");
+		AudioClip clip = Applet.newAudioClip(url);
+		clip.play();
+		clip.loop();
 	}
 
 	/**
@@ -169,4 +124,9 @@ public class AudioPlayer implements LineListener {
 	public Clip getAudioClip() {
 		return audioClip;
 	}	
+
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

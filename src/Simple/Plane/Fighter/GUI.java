@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,6 +24,7 @@ import javax.swing.JLabel;
 public class GUI extends javax.swing.JFrame implements GameSetting{
     private Object icon;
     private Board board;
+    private AudioPlayer audio;
 
     /**
      * Creates new form GUI
@@ -52,6 +56,7 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
         ButtonUltimate = new javax.swing.JButton();
         ButtonExit = new javax.swing.JButton();
         LabelDescription = new javax.swing.JLabel();
+        jToggleButton2 = new javax.swing.JToggleButton();
 
         jTextField1.setText("jTextField1");
 
@@ -140,6 +145,15 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
         getContentPane().add(LabelDescription);
         LabelDescription.setBounds(490, 500, 350, 160);
 
+        jToggleButton2.setText("Background Music");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jToggleButton2);
+        jToggleButton2.setBounds(705, 580, 140, 23);
+
         getAccessibleContext().setAccessibleDescription("");
 
         pack();
@@ -201,6 +215,19 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
         board.requestFocus(true);
     }//GEN-LAST:event_ButtonUltimateMouseReleased
 
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        audio = new AudioPlayer();
+        try {
+            try {
+                audio.play();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -225,6 +252,7 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
     private javax.swing.JLabel LabelDescription;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JToggleButton jToggleButton2;
     // End of variables declaration//GEN-END:variables
 
     private class TAdapter extends KeyAdapter {

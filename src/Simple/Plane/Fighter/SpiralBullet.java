@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
  *
  * @author Kevin Huang
  */
-public class SpiralBullet extends Bullet implements GameSetting,GameResources{
+public class SpiralBullet extends Bullet implements GameSetting, GameResources{
     private int BulletSpeedX;
     private int BulletSpeedY;
     private int turnPointx;
@@ -72,7 +72,7 @@ public class SpiralBullet extends Bullet implements GameSetting,GameResources{
         BulletSpeedX = _bulletspeedx;
     }
     public void setSpeedY(int _bulletspeedy){
-        BulletSpeedX = _bulletspeedy;
+        BulletSpeedY = _bulletspeedy;
     }
     public boolean getinitialmove(){
         return initialmove;
@@ -148,5 +148,4 @@ public class SpiralBullet extends Bullet implements GameSetting,GameResources{
         
         
     }
-
 }
