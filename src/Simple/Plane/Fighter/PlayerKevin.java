@@ -32,6 +32,7 @@ public class PlayerKevin extends Plane implements GameSetting {
         HitPoints = 100;
         score = 0;
         Lives = initialLives;
+        HitPoints = PlayerInitialHealth;
     }
     
     public void MoveUp(){
@@ -67,6 +68,12 @@ public class PlayerKevin extends Plane implements GameSetting {
     }
     public void setScore(int _score){
         score = _score;
+    }
+    public int getLives(){
+        return Lives;
+    }
+    public void setLives(int lives){
+        Lives = lives;
     }
     
 }

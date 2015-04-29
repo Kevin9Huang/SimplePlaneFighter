@@ -4,11 +4,13 @@ package Simple.Plane.Fighter;
  * @author Kevin Huang
  */
 
+import static Simple.Plane.Fighter.GameResources.bulletimg;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -17,12 +19,13 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
-public class Board3 extends JPanel implements ActionListener,GameSetting {
+public class Board3 extends JPanel implements ActionListener,GameSetting,GameResources {
 
     private Timer timer;
     private PlayerKevin player;
@@ -99,7 +102,6 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
         if (ingame) {
 
             Graphics2D g2d = (Graphics2D)g;
-            g2d.drawString("Score " + player.getScore(), 5, 15);
             if (player.isPlaneVisible())
             {
                 g2d.drawImage(player.getPlaneImage(), player.getCurrentPosition().x, player.getCurrentPosition().y,
@@ -170,8 +172,13 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
             if(player.getScore() > 60){
                 player.ChangeBullet(new ZigZagBullet());
             }
-            g2d.drawString("Score " + player.getScore(), 5, 15);
-
+            g2d.drawString("Score : " + player.getScore(), 5, 15);
+            Rectangle HealthBar = new Rectangle(5, Board_Height-30,200,20);
+            g.fillRect(5, Board_Height-30,player.getHitPoints(),20);
+            ImageIcon Liveicon = new ImageIcon(this.getClass().getResource(heartimg));
+            Image LiveImage = Liveicon.getImage();
+            g.drawImage(LiveImage, Board_Width-30, 20, 20, 20, this);
+            //g2d.draw(HealthBar);
 
         }else {
             String msg = "Game Over....Press Enter to try again";
@@ -288,8 +295,13 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
 
                         if (enemybulletarea.intersects(playerarea)) {
                             weakenemies.get(i).getBullet().get(j).setVisible(false);
-                            player.setPlaneVisible(false);
-                            ingame = false;
+                            player.setHitPoints(player.getHitPoints()-enemybullet.getBulletDamage());
+                            if(player.getHitPoints() < 0){
+                               player.setLives(player.getLives()-1);
+                               if(player.getLives() < 0){
+                                   ingame = false;
+                               }
+                            }
                         }
                 }
             }
@@ -311,8 +323,13 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
 
                         if (enemybulletarea.intersects(playerarea)) {
                             mediumenemy.getBullet().get(j).setVisible(false);
-                            player.setPlaneVisible(false);
-                            ingame = false;
+                            player.setHitPoints(player.getHitPoints()-enemybullet.getBulletDamage());
+                            if(player.getHitPoints() < 0){
+                               player.setLives(player.getLives()-1);
+                               if(player.getLives() < 0){
+                                   ingame = false;
+                               }
+                            }
                         }
                 }
             }
@@ -334,8 +351,13 @@ public class Board3 extends JPanel implements ActionListener,GameSetting {
 
                         if (enemybulletarea.intersects(playerarea)) {
                             strongenemy.getBullet().get(j).setVisible(false);
-                            player.setPlaneVisible(false);
-                            ingame = false;
+                            player.setHitPoints(player.getHitPoints()-enemybullet.getBulletDamage());
+                            if(player.getHitPoints() < 0){
+                               player.setLives(player.getLives()-1);
+                               if(player.getLives() < 0){
+                                   ingame = false;
+                               }
+                            }
                         }
                 }
             }

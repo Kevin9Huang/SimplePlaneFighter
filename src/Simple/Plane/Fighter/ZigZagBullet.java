@@ -28,6 +28,7 @@ public class ZigZagBullet extends Bullet implements GameSetting,GameResources{
         visible = true;
         width = BulletImage.getWidth(null);
         height = BulletImage.getHeight(null);
+        BulletDamage = ZigZagBulletDamage;
         
     }
 
@@ -41,6 +42,7 @@ public class ZigZagBullet extends Bullet implements GameSetting,GameResources{
         visible = true;
         width = BulletImage.getWidth(null);
         height = BulletImage.getHeight(null);
+        BulletDamage = ZigZagBulletDamage;
     }
     
     public ZigZagBullet(Bullet x) {
@@ -84,4 +86,5 @@ public class ZigZagBullet extends Bullet implements GameSetting,GameResources{
         CurrentPosition.x += BulletSpeedX;
         CurrentPosition.y -= BulletSpeedY;
     }
+
 }

@@ -21,7 +21,7 @@ public class Bullet implements GameSetting,GameResources{
     protected boolean visible;
     protected int width, height;
     protected int BulletSpeed = 2;
-    
+    protected int BulletDamage;
     public Bullet() {
         CurrentPosition = new Point(-99,-99);
         ImageIcon bulleticon = new ImageIcon(this.getClass().getResource(bulletimg));
@@ -29,6 +29,7 @@ public class Bullet implements GameSetting,GameResources{
         visible = true;
         width = BulletImage.getWidth(null);
         height = BulletImage.getHeight(null);
+        BulletDamage = NormalBulletDamage;
 
     }
 
@@ -39,7 +40,7 @@ public class Bullet implements GameSetting,GameResources{
         visible = true;
         width = BulletImage.getWidth(null);
         height = BulletImage.getHeight(null);
-
+        BulletDamage = NormalBulletDamage;
     }
 
     public Bullet(Bullet x) {
@@ -88,5 +89,11 @@ public class Bullet implements GameSetting,GameResources{
         }
         if (CurrentPosition.x > Board_Width)
             visible = false;
+    }
+    public int getBulletDamage(){
+        return BulletDamage;
+    }
+    public void setBulletDamage(int bulletdamage){
+        BulletDamage = bulletdamage;
     }
 }

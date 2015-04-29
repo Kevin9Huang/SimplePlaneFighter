@@ -44,6 +44,7 @@ public class Plane implements GameSetting,GameResources {
         SpeedX = 40;
         SpeedY = 60;
         CurrentPosition = new Point(-99,-99);
+        HitPoints = 100;
     }
     
     public Plane(int x,int y) {
@@ -56,6 +57,7 @@ public class Plane implements GameSetting,GameResources {
         SpeedX = 40;
         SpeedY = 60;
         CurrentPosition = new Point(x,y);
+        HitPoints = 100;
     }
     
     public int getPlaneWidth() {
@@ -186,5 +188,11 @@ public class Plane implements GameSetting,GameResources {
     }
     public Image getPlaneImage(){
         return PlaneImage;
+    }
+    public int getHitPoints(){
+        return HitPoints;
+    }
+    public void setHitPoints(int _health){
+        HitPoints = _health;
     }
 }
