@@ -51,10 +51,6 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
         ButtonShoot = new javax.swing.JButton();
         ButtonUltimate = new javax.swing.JButton();
         ButtonExit = new javax.swing.JButton();
-        LabelHeart1 = new javax.swing.JLabel();
-        LabelHeart2 = new javax.swing.JLabel();
-        LabelHeart3 = new javax.swing.JLabel();
-        BarHealthBar = new javax.swing.JProgressBar();
         LabelDescription = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
@@ -136,38 +132,13 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
             }
         });
         getContentPane().add(ButtonExit);
-        ButtonExit.setBounds(410, 410, 51, 23);
-
-        LabelHeart1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/heart.png"))); // NOI18N
-        LabelHeart1.setToolTipText("");
-        LabelHeart1.setMaximumSize(new java.awt.Dimension(2555, 2391));
-        LabelHeart1.setMinimumSize(new java.awt.Dimension(2555, 2391));
-        getContentPane().add(LabelHeart1);
-        LabelHeart1.setBounds(810, 380, 20, 20);
-
-        LabelHeart2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/heart.png"))); // NOI18N
-        LabelHeart2.setToolTipText("");
-        LabelHeart2.setMaximumSize(new java.awt.Dimension(2555, 2391));
-        LabelHeart2.setMinimumSize(new java.awt.Dimension(2555, 2391));
-        getContentPane().add(LabelHeart2);
-        LabelHeart2.setBounds(790, 380, 20, 20);
-
-        LabelHeart3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/srcimage/heart.png"))); // NOI18N
-        LabelHeart3.setToolTipText("");
-        LabelHeart3.setMaximumSize(new java.awt.Dimension(2555, 2391));
-        LabelHeart3.setMinimumSize(new java.awt.Dimension(2555, 2391));
-        getContentPane().add(LabelHeart3);
-        LabelHeart3.setBounds(830, 380, 20, 20);
-
-        BarHealthBar.setValue(100);
-        getContentPane().add(BarHealthBar);
-        BarHealthBar.setBounds(30, 370, 220, 30);
+        ButtonExit.setBounds(90, 570, 150, 30);
 
         LabelDescription.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         LabelDescription.setText("Description: ");
         LabelDescription.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         getContentPane().add(LabelDescription);
-        LabelDescription.setBounds(290, 430, 350, 160);
+        LabelDescription.setBounds(490, 500, 350, 160);
 
         getAccessibleContext().setAccessibleDescription("");
 
@@ -224,7 +195,9 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
     }//GEN-LAST:event_ButtonShootMousePressed
 
     private void ButtonUltimateMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ButtonUltimateMouseReleased
-        board.player.UseUltimate();
+        if(board.player.getCounterUltimate() > 0 && !board.player.getUltimate().isVisible()){
+                        board.player.UseUltimate();
+        }
         board.requestFocus(true);
     }//GEN-LAST:event_ButtonUltimateMouseReleased
 
@@ -242,7 +215,6 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JProgressBar BarHealthBar;
     private javax.swing.JButton ButtonDown;
     private javax.swing.JButton ButtonExit;
     private javax.swing.JButton ButtonLeft;
@@ -251,9 +223,6 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
     private javax.swing.JButton ButtonUltimate;
     private javax.swing.JButton ButtonUp;
     private javax.swing.JLabel LabelDescription;
-    private javax.swing.JLabel LabelHeart1;
-    private javax.swing.JLabel LabelHeart2;
-    private javax.swing.JLabel LabelHeart3;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables

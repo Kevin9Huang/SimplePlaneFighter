@@ -15,12 +15,13 @@ import javax.swing.ImageIcon;
  *
  * @author Kevin Huang
  */
-public class PlayerKevin extends Plane implements GameSetting {
+public class Player extends Plane implements GameSetting {
     private int score;
     private int Lives;
     private int CounterUltimate;
     private Ultimate UltimateAtck;
-    public PlayerKevin(){
+    public Player(){
+        super();
         ImageIcon playericon = new ImageIcon(this.getClass().getResource(GameResources.srcplayer));
         PlaneImage = playericon.getImage();
         width = PlaneImage.getWidth(null);
@@ -30,7 +31,7 @@ public class PlayerKevin extends Plane implements GameSetting {
         SpeedY = 2;
         Visible = true;
         CurrentPosition = new Point(InitialPlayerPosition);
-        CurrentBullet = new Bullet();
+        CurrentBullet = new SpiralBullet();
         HitPoints = 100;
         score = 0;
         Lives = initialLives;

@@ -19,7 +19,6 @@ public class ZigZagBullet extends Bullet implements GameSetting,GameResources{
     private int BulletSpeedX;
     private int BulletSpeedY;
     public ZigZagBullet() {
-        super();
         ImageIcon bulleticon = new ImageIcon(this.getClass().getResource(ZigZagBulletimg));
         BulletImage = bulleticon.getImage();
         BulletSpeedX = 3;
@@ -33,7 +32,6 @@ public class ZigZagBullet extends Bullet implements GameSetting,GameResources{
     }
 
     public ZigZagBullet(int x, int y) {
-        super(x,y);
         ImageIcon bulleticon = new ImageIcon(this.getClass().getResource(ZigZagBulletimg));
         BulletImage = bulleticon.getImage();
         BulletSpeedX = 3;
@@ -46,7 +44,6 @@ public class ZigZagBullet extends Bullet implements GameSetting,GameResources{
     }
     
     public ZigZagBullet(Bullet x) {
-        super(x);
         CurrentPosition = new Point(x.CurrentPosition.x,CurrentPosition.y);
         BulletImage = x.getBulletImage();
         visible = x.visible;
@@ -80,7 +77,7 @@ public class ZigZagBullet extends Bullet implements GameSetting,GameResources{
         }
         if(CurrentPosition.y > Board_Height)
         {
-            CurrentPosition.y = Board_Height-BulletImage.getHeight(null);
+            CurrentPosition.y = Board_Height;
             BulletSpeedY = -BulletSpeedY;
         }
         CurrentPosition.x += BulletSpeedX;

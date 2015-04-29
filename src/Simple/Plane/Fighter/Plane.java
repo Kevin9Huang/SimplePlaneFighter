@@ -138,7 +138,7 @@ public class Plane implements GameSetting,GameResources {
                         bulletclassnotfound = false;
                     }
                     else if(ArrayClassBulletName.get(i).equals("SpiralBullet")){
-                        //bullet.add(new ZigZagBullet(CurrentPosition.x + width, CurrentPosition.y + height/2));
+                        bullet.add(new SpiralBullet(CurrentPosition.x + width, CurrentPosition.y + height/2));
                         bulletclassnotfound = false;
                     }
                 }
@@ -162,7 +162,7 @@ public class Plane implements GameSetting,GameResources {
                         bulletclassnotfound = false;
                     }
                     else if(ArrayClassBulletName.get(i).equals("SpiralBullet")){
-                        //CurrentBullet = new SpiralBullet();
+                        CurrentBullet = new SpiralBullet();
                         bulletclassnotfound = false;
                     }
                 }

@@ -29,7 +29,7 @@ import javax.swing.Timer;
 public class Board3 extends JPanel implements ActionListener,GameSetting,GameResources {
 
     private Timer timer;
-    public PlayerKevin player;
+    public Player player;
     public ArrayList<WeakEnemy> weakenemies;
     public ArrayList<MediumEnemy> mediumenemies;
     public ArrayList<StrongEnemy> strongenemies;
@@ -61,7 +61,7 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
 
         setSize(400, 300);
 
-        player = new PlayerKevin();
+        player = new Player();
 
         initEnemies();
 
@@ -114,13 +114,7 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
                 }
             }
             for (int i = 0; i < player.getBullet().size(); i++) {
-                Bullet m;
-                if(player.getBullet().get(i).getClass().getSimpleName().equals("ZigZagBullet")){
-                    m = (ZigZagBullet) player.getBullet().get(i);
-                }
-                else{
-                    m = (Bullet) player.getBullet().get(i);
-                }
+                Bullet m = player.getBullet().get(i);
                  g2d.drawImage(m.getBulletImage(), m.getCurrentPosition().x, m.getCurrentPosition().y, this);
             }
             if(EnableWeakEnemy){
@@ -543,7 +537,7 @@ public class Board3 extends JPanel implements ActionListener,GameSetting,GameRes
         }
     }
     public void ResetGame(){
-        player = new PlayerKevin();
+        player = new Player();
         initEnemies();
     }
 }

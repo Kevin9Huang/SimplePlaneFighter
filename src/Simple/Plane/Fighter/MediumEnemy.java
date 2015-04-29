@@ -45,7 +45,7 @@ public class MediumEnemy extends Plane implements GameSetting {
         height = PlaneImage.getHeight(null);
         bullet = new ArrayList();
         Visible = true;
-        SpeedX = 2;
+        SpeedX = 4;
         SpeedY = 3;
         HitPoints = 10;
         CurrentBullet = new ZigZagBullet();

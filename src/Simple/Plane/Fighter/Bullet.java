@@ -87,7 +87,7 @@ public class Bullet implements GameSetting,GameResources{
         else{ //shot to player
             CurrentPosition.x -= BulletSpeed;
         }
-        if (CurrentPosition.x > Board_Width)
+        if (CurrentPosition.x > Board_Width || CurrentPosition.x < 0)
             visible = false;
     }
     public int getBulletDamage(){

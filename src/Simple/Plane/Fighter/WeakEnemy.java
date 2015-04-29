@@ -33,7 +33,7 @@ public class WeakEnemy extends Plane implements GameSetting {
         SpeedX = 10;
         SpeedY = 15;
         HitPoints = 10;
-        CurrentBullet = new Bullet();
+        CurrentBullet = new SpiralBullet();
         CurrentPosition = new Point(InitialEnemySpawnPosition);
         HitPoints = 100;
     }
