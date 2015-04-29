@@ -259,6 +259,12 @@ public class GUI extends javax.swing.JFrame implements GameSetting{
                     strongenemies.get(i).Shot();
                 }*/
             }
+            if(key == KeyEvent.VK_0){
+                board.player.ChangeBullet(new Bullet());
+            }
+            if(key == KeyEvent.VK_1){
+                board.player.ChangeBullet(new ZigZagBullet());
+            }
             if(key == KeyEvent.VK_ENTER){
                 board.ingame = true;
                 board.ResetGame();

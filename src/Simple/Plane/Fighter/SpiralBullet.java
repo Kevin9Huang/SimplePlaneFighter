@@ -93,7 +93,6 @@ public class SpiralBullet extends Bullet implements GameSetting,GameResources{
             moveLeft = false;
             turnPointx = CurrentPosition.x;
             turnPointy = CurrentPosition.y;
-            System.out.println("asdf");
             initialmove = false;
         }
         

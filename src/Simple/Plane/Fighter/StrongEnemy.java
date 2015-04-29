@@ -33,7 +33,7 @@ public class StrongEnemy extends Plane implements GameSetting {
         HitPoints = 10;
         CurrentBullet = new ZigZagBullet();
         CurrentPosition = new Point(InitialEnemySpawnPosition);
-        HitPoints = 100;
+        HitPoints = StrongEnemyHealth;
     }
     
     public StrongEnemy(int x,int y) {
@@ -48,7 +48,7 @@ public class StrongEnemy extends Plane implements GameSetting {
         HitPoints = 10;
         CurrentBullet = new ZigZagBullet();
         CurrentPosition = new Point(x,y);
-        HitPoints = 100;
+        HitPoints = StrongEnemyHealth;
     }    
     public void run() {
         if (CurrentPosition.x < 0) 

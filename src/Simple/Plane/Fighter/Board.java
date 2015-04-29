@@ -36,8 +36,8 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
     public ArrayList<StrongEnemy> strongenemies;
     public boolean ingame;
     public boolean EnableWeakEnemy = true;
-    public boolean EnableMediumEnemy = true;
-    public boolean EnableStrongEnemy = true;
+    public boolean EnableMediumEnemy = false;
+    public boolean EnableStrongEnemy = false;
 
     private final int[][] weakenemypos = { 
         {2380, 29}, {2500, 59}, {1380, 89},
@@ -119,17 +119,11 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
             }
             if(EnableWeakEnemy){
                 for (int i = 0; i < weakenemies.size(); i++) {
-                    WeakEnemy weakenemy = (WeakEnemy)weakenemies.get(i);
+                    WeakEnemy weakenemy = weakenemies.get(i);
                     if (weakenemy.isPlaneVisible())
                         g2d.drawImage(weakenemy.getPlaneImage(), weakenemy.getCurrentPosition().x, weakenemy.getCurrentPosition().y, this);
                     for (int j = 0; j < weakenemy.getBullet().size(); j++) {
-                        Bullet m;
-                        if(weakenemy.getBullet().get(j).getClass().getSimpleName().equals("ZigZagBullet")){
-                            m = (ZigZagBullet) weakenemy.getBullet().get(j);
-                        }
-                        else{
-                            m = (Bullet) weakenemy.getBullet().get(j);
-                        }
+                        Bullet m = (Bullet)weakenemy.getBullet().get(j);
                         g2d.drawImage(m.getBulletImage(), m.getCurrentPosition().x, m.getCurrentPosition().y, this);
                     }
                 }
@@ -140,13 +134,7 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
                     if (mediumenemy.isPlaneVisible())
                         g2d.drawImage(mediumenemy.getPlaneImage(), mediumenemy.getCurrentPosition().x, mediumenemy.getCurrentPosition().y, this);
                     for (int j = 0; j < mediumenemy.getBullet().size(); j++) {
-                        Bullet m;
-                        if(mediumenemy.getBullet().get(j).getClass().getSimpleName().equals("ZigZagBullet")){
-                            m = (ZigZagBullet) mediumenemy.getBullet().get(j);
-                        }
-                        else{
-                            m = (Bullet) mediumenemy.getBullet().get(j);
-                        }
+                        Bullet m = mediumenemy.getBullet().get(j);
                         g2d.drawImage(m.getBulletImage(), m.getCurrentPosition().x, m.getCurrentPosition().y, this);
                     }
                 }
@@ -157,20 +145,17 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
                     if (strongenemy.isPlaneVisible())
                         g2d.drawImage(strongenemy.getPlaneImage(), strongenemy.getCurrentPosition().x,strongenemy.getCurrentPosition().y, this);
                     for (int j = 0; j < strongenemy.getBullet().size(); j++) {
-                        Bullet m;
-                        if(strongenemy.getBullet().get(j).getClass().getSimpleName().equals("ZigZagBullet")){
-                            m = (ZigZagBullet) strongenemy.getBullet().get(j);
-                        }
-                        else{
-                            m = (Bullet) strongenemy.getBullet().get(j);
-                        }
+                        Bullet m = strongenemy.getBullet().get(j);
                         g2d.drawImage(m.getBulletImage(), m.getCurrentPosition().x, m.getCurrentPosition().y, this);
                     }
                 }
-             }
+            }
             g2d.setColor(Color.WHITE);
-            if(player.getScore() > 60){
+            if(player.getScore() > 100){
                 player.ChangeBullet(new SpiralBullet());
+            }
+            else if(player.getScore() > 300){
+                player.ChangeBullet(new ZigZagBullet());
             }
             g2d.drawString("Score : " + player.getScore(), 5, 25);
             Rectangle HealthBar = new Rectangle(5, Board_Height-30,200,20);
@@ -229,7 +214,6 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
         for (int i = 0; i < player.getBullet().size(); i++) {
             Bullet playerbullet;
             if(player.getBullet().get(i).getClass().getSimpleName().equals("ZigZagBullet")){
-                System.out.println("tes");
                 playerbullet= (ZigZagBullet) player.getBullet().get(i);
             }
             else{
@@ -495,7 +479,7 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
             }
             if (key == KeyEvent.VK_SPACE) {
                 player.Shot();
-                if(EnableWeakEnemy){
+                /*if(EnableWeakEnemy){
                     for(int i=0;i<weakenemies.size();i++){
                         weakenemies.get(i).Shot();
                     }
@@ -509,7 +493,8 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
                     for(int i=0;i<strongenemies.size();i++){
                         strongenemies.get(i).Shot();
                     }
-                }               
+                }    
+                        */
                 
             }
             if(key == KeyEvent.VK_0){
@@ -517,6 +502,11 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
             }
             if(key == KeyEvent.VK_1){
                 player.ChangeBullet(new ZigZagBullet());
+            }
+            if(key == KeyEvent.VK_2){
+                SpiralBullet spiral = new SpiralBullet();
+                spiral.setinitialmove(true);
+                player.ChangeBullet(spiral);
             }
             if(key == KeyEvent.VK_ENTER){
                 if(!ingame){

@@ -35,7 +35,7 @@ public class MediumEnemy extends Plane implements GameSetting {
         HitPoints = 10;
         CurrentBullet = new ZigZagBullet();
         CurrentPosition = new Point(InitialEnemySpawnPosition);
-        HitPoints = 100;
+        HitPoints = MediumEnemyHealth;
     }
     
     public MediumEnemy(int x,int y) {
@@ -50,7 +50,7 @@ public class MediumEnemy extends Plane implements GameSetting {
         HitPoints = 10;
         CurrentBullet = new ZigZagBullet();
         CurrentPosition = new Point(x,y);
-        HitPoints = 100;
+        HitPoints = MediumEnemyHealth;
     }
     
     public void run() {
