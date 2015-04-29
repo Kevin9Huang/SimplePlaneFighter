@@ -10,23 +10,43 @@ package Simple.Plane.Fighter;
  * @author Rosi
  */
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JFrame;
-import javax.swing.Timer;
+import java.awt.Toolkit;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class EnemyShoot implements GameSetting {
-    
-    private static int cnt;
-    public static void main(String args[]) {
-        new JFrame().setVisible(true);
-        ActionListener actListner = new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                cnt += 1;
-                System.out.println("Counter = "+cnt);
-            }
-        };
-        Timer timer = new Timer(2000, actListner);
-        timer.start();
+/**
+ * Simple demo that uses java.util.Timer to schedule a task to execute once 5
+ * seconds have passed.
+ */
+
+public class EnemyShoot {
+    Toolkit toolkit;
+    Timer timer;
+
+  public EnemyShoot() {
+    toolkit = Toolkit.getDefaultToolkit();
+    timer = new Timer();
+    timer.schedule(new Shoot(), 0, 2 * 1000); //subsequent rate
+  }
+
+  class Shoot extends TimerTask {
+    int berapaKaliTembak = 10;
+
+    public void run() {
+      if (berapaKaliTembak > 0) {
+        toolkit.beep();
+        System.out.println("Dor!");
+        berapaKaliTembak--;
+      } else {
+        toolkit.beep();
+        System.out.println("Peluru habis!");
+        //timer.cancel(); //Not necessary because we call System.exit
+        System.exit(0); //Stops the AWT thread (and everything else)
+      }
     }
+  }
+
+  public static void main(String args[]) {
+    new EnemyShoot();
+  }
 }
