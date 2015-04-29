@@ -19,7 +19,7 @@ import javax.swing.ImageIcon;
  * @author Rosi
  */
 
-public class StrongEnemy extends Plane implements GameSetting {
+public class StrongEnemy extends Plane implements GameSetting,Enemy {
     
     public StrongEnemy() {
         ImageIcon weakenemyicon = new ImageIcon(this.getClass().getResource(strongenemyimage));
@@ -31,7 +31,7 @@ public class StrongEnemy extends Plane implements GameSetting {
         SpeedX = 2;
         SpeedY = 3;
         HitPoints = 10;
-        CurrentBullet = new ZigZagBullet();
+        CurrentBullet = new SpiralBullet();
         CurrentPosition = new Point(InitialEnemySpawnPosition);
         HitPoints = StrongEnemyHealth;
         Description = StrongEnemyDescription;
@@ -47,7 +47,7 @@ public class StrongEnemy extends Plane implements GameSetting {
         SpeedX = 2;
         SpeedY = 3;
         HitPoints = 10;
-        CurrentBullet = new ZigZagBullet();
+        CurrentBullet = new SpiralBullet();
         CurrentPosition = new Point(x,y);
         HitPoints = StrongEnemyHealth;
         Description = StrongEnemyDescription;

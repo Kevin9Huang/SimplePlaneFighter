@@ -20,7 +20,7 @@ import javax.swing.ImageIcon;
  * @author Rosi
  */
 
-public class WeakEnemy extends Plane implements GameSetting {
+public class WeakEnemy extends Plane implements GameSetting,Enemy {
     
     public WeakEnemy() {
         super();

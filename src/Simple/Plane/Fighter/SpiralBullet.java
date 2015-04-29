@@ -36,7 +36,7 @@ public class SpiralBullet extends Bullet implements GameSetting, GameResources{
         visible = true;
         width = BulletImage.getWidth(null);
         height = BulletImage.getHeight(null);
-        BulletDamage = ZigZagBulletDamage;
+        BulletDamage = SpiralBulletDamage;
         
     }
 
@@ -49,7 +49,7 @@ public class SpiralBullet extends Bullet implements GameSetting, GameResources{
         visible = true;
         width = BulletImage.getWidth(null);
         height = BulletImage.getHeight(null);
-        BulletDamage = ZigZagBulletDamage;
+        BulletDamage = SpiralBulletDamage;
     }
     
     public SpiralBullet(Bullet x) {
@@ -82,8 +82,9 @@ public class SpiralBullet extends Bullet implements GameSetting, GameResources{
     }
     public void move(boolean toEnemy) {
         super.move(toEnemy);
+        int movetoenemycounter = 1;
         if(!toEnemy){ //move to player
-            BulletSpeedX = -SpiralBulletDefaultSpeedX;
+            movetoenemycounter = -1;
         }
         
         //Arah dilihat dari sudut player
@@ -118,7 +119,7 @@ public class SpiralBullet extends Bullet implements GameSetting, GameResources{
         else if(moveRight){
             BulletSpeedX = SpiralBulletDefaultSpeedX;
             BulletSpeedY = 0;
-            CurrentPosition.x += BulletSpeedX;
+            CurrentPosition.x += BulletSpeedX*movetoenemycounter;
             CurrentPosition.y = turnPointy;
             if(CurrentPosition.x-turnPointx > RangeLeftSpiralBullet){
                 moveRight = false;
@@ -126,8 +127,7 @@ public class SpiralBullet extends Bullet implements GameSetting, GameResources{
                 turnPointy = CurrentPosition.y;
                 turnPointx = CurrentPosition.x;
                 BulletSpeedY = -SpiralBulletDefaultSpeedY;
-            }    
-            //CurrentPosition.x += BulletSpeedX;
+            }
             
         }
         
@@ -148,7 +148,7 @@ public class SpiralBullet extends Bullet implements GameSetting, GameResources{
         else if(moveLeft){
             
             BulletSpeedY = 0;
-            CurrentPosition.x += BulletSpeedX;
+            CurrentPosition.x += BulletSpeedX*movetoenemycounter;
             CurrentPosition.y = turnPointy;
             if(turnPointx-CurrentPosition.x > 0.5*RangeLeftSpiralBullet){
                 moveLeft = false;
@@ -156,7 +156,7 @@ public class SpiralBullet extends Bullet implements GameSetting, GameResources{
                 turnPointy = CurrentPosition.y;
                 initialmove = true;
             }
-            CurrentPosition.x += BulletSpeedX;
+            CurrentPosition.x += BulletSpeedX*movetoenemycounter;
         }
         
         

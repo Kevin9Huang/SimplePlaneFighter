@@ -12,34 +12,18 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
-import javax.sound.sampled.LineEvent;
+import javax.sound.sampled.LineEvent; 
 import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-/**
- * An utility class for playing back audio files using Java Sound API. 
- * @author www.codejava.net
- *
- */
 public class AudioPlayer implements LineListener {
 	private static final int SECONDS_IN_HOUR = 60 * 60;
 	private static final int SECONDS_IN_MINUTE = 60;
-	
-	/**
-	 * this flag indicates whether the playback completes or not.
-	 */
 	private boolean playCompleted;
-
-	/**
-	 * this flag indicates whether the playback is stopped or not.
-	 */
 	private boolean isStopped;
-
 	private boolean isPaused;
-
 	private Clip audioClip;
-
 	
 	public long getClipSecondLength() {
 		return audioClip.getMicrosecondLength() / 1_000_000;
@@ -77,13 +61,6 @@ public class AudioPlayer implements LineListener {
 		return length;
 	}
 
-	/**
-	 * Play a given audio file.
-	 * 
-	 * @throws IOException
-	 * @throws UnsupportedAudioFileException
-	 * @throws LineUnavailableException
-	 */
 	void play() throws IOException {
                 
                 URL url = AudioPlayer.class.getResource("/srcmusic/backgroundmusic.wav");
@@ -116,9 +93,6 @@ public class AudioPlayer implements LineListener {
 
 	}
 
-	/**
-	 * Stop playing back.
-	 */
 	public void stop() {
 		isStopped = true;
 	}
@@ -131,9 +105,6 @@ public class AudioPlayer implements LineListener {
 		isPaused = false;
 	}
 
-	/**
-	 * Listens to the audio line events to know when the playback completes.
-	 */
 	@Override
 	public void update(LineEvent event) {
 		LineEvent.Type type = event.getType();

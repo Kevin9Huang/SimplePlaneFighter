@@ -21,7 +21,7 @@ import javax.swing.ImageIcon;
  * @author Rosi
  */
 
-public class MediumEnemy extends Plane implements GameSetting {
+public class MediumEnemy extends Plane implements GameSetting,Enemy {
     
     public MediumEnemy() {
         ImageIcon weakenemyicon = new ImageIcon(this.getClass().getResource(mediumenemyimage));

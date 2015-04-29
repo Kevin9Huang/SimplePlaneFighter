@@ -35,9 +35,9 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
     public ArrayList<MediumEnemy> mediumenemies;
     public ArrayList<StrongEnemy> strongenemies;
     public boolean ingame;
-    public boolean EnableWeakEnemy = false;
+    public boolean EnableWeakEnemy = true;
     public boolean EnableMediumEnemy = true;
-    public boolean EnableStrongEnemy = false;
+    public boolean EnableStrongEnemy = true;
 
     private final int[][] weakenemypos = { 
         {2380, 29}, {2500, 59}, {1380, 89},
@@ -78,21 +78,22 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
         weakenemies = new ArrayList();
         mediumenemies = new ArrayList();
         strongenemies = new ArrayList();
+        EnemyFactory factory = new EnemyFactory();
         if(EnableWeakEnemy)
         {
             for (int i=0; i<weakenemypos.length; i++ ) {
-                weakenemies.add(new WeakEnemy(weakenemypos[i][0], weakenemypos[i][1]));
+                weakenemies.add((WeakEnemy) factory.createEnemy("WeakEnemy",weakenemypos[i][0], weakenemypos[i][1]));
             }
         }
         if(EnableMediumEnemy){
             for (int i=0; i<mediumenemypos.length; i++ ) {
-                mediumenemies.add(new MediumEnemy(mediumenemypos[i][0], mediumenemypos[i][1]));
+                mediumenemies.add((MediumEnemy) factory.createEnemy("MediumEnemy",mediumenemypos[i][0], mediumenemypos[i][1]));
             }
         }
         if(EnableStrongEnemy)
         {
             for (int i=0; i<strongenemypos.length; i++ ) {
-                strongenemies.add(new StrongEnemy(strongenemypos[i][0], strongenemypos[i][1]));
+                strongenemies.add((StrongEnemy) factory.createEnemy("StrongEnemy",strongenemypos[i][0], strongenemypos[i][1]));
             }
         }
     }
@@ -151,12 +152,6 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
                 }
             }
             g2d.setColor(Color.WHITE);
-            if(player.getScore() > 100){
-                player.ChangeBullet(new SpiralBullet());
-            }
-            else if(player.getScore() > 300){
-                player.ChangeBullet(new ZigZagBullet());
-            }
             g2d.drawString("Score : " + player.getScore(), 5, 25);
             Rectangle HealthBar = new Rectangle(5, Board_Height-30,200,20);
             g.fillRect(5, Board_Height-30,player.getHitPoints(),20);
@@ -488,7 +483,7 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
             }
             if (key == KeyEvent.VK_SPACE) {
                 player.Shot();
-                /*if(EnableWeakEnemy){
+                if(EnableWeakEnemy){
                     for(int i=0;i<weakenemies.size();i++){
                         weakenemies.get(i).Shot();
                     }
@@ -503,7 +498,6 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
                         strongenemies.get(i).Shot();
                     }
                 }    
-                        */
                 
             }
             if(key == KeyEvent.VK_1){
