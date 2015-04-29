@@ -85,6 +85,7 @@ public class SpiralBullet extends Bullet implements GameSetting,GameResources{
         if(!toEnemy){ //move to player
             BulletSpeedX = -BulletSpeedX;
         }
+        /*
         //Arah dilihat dari sudut player
         if(initialmove){
             moveUp = true; 
@@ -140,8 +141,10 @@ public class SpiralBullet extends Bullet implements GameSetting,GameResources{
                 turnPointy = CurrentPosition.y;
             }
             CurrentPosition.x += BulletSpeedX;
-        }
-
+        }*/
+        CurrentPosition.x += BulletSpeedX;
+        CurrentPosition.y += BulletSpeedY;
+        
         
     }
 

@@ -28,7 +28,7 @@ public class Plane implements GameSetting,GameResources {
     protected int SpeedX;
     protected int SpeedY;
     protected boolean Visible;
-    
+    protected String Description;
     protected Point CurrentPosition;
     protected ArrayList<Bullet> bullet;
     protected int HitPoints;
@@ -45,6 +45,7 @@ public class Plane implements GameSetting,GameResources {
         SpeedY = 60;
         CurrentPosition = new Point(-99,-99);
         HitPoints = 100;
+        Description = PlaneDescription;
     }
     
     public Plane(int x,int y) {
@@ -58,6 +59,7 @@ public class Plane implements GameSetting,GameResources {
         SpeedY = 60;
         CurrentPosition = new Point(x,y);
         HitPoints = 100;
+        Description = PlaneDescription;
     }
     
     public int getPlaneWidth() {
@@ -180,8 +182,8 @@ public class Plane implements GameSetting,GameResources {
         }
     }
     
-    public void PrintDescription() {
-        
+    public String PrintDescription() {
+        return Description;
     }
     public Point getCurrentPosition(){
         return CurrentPosition;

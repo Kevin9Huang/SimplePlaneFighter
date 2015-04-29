@@ -35,6 +35,7 @@ interface GameSetting {
     public final int WeakEnemyHealth = 40;
     public final int MediumEnemyHealth = 80;
     public final int StrongEnemyHealth = 200;
+    public final int PenaltySpeed = 1;
     
     //Bullet
     public final int NormalBulletDamage = 10; 
@@ -46,7 +47,13 @@ interface GameSetting {
     public final int RangeUpSpiralBullet = 50;
     public final int RangeLeftSpiralBullet = 30;
     
-    
     //Ultimate
     public final int DefaultUltimateSpeed = 7;
+    
+    //Description
+    public final String PlaneDescription = "<html><br>This is default plane</html>";
+    public final String PlayerDescription = "<html><br>This is your player</html>";
+    public final String WeakEnemyDescription = "<html><br>This is weak enemy unit</html>";
+    public final String MediumEnemyDescription = "<html><br>This is medium enemy unit</html>";
+    public final String StrongEnemyDescription = "<html><br>This is strong enemy unit</html>";
 }

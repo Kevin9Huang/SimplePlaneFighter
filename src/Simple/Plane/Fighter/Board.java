@@ -35,8 +35,8 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
     public ArrayList<MediumEnemy> mediumenemies;
     public ArrayList<StrongEnemy> strongenemies;
     public boolean ingame;
-    public boolean EnableWeakEnemy = true;
-    public boolean EnableMediumEnemy = false;
+    public boolean EnableWeakEnemy = false;
+    public boolean EnableMediumEnemy = true;
     public boolean EnableStrongEnemy = false;
 
     private final int[][] weakenemypos = { 
@@ -403,7 +403,10 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
 
                 if (playerbulletarea.intersects(weakenemyarea)) {
                     playerbullet.setVisible(false);
-                    weakenemy.setPlaneVisible(false);
+                    weakenemy.setHitPoints(weakenemy.getHitPoints() - playerbullet.getBulletDamage());
+                    if(weakenemy.getHitPoints() <1){
+                        weakenemy.setPlaneVisible(false);
+                    }
                 }
                 
             }
@@ -413,7 +416,10 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
 
                 if (playerbulletarea.intersects(mediumenemyarea)) {
                     playerbullet.setVisible(false);
-                    mediumenemy.setPlaneVisible(false);
+                    mediumenemy.setHitPoints(mediumenemy.getHitPoints() - playerbullet.getBulletDamage());
+                    if(mediumenemy.getHitPoints() <1){
+                        mediumenemy.setPlaneVisible(false);
+                    }
                 }
             }
             for (int j = 0; j<strongenemies.size(); j++) {
@@ -422,7 +428,10 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
 
                 if (playerbulletarea.intersects(strongenemyarea)) {
                     playerbullet.setVisible(false);
-                    strongenemy.setPlaneVisible(false);
+                    strongenemy.setHitPoints(strongenemy.getHitPoints() - playerbullet.getBulletDamage());
+                    if(strongenemy.getHitPoints() <1){
+                        strongenemy.setPlaneVisible(false);
+                    }
                 }
             }
         }
@@ -497,13 +506,13 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
                         */
                 
             }
-            if(key == KeyEvent.VK_0){
+            if(key == KeyEvent.VK_1){
                 player.ChangeBullet(new Bullet());
             }
-            if(key == KeyEvent.VK_1){
+            if(key == KeyEvent.VK_2){
                 player.ChangeBullet(new ZigZagBullet());
             }
-            if(key == KeyEvent.VK_2){
+            if(key == KeyEvent.VK_3){
                 SpiralBullet spiral = new SpiralBullet();
                 spiral.setinitialmove(true);
                 player.ChangeBullet(spiral);

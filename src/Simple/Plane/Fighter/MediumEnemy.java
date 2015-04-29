@@ -58,6 +58,9 @@ public class MediumEnemy extends Plane implements GameSetting {
         if (CurrentPosition.x < 0) 
         {
             CurrentPosition.x = Board_Width-PlaneImage.getWidth(null);
+            HitPoints = HitPoints + MediumEnemyHealth;
+            //SpeedX += PenaltySpeed;
+            //SpeedY += PenaltySpeed;
         }
         CurrentPosition.x -= SpeedX;
     }

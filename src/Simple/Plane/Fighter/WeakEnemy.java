@@ -36,6 +36,7 @@ public class WeakEnemy extends Plane implements GameSetting {
         CurrentBullet = new SpiralBullet();
         CurrentPosition = new Point(InitialEnemySpawnPosition);
         HitPoints = WeakEnemyHealth;
+        Description = WeakEnemyDescription;
     }
     
     public WeakEnemy(int x,int y) {
@@ -52,12 +53,16 @@ public class WeakEnemy extends Plane implements GameSetting {
         CurrentBullet = new Bullet();
         CurrentPosition = new Point(x,y);
         HitPoints = WeakEnemyHealth;
+        Description = WeakEnemyDescription;
     }
     
     public void run() {
         if (CurrentPosition.x < 0) 
         {
             CurrentPosition.x = Board_Width-PlaneImage.getWidth(null);
+            HitPoints = HitPoints + WeakEnemyHealth;
+            //SpeedX += PenaltySpeed;
+            //SpeedY += PenaltySpeed;
         }
         CurrentPosition.x -= SpeedX;
     }
