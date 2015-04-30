@@ -27,7 +27,7 @@ interface GameSetting {
     public final int StrongScore = 50;
     
     //Player
-    public final int initialLives = 3;
+    public final int initialLives = 10;
     public final int initialPlayerHealth = 200;
     public final int initialPlayerUltimate = 10;
     public final int PlayerSpeed = 2;
@@ -37,6 +37,11 @@ interface GameSetting {
     public final int MediumEnemyHealth = 80;
     public final int StrongEnemyHealth = 200;
     public final int PenaltySpeed = 1;
+    public final int WeakEnemySpeed = 2;
+    public final int MediumEnemySpeed = 4;
+    public final int StrongEnemySpeedX = 5;
+    public final int StrongEnemySpeedY = 5;
+    
     
     //Bullet
     public final int NormalBulletDamage = 10; 

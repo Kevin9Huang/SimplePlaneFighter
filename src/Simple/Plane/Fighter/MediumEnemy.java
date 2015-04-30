@@ -30,8 +30,8 @@ public class MediumEnemy extends Plane implements GameSetting,Enemy {
         height = PlaneImage.getHeight(null);
         bullet = new ArrayList();
         Visible = true;
-        SpeedX = 2;
-        SpeedY = 3;
+        SpeedX = MediumEnemySpeed;
+        SpeedY = MediumEnemySpeed;
         HitPoints = 10;
         CurrentBullet = new ZigZagBullet();
         CurrentPosition = new Point(InitialEnemySpawnPosition);
@@ -45,8 +45,8 @@ public class MediumEnemy extends Plane implements GameSetting,Enemy {
         height = PlaneImage.getHeight(null);
         bullet = new ArrayList();
         Visible = true;
-        SpeedX = 4;
-        SpeedY = 3;
+        SpeedX = MediumEnemySpeed;
+        SpeedY = MediumEnemySpeed;
         HitPoints = 10;
         CurrentBullet = new ZigZagBullet();
         CurrentPosition = new Point(x,y);

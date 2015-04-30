@@ -30,8 +30,8 @@ public class WeakEnemy extends Plane implements GameSetting,Enemy {
         height = PlaneImage.getHeight(null);
         bullet = new ArrayList();
         Visible = true;
-        SpeedX = 10;
-        SpeedY = 15;
+        SpeedX = WeakEnemySpeed;
+        SpeedY = WeakEnemySpeed;
         HitPoints = 10;
         CurrentBullet = new SpiralBullet();
         CurrentPosition = new Point(InitialEnemySpawnPosition);
@@ -46,8 +46,8 @@ public class WeakEnemy extends Plane implements GameSetting,Enemy {
         height = PlaneImage.getHeight(null);
         bullet = new ArrayList();
         Visible = true;
-        SpeedX = 2;
-        SpeedY = 2;
+        SpeedX = WeakEnemySpeed;
+        SpeedY = WeakEnemySpeed;
         HitPoints = 10;
         CurrentBullet = new Bullet();
         CurrentPosition = new Point(x,y);

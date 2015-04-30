@@ -28,8 +28,8 @@ public class StrongEnemy extends Plane implements GameSetting,Enemy {
         height = PlaneImage.getHeight(null);
         bullet = new ArrayList();
         Visible = true;
-        SpeedX = 2;
-        SpeedY = 3;
+        SpeedX = StrongEnemySpeedX;
+        SpeedY = StrongEnemySpeedY;
         HitPoints = 10;
         SpiralBullet m = new SpiralBullet();
         m.setinitialmove(true);
@@ -45,8 +45,8 @@ public class StrongEnemy extends Plane implements GameSetting,Enemy {
         height = PlaneImage.getHeight(null);
         bullet = new ArrayList();
         Visible = true;
-        SpeedX = 2;
-        SpeedY = 3;
+        SpeedX = StrongEnemySpeedX;
+        SpeedY = StrongEnemySpeedY;
         HitPoints = 10;
         SpiralBullet m = new SpiralBullet();
         m.setinitialmove(true);

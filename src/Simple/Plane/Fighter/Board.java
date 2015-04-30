@@ -105,6 +105,9 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
         if (ingame) {
 
             Graphics2D g2d = (Graphics2D)g;
+            ImageIcon BackGroundicon = new ImageIcon(this.getClass().getResource("/srcimage/space.png"));
+            Image BackgroundImage = BackGroundicon.getImage();
+            g.drawImage(BackgroundImage,0,0,Board_Width,Board_Height, this);
             if (player.isPlaneVisible())
             {
                 g2d.drawImage(player.getPlaneImage(), player.getCurrentPosition().x, player.getCurrentPosition().y,
