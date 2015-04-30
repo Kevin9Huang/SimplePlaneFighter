@@ -41,8 +41,10 @@ interface GameSetting {
     public final int MediumEnemySpeed = 4;
     public final int StrongEnemySpeedX = 5;
     public final int StrongEnemySpeedY = 5;
+
     public final boolean IncreaseHealthifPassed = false;
     public final boolean IncreaseSpeedifPassed = false;
+
     
     
     //Bullet

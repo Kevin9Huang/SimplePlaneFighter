@@ -14,6 +14,7 @@ import java.util.Arrays;
  * @author Kevin Huang
  */
 interface GameResources {
+
     public final String srcplayer = "/srcimage/player_1.png";
     public final String weakenemyimage = "/srcimage/alien.png";
     public final String mediumenemyimage = "/srcimage/headufo.gif";
