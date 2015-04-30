@@ -1,0 +1,86 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Simple.Plane.Fighter;
+
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.awt.Point;
+import java.awt.event.KeyEvent;
+
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+
+/**
+ *
+ * @author Rosi
+ */
+
+public class StrongEnemy extends Plane implements GameSetting,Enemy {
+    
+    public StrongEnemy() {
+        ImageIcon weakenemyicon = new ImageIcon(this.getClass().getResource(strongenemyimage));
+        PlaneImage = weakenemyicon.getImage();
+        width = PlaneImage.getWidth(null);
+        height = PlaneImage.getHeight(null);
+        bullet = new ArrayList();
+        Visible = true;
+        SpeedX = StrongEnemySpeedX;
+        SpeedY = StrongEnemySpeedY;
+        HitPoints = 10;
+        SpiralBullet m = new SpiralBullet();
+        m.setinitialmove(true);
+        CurrentBullet = m;
+        CurrentPosition = new Point(InitialEnemySpawnPosition);
+        HitPoints = StrongEnemyHealth;
+    }
+    
+    public StrongEnemy(int x,int y) {
+        ImageIcon weakenemyicon = new ImageIcon(this.getClass().getResource(strongenemyimage));
+        PlaneImage = weakenemyicon.getImage();
+        width = PlaneImage.getWidth(null);
+        height = PlaneImage.getHeight(null);
+        bullet = new ArrayList();
+        Visible = true;
+        SpeedX = StrongEnemySpeedX;
+        SpeedY = StrongEnemySpeedY;
+        HitPoints = 10;
+        SpiralBullet m = new SpiralBullet();
+        m.setinitialmove(true);
+        CurrentBullet = m;
+        CurrentPosition = new Point(x,y);
+        HitPoints = StrongEnemyHealth;
+    }    
+    public void run() {
+        if (CurrentPosition.x < 0) 
+        {
+            CurrentPosition.x = Board_Width-PlaneImage.getWidth(null);
+            if(IncreaseHealthifPassed){
+                HitPoints = HitPoints + StrongEnemyHealth;
+            }
+            if(IncreaseSpeedifPassed){
+                SpeedX += PenaltySpeed;
+                SpeedY += PenaltySpeed;
+            }
+        }
+        CurrentPosition.x -= SpeedX;
+        if (CurrentPosition.y < 0) 
+        {
+            CurrentPosition.y = PlaneImage.getHeight(null);
+            SpeedY = -SpeedY;
+        }
+        if(CurrentPosition.y > Board_Height)
+        {
+            CurrentPosition.y = Board_Height-PlaneImage.getHeight(null);
+            SpeedY = -SpeedY;
+        }
+        CurrentPosition.x -= SpeedX;
+        CurrentPosition.y -= SpeedY;
+    }
+   public String PrintDescription() {
+        return StrongEnemyDescription;
+    }
+}
