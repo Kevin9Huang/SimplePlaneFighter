@@ -68,7 +68,8 @@ public class GUI extends javax.swing.JFrame implements GameSetting,GameResources
         ButtonUltimate = new javax.swing.JButton();
         ButtonExit = new javax.swing.JButton();
         LabelDescription = new javax.swing.JLabel();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        TogglePlayMusic = new javax.swing.JToggleButton();
+        ToggleBerserk = new javax.swing.JToggleButton();
 
         jTextField1.setText("jTextField1");
 
@@ -160,16 +161,25 @@ public class GUI extends javax.swing.JFrame implements GameSetting,GameResources
         LabelDescription.setText("Description: ");
         LabelDescription.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         getContentPane().add(LabelDescription);
-        LabelDescription.setBounds(310, 430, 350, 160);
+        LabelDescription.setBounds(390, 420, 350, 160);
 
-        jToggleButton2.setText("Background Music");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        TogglePlayMusic.setText("Background Music");
+        TogglePlayMusic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                TogglePlayMusicActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton2);
-        jToggleButton2.setBounds(705, 580, 140, 23);
+        getContentPane().add(TogglePlayMusic);
+        TogglePlayMusic.setBounds(705, 580, 140, 23);
+
+        ToggleBerserk.setText("Berserk : OFF");
+        ToggleBerserk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ToggleBerserkActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ToggleBerserk);
+        ToggleBerserk.setBounds(250, 570, 130, 30);
 
         getAccessibleContext().setAccessibleDescription("");
 
@@ -232,15 +242,15 @@ public class GUI extends javax.swing.JFrame implements GameSetting,GameResources
         board.requestFocus(true);
     }//GEN-LAST:event_ButtonUltimateMouseReleased
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        if (jToggleButton2.isSelected()) {
+    private void TogglePlayMusicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TogglePlayMusicActionPerformed
+        if (TogglePlayMusic.isSelected()) {
             playBack();
         }
         else {
             stopPlaying();
         }
         board.requestFocus(true);
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }//GEN-LAST:event_TogglePlayMusicActionPerformed
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
         mouseinfo = MouseInfo.getPointerInfo();
@@ -276,6 +286,21 @@ public class GUI extends javax.swing.JFrame implements GameSetting,GameResources
             }
         }
     }//GEN-LAST:event_formMouseReleased
+
+    private void ToggleBerserkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ToggleBerserkActionPerformed
+
+        if (ToggleBerserk.isSelected()) {
+            board.player.setBerserk(true);
+            board.player.Berserk(); //toogle on
+            ToggleBerserk.setText("Berserk : ON");
+        }
+        else {
+            board.player.setBerserk(false);
+            board.player.Berserk(); //toogle off
+            ToggleBerserk.setText("Berserk : OFF");
+        }
+        board.requestFocus(true);
+    }//GEN-LAST:event_ToggleBerserkActionPerformed
 
     private void playBack() {
         isPlaying = true;
@@ -336,9 +361,10 @@ public class GUI extends javax.swing.JFrame implements GameSetting,GameResources
     private javax.swing.JButton ButtonUltimate;
     private javax.swing.JButton ButtonUp;
     private javax.swing.JLabel LabelDescription;
+    private javax.swing.JToggleButton ToggleBerserk;
+    private javax.swing.JToggleButton TogglePlayMusic;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton2;
     // End of variables declaration//GEN-END:variables
 
     private class TAdapter extends KeyAdapter {

@@ -20,6 +20,7 @@ public class Player extends Plane implements GameSetting {
     private int Lives;
     private int CounterUltimate;
     private Ultimate UltimateAtck;
+    private boolean Berserk;
     public Player(){
         super();
         ImageIcon playericon = new ImageIcon(this.getClass().getResource(GameResources.srcplayer));
@@ -27,8 +28,8 @@ public class Player extends Plane implements GameSetting {
         width = PlaneImage.getWidth(null);
         height = PlaneImage.getHeight(null);
         bullet = new ArrayList<Bullet>();
-        SpeedX = 2;
-        SpeedY = 2;
+        SpeedX = PlayerSpeed;
+        SpeedY = PenaltySpeed;
         Visible = true;
         CurrentPosition = new Point(InitialPlayerPosition);
         CurrentBullet = new Bullet();
@@ -39,6 +40,7 @@ public class Player extends Plane implements GameSetting {
         CounterUltimate = initialPlayerUltimate;
         UltimateAtck = new Ultimate();
         UltimateAtck.setVisible(false);
+        Berserk = false;
     }
     
     public void ResetDeltaMove(){
@@ -80,6 +82,24 @@ public class Player extends Plane implements GameSetting {
     
     public String PrintDescription() {
         return PlayerDescription;
+    }
+    public boolean isBerserk(){
+        return Berserk;
+    }
+    public void setBerserk(boolean berserkstatus){
+        Berserk = berserkstatus;
+    }
+    public void Berserk(){
+        if(Berserk){
+            SpeedX = 3*PlayerSpeed;
+            SpeedY = 3*PlayerSpeed;
+            
+        }
+        else
+        {
+            SpeedX = PlayerSpeed;
+            SpeedY = PlayerSpeed;
+        }
     }
     
 }

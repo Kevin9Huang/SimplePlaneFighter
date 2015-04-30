@@ -477,12 +477,22 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
             if (key == KeyEvent.VK_UP) {
                 player.MoveUp();
             }
+            if(key == KeyEvent.VK_4){
+                if(!player.isBerserk()){
+                   player.setBerserk(true);
+                   player.Berserk(); //toogle on
+                }
+                else
+                {
+                   player.setBerserk(false);
+                   player.Berserk(); //toogle on
+                }
+            }
 
             if (key == KeyEvent.VK_DOWN) {
                 player.MoveDown();
             }
-            if (key == KeyEvent.VK_SPACE) {
-                player.Shot();
+            if (key == KeyEvent.VK_BACK_SPACE) {
                 if(EnableWeakEnemy){
                     for(int i=0;i<weakenemies.size();i++){
                         weakenemies.get(i).Shot();
@@ -497,8 +507,10 @@ public class Board extends JPanel implements ActionListener,GameSetting,GameReso
                     for(int i=0;i<strongenemies.size();i++){
                         strongenemies.get(i).Shot();
                     }
-                }    
-                
+                }
+            }
+            if (key == KeyEvent.VK_SPACE) {
+                player.Shot();
             }
             if(key == KeyEvent.VK_1){
                 player.ChangeBullet(new Bullet());

@@ -30,6 +30,7 @@ interface GameSetting {
     public final int initialLives = 3;
     public final int initialPlayerHealth = 200;
     public final int initialPlayerUltimate = 10;
+    public final int PlayerSpeed = 2;
     
     //Enemy
     public final int WeakEnemyHealth = 40;
