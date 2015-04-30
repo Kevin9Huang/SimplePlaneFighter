@@ -58,9 +58,13 @@ public class WeakEnemy extends Plane implements GameSetting,Enemy {
         if (CurrentPosition.x < 0) 
         {
             CurrentPosition.x = Board_Width-PlaneImage.getWidth(null);
-            HitPoints = HitPoints + WeakEnemyHealth;
-            //SpeedX += PenaltySpeed;
-            //SpeedY += PenaltySpeed;
+            if(IncreaseHealthifPassed){
+                HitPoints = HitPoints + WeakEnemyHealth;
+            }
+            if(IncreaseSpeedifPassed){
+                SpeedX += PenaltySpeed;
+                SpeedY += PenaltySpeed;
+            }
         }
         CurrentPosition.x -= SpeedX;
     }

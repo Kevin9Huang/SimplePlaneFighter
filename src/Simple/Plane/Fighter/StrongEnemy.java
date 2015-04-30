@@ -58,9 +58,13 @@ public class StrongEnemy extends Plane implements GameSetting,Enemy {
         if (CurrentPosition.x < 0) 
         {
             CurrentPosition.x = Board_Width-PlaneImage.getWidth(null);
-            HitPoints = HitPoints + StrongEnemyHealth;
-            //SpeedX += PenaltySpeed;
-            //SpeedY += PenaltySpeed;
+            if(IncreaseHealthifPassed){
+                HitPoints = HitPoints + StrongEnemyHealth;
+            }
+            if(IncreaseSpeedifPassed){
+                SpeedX += PenaltySpeed;
+                SpeedY += PenaltySpeed;
+            }
         }
         CurrentPosition.x -= SpeedX;
         if (CurrentPosition.y < 0) 
